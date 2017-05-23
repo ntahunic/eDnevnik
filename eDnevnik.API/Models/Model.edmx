@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="eDnevnikModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AkademskaGodina">
+          <Key>
+            <PropertyRef Name="AkademskaGodinaId" />
+          </Key>
+          <Property Name="AkademskaGodinaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cas">
+          <Key>
+            <PropertyRef Name="CasId" />
+          </Key>
+          <Property Name="CasId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Datum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProfesorId" Type="int" Nullable="false" />
+          <Property Name="PredmetId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Izostanak">
+          <Key>
+            <PropertyRef Name="IzostanakId" />
+          </Key>
+          <Property Name="IzostanakId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UcenikId" Type="int" Nullable="false" />
+          <Property Name="CasId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ocjena">
+          <Key>
+            <PropertyRef Name="OcjenaId" />
+          </Key>
+          <Property Name="OcjenaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OcjenaVrijednost" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UcenikId" Type="int" Nullable="false" />
+          <Property Name="ProfesorId" Type="int" Nullable="false" />
+          <Property Name="CasId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Predmet">
+          <Key>
+            <PropertyRef Name="PredmetId" />
+          </Key>
+          <Property Name="PredmetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profesor">
+          <Key>
+            <PropertyRef Name="ProfesorId" />
+          </Key>
+          <Property Name="ProfesorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Titula" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Razred">
+          <Key>
+            <PropertyRef Name="RazredId" />
+          </Key>
+          <Property Name="RazredId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Odjeljenje" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="AkademskaGodinaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Ucenik">
+          <Key>
+            <PropertyRef Name="UcenikId" />
+          </Key>
+          <Property Name="UcenikId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RazredId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cas_Predmet">
+          <End Role="Predmet" Type="Self.Predmet" Multiplicity="1" />
+          <End Role="Cas" Type="Self.Cas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmet">
+              <PropertyRef Name="PredmetId" />
+            </Principal>
+            <Dependent Role="Cas">
+              <PropertyRef Name="PredmetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cas_Profesor">
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="1" />
+          <End Role="Cas" Type="Self.Cas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="ProfesorId" />
+            </Principal>
+            <Dependent Role="Cas">
+              <PropertyRef Name="ProfesorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Izostanak_Cas">
+          <End Role="Cas" Type="Self.Cas" Multiplicity="1" />
+          <End Role="Izostanak" Type="Self.Izostanak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cas">
+              <PropertyRef Name="CasId" />
+            </Principal>
+            <Dependent Role="Izostanak">
+              <PropertyRef Name="CasId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Izostanak_Ucenik">
+          <End Role="Ucenik" Type="Self.Ucenik" Multiplicity="1" />
+          <End Role="Izostanak" Type="Self.Izostanak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ucenik">
+              <PropertyRef Name="UcenikId" />
+            </Principal>
+            <Dependent Role="Izostanak">
+              <PropertyRef Name="UcenikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocjena_Cas">
+          <End Role="Cas" Type="Self.Cas" Multiplicity="1" />
+          <End Role="Ocjena" Type="Self.Ocjena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cas">
+              <PropertyRef Name="CasId" />
+            </Principal>
+            <Dependent Role="Ocjena">
+              <PropertyRef Name="CasId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocjena_Profesor">
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="1" />
+          <End Role="Ocjena" Type="Self.Ocjena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="ProfesorId" />
+            </Principal>
+            <Dependent Role="Ocjena">
+              <PropertyRef Name="ProfesorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocjena_Ucenik">
+          <End Role="Ucenik" Type="Self.Ucenik" Multiplicity="1" />
+          <End Role="Ocjena" Type="Self.Ocjena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ucenik">
+              <PropertyRef Name="UcenikId" />
+            </Principal>
+            <Dependent Role="Ocjena">
+              <PropertyRef Name="UcenikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Razred_AkademskaGodina">
+          <End Role="AkademskaGodina" Type="Self.AkademskaGodina" Multiplicity="1" />
+          <End Role="Razred" Type="Self.Razred" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AkademskaGodina">
+              <PropertyRef Name="AkademskaGodinaId" />
+            </Principal>
+            <Dependent Role="Razred">
+              <PropertyRef Name="AkademskaGodinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ucenik_Razred">
+          <End Role="Razred" Type="Self.Razred" Multiplicity="1" />
+          <End Role="Ucenik" Type="Self.Ucenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Razred">
+              <PropertyRef Name="RazredId" />
+            </Principal>
+            <Dependent Role="Ucenik">
+              <PropertyRef Name="RazredId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eDnevnikModelStoreContainer">
+          <EntitySet Name="AkademskaGodina" EntityType="Self.AkademskaGodina" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cas" EntityType="Self.Cas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Izostanak" EntityType="Self.Izostanak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ocjena" EntityType="Self.Ocjena" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Predmet" EntityType="Self.Predmet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profesor" EntityType="Self.Profesor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Razred" EntityType="Self.Razred" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ucenik" EntityType="Self.Ucenik" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cas_Predmet" Association="Self.FK_Cas_Predmet">
+            <End Role="Predmet" EntitySet="Predmet" />
+            <End Role="Cas" EntitySet="Cas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cas_Profesor" Association="Self.FK_Cas_Profesor">
+            <End Role="Profesor" EntitySet="Profesor" />
+            <End Role="Cas" EntitySet="Cas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Izostanak_Cas" Association="Self.FK_Izostanak_Cas">
+            <End Role="Cas" EntitySet="Cas" />
+            <End Role="Izostanak" EntitySet="Izostanak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Izostanak_Ucenik" Association="Self.FK_Izostanak_Ucenik">
+            <End Role="Ucenik" EntitySet="Ucenik" />
+            <End Role="Izostanak" EntitySet="Izostanak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocjena_Cas" Association="Self.FK_Ocjena_Cas">
+            <End Role="Cas" EntitySet="Cas" />
+            <End Role="Ocjena" EntitySet="Ocjena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocjena_Profesor" Association="Self.FK_Ocjena_Profesor">
+            <End Role="Profesor" EntitySet="Profesor" />
+            <End Role="Ocjena" EntitySet="Ocjena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocjena_Ucenik" Association="Self.FK_Ocjena_Ucenik">
+            <End Role="Ucenik" EntitySet="Ucenik" />
+            <End Role="Ocjena" EntitySet="Ocjena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Razred_AkademskaGodina" Association="Self.FK_Razred_AkademskaGodina">
+            <End Role="AkademskaGodina" EntitySet="AkademskaGodina" />
+            <End Role="Razred" EntitySet="Razred" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ucenik_Razred" Association="Self.FK_Ucenik_Razred">
+            <End Role="Razred" EntitySet="Razred" />
+            <End Role="Ucenik" EntitySet="Ucenik" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eDnevnikModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AkademskaGodina">
+          <Key>
+            <PropertyRef Name="AkademskaGodinaId" />
+          </Key>
+          <Property Name="AkademskaGodinaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Razred" Relationship="Self.FK_Razred_AkademskaGodina" FromRole="AkademskaGodina" ToRole="Razred" />
+        </EntityType>
+        <EntityType Name="Cas">
+          <Key>
+            <PropertyRef Name="CasId" />
+          </Key>
+          <Property Name="CasId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Datum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProfesorId" Type="Int32" Nullable="false" />
+          <Property Name="PredmetId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Predmet" Relationship="Self.FK_Cas_Predmet" FromRole="Cas" ToRole="Predmet" />
+          <NavigationProperty Name="Profesor" Relationship="Self.FK_Cas_Profesor" FromRole="Cas" ToRole="Profesor" />
+          <NavigationProperty Name="Izostanak" Relationship="Self.FK_Izostanak_Cas" FromRole="Cas" ToRole="Izostanak" />
+          <NavigationProperty Name="Ocjena" Relationship="Self.FK_Ocjena_Cas" FromRole="Cas" ToRole="Ocjena" />
+        </EntityType>
+        <EntityType Name="Izostanak">
+          <Key>
+            <PropertyRef Name="IzostanakId" />
+          </Key>
+          <Property Name="IzostanakId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UcenikId" Type="Int32" Nullable="false" />
+          <Property Name="CasId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cas" Relationship="Self.FK_Izostanak_Cas" FromRole="Izostanak" ToRole="Cas" />
+          <NavigationProperty Name="Ucenik" Relationship="Self.FK_Izostanak_Ucenik" FromRole="Izostanak" ToRole="Ucenik" />
+        </EntityType>
+        <EntityType Name="Ocjena">
+          <Key>
+            <PropertyRef Name="OcjenaId" />
+          </Key>
+          <Property Name="OcjenaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OcjenaVrijednost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UcenikId" Type="Int32" Nullable="false" />
+          <Property Name="ProfesorId" Type="Int32" Nullable="false" />
+          <Property Name="CasId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cas" Relationship="Self.FK_Ocjena_Cas" FromRole="Ocjena" ToRole="Cas" />
+          <NavigationProperty Name="Profesor" Relationship="Self.FK_Ocjena_Profesor" FromRole="Ocjena" ToRole="Profesor" />
+          <NavigationProperty Name="Ucenik" Relationship="Self.FK_Ocjena_Ucenik" FromRole="Ocjena" ToRole="Ucenik" />
+        </EntityType>
+        <EntityType Name="Predmet">
+          <Key>
+            <PropertyRef Name="PredmetId" />
+          </Key>
+          <Property Name="PredmetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cas" Relationship="Self.FK_Cas_Predmet" FromRole="Predmet" ToRole="Cas" />
+        </EntityType>
+        <EntityType Name="Profesor">
+          <Key>
+            <PropertyRef Name="ProfesorId" />
+          </Key>
+          <Property Name="ProfesorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Titula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cas" Relationship="Self.FK_Cas_Profesor" FromRole="Profesor" ToRole="Cas" />
+          <NavigationProperty Name="Ocjena" Relationship="Self.FK_Ocjena_Profesor" FromRole="Profesor" ToRole="Ocjena" />
+        </EntityType>
+        <EntityType Name="Razred">
+          <Key>
+            <PropertyRef Name="RazredId" />
+          </Key>
+          <Property Name="RazredId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Odjeljenje" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AkademskaGodinaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AkademskaGodina" Relationship="Self.FK_Razred_AkademskaGodina" FromRole="Razred" ToRole="AkademskaGodina" />
+          <NavigationProperty Name="Ucenik" Relationship="Self.FK_Ucenik_Razred" FromRole="Razred" ToRole="Ucenik" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Ucenik">
+          <Key>
+            <PropertyRef Name="UcenikId" />
+          </Key>
+          <Property Name="UcenikId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RazredId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Izostanak" Relationship="Self.FK_Izostanak_Ucenik" FromRole="Ucenik" ToRole="Izostanak" />
+          <NavigationProperty Name="Ocjena" Relationship="Self.FK_Ocjena_Ucenik" FromRole="Ucenik" ToRole="Ocjena" />
+          <NavigationProperty Name="Razred" Relationship="Self.FK_Ucenik_Razred" FromRole="Ucenik" ToRole="Razred" />
+        </EntityType>
+        <Association Name="FK_Razred_AkademskaGodina">
+          <End Role="AkademskaGodina" Type="Self.AkademskaGodina" Multiplicity="1" />
+          <End Role="Razred" Type="Self.Razred" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AkademskaGodina">
+              <PropertyRef Name="AkademskaGodinaId" />
+            </Principal>
+            <Dependent Role="Razred">
+              <PropertyRef Name="AkademskaGodinaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cas_Predmet">
+          <End Role="Predmet" Type="Self.Predmet" Multiplicity="1" />
+          <End Role="Cas" Type="Self.Cas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmet">
+              <PropertyRef Name="PredmetId" />
+            </Principal>
+            <Dependent Role="Cas">
+              <PropertyRef Name="PredmetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cas_Profesor">
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="1" />
+          <End Role="Cas" Type="Self.Cas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="ProfesorId" />
+            </Principal>
+            <Dependent Role="Cas">
+              <PropertyRef Name="ProfesorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Izostanak_Cas">
+          <End Role="Cas" Type="Self.Cas" Multiplicity="1" />
+          <End Role="Izostanak" Type="Self.Izostanak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cas">
+              <PropertyRef Name="CasId" />
+            </Principal>
+            <Dependent Role="Izostanak">
+              <PropertyRef Name="CasId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocjena_Cas">
+          <End Role="Cas" Type="Self.Cas" Multiplicity="1" />
+          <End Role="Ocjena" Type="Self.Ocjena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cas">
+              <PropertyRef Name="CasId" />
+            </Principal>
+            <Dependent Role="Ocjena">
+              <PropertyRef Name="CasId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Izostanak_Ucenik">
+          <End Role="Ucenik" Type="Self.Ucenik" Multiplicity="1" />
+          <End Role="Izostanak" Type="Self.Izostanak" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ucenik">
+              <PropertyRef Name="UcenikId" />
+            </Principal>
+            <Dependent Role="Izostanak">
+              <PropertyRef Name="UcenikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocjena_Profesor">
+          <End Role="Profesor" Type="Self.Profesor" Multiplicity="1" />
+          <End Role="Ocjena" Type="Self.Ocjena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesor">
+              <PropertyRef Name="ProfesorId" />
+            </Principal>
+            <Dependent Role="Ocjena">
+              <PropertyRef Name="ProfesorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocjena_Ucenik">
+          <End Role="Ucenik" Type="Self.Ucenik" Multiplicity="1" />
+          <End Role="Ocjena" Type="Self.Ocjena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ucenik">
+              <PropertyRef Name="UcenikId" />
+            </Principal>
+            <Dependent Role="Ocjena">
+              <PropertyRef Name="UcenikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ucenik_Razred">
+          <End Role="Razred" Type="Self.Razred" Multiplicity="1" />
+          <End Role="Ucenik" Type="Self.Ucenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Razred">
+              <PropertyRef Name="RazredId" />
+            </Principal>
+            <Dependent Role="Ucenik">
+              <PropertyRef Name="RazredId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eDnevnikEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AkademskaGodina" EntityType="Self.AkademskaGodina" />
+          <EntitySet Name="Cas" EntityType="Self.Cas" />
+          <EntitySet Name="Izostanak" EntityType="Self.Izostanak" />
+          <EntitySet Name="Ocjena" EntityType="Self.Ocjena" />
+          <EntitySet Name="Predmet" EntityType="Self.Predmet" />
+          <EntitySet Name="Profesor" EntityType="Self.Profesor" />
+          <EntitySet Name="Razred" EntityType="Self.Razred" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Ucenik" EntityType="Self.Ucenik" />
+          <AssociationSet Name="FK_Razred_AkademskaGodina" Association="Self.FK_Razred_AkademskaGodina">
+            <End Role="AkademskaGodina" EntitySet="AkademskaGodina" />
+            <End Role="Razred" EntitySet="Razred" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cas_Predmet" Association="Self.FK_Cas_Predmet">
+            <End Role="Predmet" EntitySet="Predmet" />
+            <End Role="Cas" EntitySet="Cas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cas_Profesor" Association="Self.FK_Cas_Profesor">
+            <End Role="Profesor" EntitySet="Profesor" />
+            <End Role="Cas" EntitySet="Cas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Izostanak_Cas" Association="Self.FK_Izostanak_Cas">
+            <End Role="Cas" EntitySet="Cas" />
+            <End Role="Izostanak" EntitySet="Izostanak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocjena_Cas" Association="Self.FK_Ocjena_Cas">
+            <End Role="Cas" EntitySet="Cas" />
+            <End Role="Ocjena" EntitySet="Ocjena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Izostanak_Ucenik" Association="Self.FK_Izostanak_Ucenik">
+            <End Role="Ucenik" EntitySet="Ucenik" />
+            <End Role="Izostanak" EntitySet="Izostanak" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocjena_Profesor" Association="Self.FK_Ocjena_Profesor">
+            <End Role="Profesor" EntitySet="Profesor" />
+            <End Role="Ocjena" EntitySet="Ocjena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocjena_Ucenik" Association="Self.FK_Ocjena_Ucenik">
+            <End Role="Ucenik" EntitySet="Ucenik" />
+            <End Role="Ocjena" EntitySet="Ocjena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ucenik_Razred" Association="Self.FK_Ucenik_Razred">
+            <End Role="Razred" EntitySet="Razred" />
+            <End Role="Ucenik" EntitySet="Ucenik" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eDnevnikModelStoreContainer" CdmEntityContainer="eDnevnikEntities1">
+          <EntitySetMapping Name="AkademskaGodina">
+            <EntityTypeMapping TypeName="eDnevnikModel.AkademskaGodina">
+              <MappingFragment StoreEntitySet="AkademskaGodina">
+                <ScalarProperty Name="AkademskaGodinaId" ColumnName="AkademskaGodinaId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cas">
+            <EntityTypeMapping TypeName="eDnevnikModel.Cas">
+              <MappingFragment StoreEntitySet="Cas">
+                <ScalarProperty Name="CasId" ColumnName="CasId" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="ProfesorId" ColumnName="ProfesorId" />
+                <ScalarProperty Name="PredmetId" ColumnName="PredmetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Izostanak">
+            <EntityTypeMapping TypeName="eDnevnikModel.Izostanak">
+              <MappingFragment StoreEntitySet="Izostanak">
+                <ScalarProperty Name="IzostanakId" ColumnName="IzostanakId" />
+                <ScalarProperty Name="UcenikId" ColumnName="UcenikId" />
+                <ScalarProperty Name="CasId" ColumnName="CasId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ocjena">
+            <EntityTypeMapping TypeName="eDnevnikModel.Ocjena">
+              <MappingFragment StoreEntitySet="Ocjena">
+                <ScalarProperty Name="OcjenaId" ColumnName="OcjenaId" />
+                <ScalarProperty Name="OcjenaVrijednost" ColumnName="OcjenaVrijednost" />
+                <ScalarProperty Name="UcenikId" ColumnName="UcenikId" />
+                <ScalarProperty Name="ProfesorId" ColumnName="ProfesorId" />
+                <ScalarProperty Name="CasId" ColumnName="CasId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Predmet">
+            <EntityTypeMapping TypeName="eDnevnikModel.Predmet">
+              <MappingFragment StoreEntitySet="Predmet">
+                <ScalarProperty Name="PredmetId" ColumnName="PredmetId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profesor">
+            <EntityTypeMapping TypeName="eDnevnikModel.Profesor">
+              <MappingFragment StoreEntitySet="Profesor">
+                <ScalarProperty Name="ProfesorId" ColumnName="ProfesorId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Titula" ColumnName="Titula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Razred">
+            <EntityTypeMapping TypeName="eDnevnikModel.Razred">
+              <MappingFragment StoreEntitySet="Razred">
+                <ScalarProperty Name="RazredId" ColumnName="RazredId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Odjeljenje" ColumnName="Odjeljenje" />
+                <ScalarProperty Name="AkademskaGodinaId" ColumnName="AkademskaGodinaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="eDnevnikModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ucenik">
+            <EntityTypeMapping TypeName="eDnevnikModel.Ucenik">
+              <MappingFragment StoreEntitySet="Ucenik">
+                <ScalarProperty Name="UcenikId" ColumnName="UcenikId" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="RazredId" ColumnName="RazredId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

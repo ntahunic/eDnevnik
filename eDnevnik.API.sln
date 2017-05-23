@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eDnevnik.API", "eDnevnik.API\eDnevnik.API.csproj", "{10BB2BE8-A5A7-4BDA-96A1-02F511B9C551}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eDnevnik.UI", "eDnevnik.UI\eDnevnik.UI.csproj", "{4191DB1D-A39B-45CE-B915-095750E11EDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10BB2BE8-A5A7-4BDA-96A1-02F511B9C551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10BB2BE8-A5A7-4BDA-96A1-02F511B9C551}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10BB2BE8-A5A7-4BDA-96A1-02F511B9C551}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10BB2BE8-A5A7-4BDA-96A1-02F511B9C551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4191DB1D-A39B-45CE-B915-095750E11EDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4191DB1D-A39B-45CE-B915-095750E11EDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4191DB1D-A39B-45CE-B915-095750E11EDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4191DB1D-A39B-45CE-B915-095750E11EDB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
