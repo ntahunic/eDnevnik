@@ -12,19 +12,21 @@ namespace eDnevnik.API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Profesor
+    public partial class Nastavnik
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Profesor()
+        public Nastavnik()
         {
             this.Cas = new HashSet<Cas>();
             this.Ocjena = new HashSet<Ocjena>();
         }
     
-        public int ProfesorId { get; set; }
+        public int NastavnikId { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string Titula { get; set; }
+        public string Username { get; set; }
+        public string LozinkaHash { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cas> Cas { get; set; }

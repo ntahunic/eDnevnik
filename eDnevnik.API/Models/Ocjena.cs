@@ -17,11 +17,11 @@ namespace eDnevnik.API.Models
         public int OcjenaId { get; set; }
         public string OcjenaVrijednost { get; set; }
         public int UcenikId { get; set; }
-        public int ProfesorId { get; set; }
         public int CasId { get; set; }
+        public int NastavnikId { get; set; }
     
         public virtual Cas Cas { get; set; }
-        public virtual Profesor Profesor { get; set; }
         public virtual Ucenik Ucenik { get; set; }
+        public virtual Nastavnik Nastavnik { get; set; }
     }
 }

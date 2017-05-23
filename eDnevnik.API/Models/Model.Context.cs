@@ -13,10 +13,10 @@ namespace eDnevnik.API.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class eDnevnikEntities1 : DbContext
+    public partial class eDnevnikEntities : DbContext
     {
-        public eDnevnikEntities1()
-            : base("name=eDnevnikEntities1")
+        public eDnevnikEntities()
+            : base("name=eDnevnikEntities")
         {
         }
     
@@ -30,9 +30,8 @@ namespace eDnevnik.API.Models
         public virtual DbSet<Izostanak> Izostanak { get; set; }
         public virtual DbSet<Ocjena> Ocjena { get; set; }
         public virtual DbSet<Predmet> Predmet { get; set; }
-        public virtual DbSet<Profesor> Profesor { get; set; }
         public virtual DbSet<Razred> Razred { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Ucenik> Ucenik { get; set; }
+        public virtual DbSet<Nastavnik> Nastavnik { get; set; }
     }
 }
