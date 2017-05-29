@@ -17,8 +17,8 @@ namespace eDnevnik.API.Controllers
         {
             return _db.Nastavnik.Select(x => new NastavnikVM()
             {
-                Ime = x.Ime,
-                Prezime = x.Prezime,
+                Ime = x.Korisnik.Ime,
+                Prezime = x.Korisnik.Prezime,
                 NastavnikId = x.NastavnikId,
                 Titula = x.Titula
             }).ToList();
@@ -27,7 +27,7 @@ namespace eDnevnik.API.Controllers
         [Route("api/Nastavnici/{username}")]
         public IHttpActionResult GetNastavnici(string username)
         {
-            Nastavnik n = _db.Nastavnik.FirstOrDefault(x => x.Username == username);
+            Nastavnik n = _db.Nastavnik.FirstOrDefault(x => x.Korisnik.Username == username);
             if (n == null)
                 return NotFound();
             return Ok(n);

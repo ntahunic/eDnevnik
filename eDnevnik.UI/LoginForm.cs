@@ -28,9 +28,11 @@ namespace eDnevnik.UI
             if (response.IsSuccessStatusCode)
             {
                 Nastavnik n = response.Content.ReadAsAsync<Nastavnik>().Result;
-                if (n.LozinkaHash == LozinkaInput.Text)
+                if (n.Korisnik.Prezime == LozinkaInput.Text)
                 {
-                    MessageBox.Show("Dobrodosli " + n.Ime);
+                    MessageBox.Show("Dobrodosli " + n.Korisnik.Ime);
+                    DialogResult = DialogResult.OK;
+                    //Close();
                 }
                 else
                 {

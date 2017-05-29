@@ -23,14 +23,14 @@ namespace eDnevnik.API.Models
     
         public int CasId { get; set; }
         public string Datum { get; set; }
-        public int PredmetId { get; set; }
         public int NastavnikId { get; set; }
+        public int PredmetId { get; set; }
     
+        public virtual Nastavnik Nastavnik { get; set; }
         public virtual Predmet Predmet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Izostanak> Izostanak { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ocjena> Ocjena { get; set; }
-        public virtual Nastavnik Nastavnik { get; set; }
     }
 }

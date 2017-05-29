@@ -17,8 +17,8 @@ namespace eDnevnik.API.Controllers
             return _db.Ucenik.Select(x => new UcenikVM()
             {
                 UcenikId = x.UcenikId,
-                Ime = x.Ime,
-                Prezime = x.Prezime,
+                Ime = x.Korisnik.Ime,
+                Prezime = x.Korisnik.Prezime,
                 Razred = x.Razred.Naziv + " - " + x.Razred.Odjeljenje
             }).ToList();
         }

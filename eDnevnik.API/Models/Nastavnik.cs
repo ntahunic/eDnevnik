@@ -22,14 +22,11 @@ namespace eDnevnik.API.Models
         }
     
         public int NastavnikId { get; set; }
-        public string Ime { get; set; }
-        public string Prezime { get; set; }
         public string Titula { get; set; }
-        public string Username { get; set; }
-        public string LozinkaHash { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cas> Cas { get; set; }
+        public virtual Korisnik Korisnik { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ocjena> Ocjena { get; set; }
     }

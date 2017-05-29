@@ -28,10 +28,11 @@ namespace eDnevnik.API.Models
         public virtual DbSet<AkademskaGodina> AkademskaGodina { get; set; }
         public virtual DbSet<Cas> Cas { get; set; }
         public virtual DbSet<Izostanak> Izostanak { get; set; }
+        public virtual DbSet<Korisnik> Korisnik { get; set; }
+        public virtual DbSet<Nastavnik> Nastavnik { get; set; }
         public virtual DbSet<Ocjena> Ocjena { get; set; }
         public virtual DbSet<Predmet> Predmet { get; set; }
         public virtual DbSet<Razred> Razred { get; set; }
         public virtual DbSet<Ucenik> Ucenik { get; set; }
-        public virtual DbSet<Nastavnik> Nastavnik { get; set; }
     }
 }

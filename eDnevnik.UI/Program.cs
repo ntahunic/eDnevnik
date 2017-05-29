@@ -16,7 +16,11 @@ namespace eDnevnik.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+
+            Form login = new LoginForm();
+            if(login.ShowDialog() == DialogResult.OK)
+                Application.Run(new MainForm());
+
         }
     }
 }
