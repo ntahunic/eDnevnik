@@ -30,13 +30,13 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.evidencijaČasaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajČasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajIzostanakToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.obavijestiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledObavijestiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajObavijestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.predmetiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mojiPredmetiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajČasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajIzostanakToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +60,19 @@
             this.evidencijaČasaToolStripMenuItem.Name = "evidencijaČasaToolStripMenuItem";
             this.evidencijaČasaToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
             this.evidencijaČasaToolStripMenuItem.Text = "Evidencija časa";
+            // 
+            // dodajČasToolStripMenuItem
+            // 
+            this.dodajČasToolStripMenuItem.Name = "dodajČasToolStripMenuItem";
+            this.dodajČasToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.dodajČasToolStripMenuItem.Text = "Dodaj čas";
+            this.dodajČasToolStripMenuItem.Click += new System.EventHandler(this.dodajČasToolStripMenuItem_Click);
+            // 
+            // dodajIzostanakToolStripMenuItem
+            // 
+            this.dodajIzostanakToolStripMenuItem.Name = "dodajIzostanakToolStripMenuItem";
+            this.dodajIzostanakToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.dodajIzostanakToolStripMenuItem.Text = "Dodaj izostanak";
             // 
             // obavijestiToolStripMenuItem
             // 
@@ -93,20 +106,8 @@
             // mojiPredmetiToolStripMenuItem
             // 
             this.mojiPredmetiToolStripMenuItem.Name = "mojiPredmetiToolStripMenuItem";
-            this.mojiPredmetiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mojiPredmetiToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.mojiPredmetiToolStripMenuItem.Text = "Moji predmeti";
-            // 
-            // dodajČasToolStripMenuItem
-            // 
-            this.dodajČasToolStripMenuItem.Name = "dodajČasToolStripMenuItem";
-            this.dodajČasToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.dodajČasToolStripMenuItem.Text = "Dodaj čas";
-            // 
-            // dodajIzostanakToolStripMenuItem
-            // 
-            this.dodajIzostanakToolStripMenuItem.Name = "dodajIzostanakToolStripMenuItem";
-            this.dodajIzostanakToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.dodajIzostanakToolStripMenuItem.Text = "Dodaj izostanak";
             // 
             // MainForm
             // 

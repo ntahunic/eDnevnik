@@ -17,10 +17,12 @@ namespace eDnevnik.API.Controllers
         {
             return _db.Nastavnik.Select(x => new NastavnikVM()
             {
+                NastavnikId = x.NastavnikId,
+                Titula = x.Titula,
                 Ime = x.Korisnik.Ime,
                 Prezime = x.Korisnik.Prezime,
-                NastavnikId = x.NastavnikId,
-                Titula = x.Titula
+                Username = x.Korisnik.Username,
+                Password = x.Korisnik.Password
             }).ToList();
         }
 

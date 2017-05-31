@@ -28,11 +28,18 @@ namespace eDnevnik.UI
             if (response.IsSuccessStatusCode)
             {
                 Nastavnik n = response.Content.ReadAsAsync<Nastavnik>().Result;
-                if (n.Korisnik.Prezime == LozinkaInput.Text)
+                if (n.Korisnik.Password == LozinkaInput.Text)
                 {
-                    MessageBox.Show("Dobrodosli " + n.Korisnik.Ime);
                     DialogResult = DialogResult.OK;
-                    //Close();
+                    Global.TrenutniKorisnik = new Korisnik
+                    {
+                        Nastavnik = n,
+                        Ime = n.Korisnik.Ime,
+                        Prezime = n.Korisnik.Prezime,
+                        KorisnikId = n.Korisnik.KorisnikId,
+                        Password = n.Korisnik.Password,
+                        Username = n.Korisnik.Username
+                    };
                 }
                 else
                 {

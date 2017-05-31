@@ -25,6 +25,7 @@ namespace eDnevnik.API.Models
         public string Datum { get; set; }
         public int NastavnikId { get; set; }
         public int PredmetId { get; set; }
+        public int BrojSati { get; set; }
     
         public virtual Nastavnik Nastavnik { get; set; }
         public virtual Predmet Predmet { get; set; }

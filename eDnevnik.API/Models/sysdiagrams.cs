@@ -12,14 +12,12 @@ namespace eDnevnik.API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Izostanak
+    public partial class sysdiagrams
     {
-        public int IzostanakId { get; set; }
-        public int UcenikId { get; set; }
-        public int CasId { get; set; }
-        public int BrojSati { get; set; }
-    
-        public virtual Cas Cas { get; set; }
-        public virtual Ucenik Ucenik { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

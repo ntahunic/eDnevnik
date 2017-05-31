@@ -34,5 +34,6 @@ namespace eDnevnik.API.Models
         public virtual DbSet<Predmet> Predmet { get; set; }
         public virtual DbSet<Razred> Razred { get; set; }
         public virtual DbSet<Ucenik> Ucenik { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

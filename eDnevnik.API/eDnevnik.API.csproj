@@ -106,7 +106,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CasoviController.cs" />
     <Compile Include="Controllers\NastavniciController.cs" />
+    <Compile Include="Controllers\PredmetiController.cs" />
     <Compile Include="Controllers\UceniciController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -117,6 +119,7 @@
     <Compile Include="Models\Cas.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CasVM.cs" />
     <Compile Include="Models\Izostanak.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -148,7 +151,11 @@
     <Compile Include="Models\Predmet.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PredmetVM.cs" />
     <Compile Include="Models\Razred.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ucenik.cs">

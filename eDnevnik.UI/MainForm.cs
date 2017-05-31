@@ -16,5 +16,11 @@ namespace eDnevnik.UI
         {
             InitializeComponent();
         }
+
+        private void dodajČasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new DodajCasForm();
+            frm.Show();
+        }
     }
 }

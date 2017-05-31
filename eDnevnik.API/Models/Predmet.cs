@@ -22,8 +22,10 @@ namespace eDnevnik.API.Models
     
         public int PredmetId { get; set; }
         public string Naziv { get; set; }
+        public Nullable<int> AkademskaGodinaId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cas> Cas { get; set; }
+        public virtual AkademskaGodina AkademskaGodina { get; set; }
     }
 }
