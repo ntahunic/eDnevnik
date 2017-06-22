@@ -22,5 +22,35 @@ namespace eDnevnik.UI
             Form frm = new DodajCasForm();
             frm.Show();
         }
+
+        private void mojiPredmetiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new PrikaziPredmeteForm();
+            frm.Show();
+        }
+
+        private void dodajObavijestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new DodajObavijestForm();
+            frm.Show();
+        }
+
+        private void pregledObavijestiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new PrikaziObavijestiForm();
+            frm.Show();
+        }
+
+        private void dodajOcjenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new DodajOcjenuForm();
+            frm.Show();
+        }
+
+        private void izmijeniOcjenuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new UrediOcjenuForm();
+            frm.Show();
+        }
     }
 }

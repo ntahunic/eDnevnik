@@ -66,7 +66,25 @@
     <Compile Include="DodajIzostanakForm.Designer.cs">
       <DependentUpon>DodajIzostanakForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DodajObavijestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajObavijestForm.Designer.cs">
+      <DependentUpon>DodajObavijestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodajOcjenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajOcjenuForm.Designer.cs">
+      <DependentUpon>DodajOcjenuForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
+    <Compile Include="IzmijeniOcjenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IzmijeniOcjenuForm.Designer.cs">
+      <DependentUpon>IzmijeniOcjenuForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,8 +97,32 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrikaziObavijestiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrikaziObavijestiForm.Designer.cs">
+      <DependentUpon>PrikaziObavijestiForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrikaziPredmeteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrikaziPredmeteForm.Designer.cs">
+      <DependentUpon>PrikaziPredmeteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrikaziPredmetiDetalji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrikaziPredmetiDetalji.Designer.cs">
+      <DependentUpon>PrikaziPredmetiDetalji.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UrediOcjenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UrediOcjenuForm.Designer.cs">
+      <DependentUpon>UrediOcjenuForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Util\WebAPIHelper.cs" />
     <EmbeddedResource Include="DodajCasForm.resx">
       <DependentUpon>DodajCasForm.cs</DependentUpon>
@@ -88,11 +130,29 @@
     <EmbeddedResource Include="DodajIzostanakForm.resx">
       <DependentUpon>DodajIzostanakForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DodajObavijestForm.resx">
+      <DependentUpon>DodajObavijestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodajOcjenuForm.resx">
+      <DependentUpon>DodajOcjenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IzmijeniOcjenuForm.resx">
+      <DependentUpon>IzmijeniOcjenuForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrikaziObavijestiForm.resx">
+      <DependentUpon>PrikaziObavijestiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrikaziPredmeteForm.resx">
+      <DependentUpon>PrikaziPredmeteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrikaziPredmetiDetalji.resx">
+      <DependentUpon>PrikaziPredmetiDetalji.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -103,6 +163,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UrediOcjenuForm.resx">
+      <DependentUpon>UrediOcjenuForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

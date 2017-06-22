@@ -34,11 +34,23 @@ namespace eDnevnik.UI.Util
         {
             return client.GetAsync(route +"/"+ parametar).Result;
         }
-
+        public HttpResponseMessage GetActionResponse(string action, string parameter = "")
+        {
+            return client.GetAsync(route + "/" + action + "/" + parameter).Result;
+        }
 
         public HttpResponseMessage PostResponse(object obj)
         {
             return client.PostAsJsonAsync(route, obj).Result;
+        }
+
+        public HttpResponseMessage PutResponse(object obj)
+        {
+            return client.PutAsJsonAsync(route, obj).Result;
+        }
+        public HttpResponseMessage PutResponse(int id, Object existingObject)
+        {
+            return client.PutAsJsonAsync(route + "/" + id, existingObject).Result;
         }
     }
 }

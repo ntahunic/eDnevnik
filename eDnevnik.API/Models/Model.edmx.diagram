@@ -4,29 +4,32 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="317f2d4bf5114adc9d47b0d9f40e57eb" Name="Diagram1">
-        <EntityTypeShape EntityType="eDnevnikModel.AkademskaGodina" Width="1.5" PointX="1.5" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="eDnevnikModel.Cas" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="eDnevnikModel.Izostanak" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="eDnevnikModel.Korisnik" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="eDnevnikModel.Nastavnik" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="eDnevnikModel.Ocjena" Width="1.5" PointX="7.5" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="eDnevnikModel.Predmet" Width="1.5" PointX="4" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="eDnevnikModel.Razred" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="eDnevnikModel.Ucenik" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+      <Diagram DiagramId="514c95ff935d430db5cf371fd83916da" Name="Diagram1">
+        <EntityTypeShape EntityType="eDnevnikModel.AkademskaGodina" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDnevnikModel.Cas" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDnevnikModel.Korisnik" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDnevnikModel.Nastavnik" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDnevnikModel.Obavijest" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDnevnikModel.Predmet" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDnevnikModel.Prisustvo" Width="1.5" PointX="10.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDnevnikModel.Razred" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDnevnikModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="eDnevnikModel.Ucenik" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <AssociationConnector Association="eDnevnikModel.FK_Predmet_AkademskaGodina" ManuallyRouted="false" />
         <AssociationConnector Association="eDnevnikModel.FK_Razred_AkademskaGodina" ManuallyRouted="false" />
         <AssociationConnector Association="eDnevnikModel.FK_Cas_Nastavnik" ManuallyRouted="false" />
         <AssociationConnector Association="eDnevnikModel.FK_Cas_Predmet" ManuallyRouted="false" />
         <AssociationConnector Association="eDnevnikModel.FK_Izostanak_Cas" ManuallyRouted="false" />
-        <AssociationConnector Association="eDnevnikModel.FK_Ocjena_Cas" ManuallyRouted="false" />
-        <AssociationConnector Association="eDnevnikModel.FK_Izostanak_Ucenik" ManuallyRouted="false" />
         <AssociationConnector Association="eDnevnikModel.FK_Nastavnik_Korisnik" ManuallyRouted="false" />
         <AssociationConnector Association="eDnevnikModel.FK_Ucenik_Korisnik" ManuallyRouted="false" />
-        <AssociationConnector Association="eDnevnikModel.FK_Ocjena_Nastavnik" ManuallyRouted="false" />
-        <AssociationConnector Association="eDnevnikModel.FK_Ocjena_Ucenik" ManuallyRouted="false" />
+        <AssociationConnector Association="eDnevnikModel.FK_Obavijest_Nastavnik" ManuallyRouted="false" />
+        <AssociationConnector Association="eDnevnikModel.FK_Predmet_Nastavnik" ManuallyRouted="false" />
+        <AssociationConnector Association="eDnevnikModel.FK_Obavijest_Predmet" ManuallyRouted="false" />
+        <AssociationConnector Association="eDnevnikModel.FK_Izostanak_Ucenik" ManuallyRouted="false" />
         <AssociationConnector Association="eDnevnikModel.FK_Ucenik_Razred" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="eDnevnikModel.sysdiagrams" Width="1.5" PointX="5.375" PointY="0.75" />
-        <AssociationConnector Association="eDnevnikModel.FK_Predmet_AkademskaGodina" />
+        <EntityTypeShape EntityType="eDnevnikModel.Ocjena" Width="1.5" PointX="7.5" PointY="11.375" />
+        <AssociationConnector Association="eDnevnikModel.FK_Ocjena_Cas" />
+        <AssociationConnector Association="eDnevnikModel.FK_Ocjena_Ucenik" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

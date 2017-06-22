@@ -17,18 +17,18 @@ namespace eDnevnik.API.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ucenik()
         {
-            this.Izostanak = new HashSet<Izostanak>();
+            this.Prisustvo = new HashSet<Prisustvo>();
             this.Ocjena = new HashSet<Ocjena>();
         }
     
         public int UcenikId { get; set; }
         public int RazredId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Izostanak> Izostanak { get; set; }
         public virtual Korisnik Korisnik { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ocjena> Ocjena { get; set; }
+        public virtual ICollection<Prisustvo> Prisustvo { get; set; }
         public virtual Razred Razred { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ocjena> Ocjena { get; set; }
     }
 }

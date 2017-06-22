@@ -29,7 +29,15 @@ namespace eDnevnik.API.Controllers
         [Route("api/Nastavnici/{username}")]
         public IHttpActionResult GetNastavnici(string username)
         {
-            Nastavnik n = _db.Nastavnik.FirstOrDefault(x => x.Korisnik.Username == username);
+            NastavnikVM n = _db.Nastavnik.Where(x => x.Korisnik.Username == username).Select(y => new NastavnikVM
+            {
+                Ime = y.Korisnik.Ime,
+                Prezime = y.Korisnik.Prezime,
+                NastavnikId = y.NastavnikId,
+                Password = y.Korisnik.Password,
+                Username = y.Korisnik.Username,
+                Titula = y.Titula
+            }).FirstOrDefault();
             if (n == null)
                 return NotFound();
             return Ok(n);

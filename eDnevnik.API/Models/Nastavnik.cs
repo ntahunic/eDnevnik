@@ -18,7 +18,8 @@ namespace eDnevnik.API.Models
         public Nastavnik()
         {
             this.Cas = new HashSet<Cas>();
-            this.Ocjena = new HashSet<Ocjena>();
+            this.Obavijest = new HashSet<Obavijest>();
+            this.Predmet = new HashSet<Predmet>();
         }
     
         public int NastavnikId { get; set; }
@@ -28,6 +29,8 @@ namespace eDnevnik.API.Models
         public virtual ICollection<Cas> Cas { get; set; }
         public virtual Korisnik Korisnik { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ocjena> Ocjena { get; set; }
+        public virtual ICollection<Obavijest> Obavijest { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Predmet> Predmet { get; set; }
     }
 }

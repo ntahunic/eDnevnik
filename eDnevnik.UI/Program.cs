@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using eDnevnik.API.Models;
 
 namespace eDnevnik.UI
 {
@@ -17,8 +18,9 @@ namespace eDnevnik.UI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+       
             Form login = new LoginForm();
-            if(login.ShowDialog() == DialogResult.OK)
+            if (login.ShowDialog() == DialogResult.OK)
                 Application.Run(new MainForm());
 
         }

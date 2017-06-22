@@ -29,40 +29,88 @@
         private void InitializeComponent()
         {
             this.uceniciGridView = new System.Windows.Forms.DataGridView();
+            this.PrisustvoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UcenikId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Razred = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prisutan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dodajIzostanakButton = new System.Windows.Forms.Button();
             this.predmetReadOnly = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.datumReadOnly = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.casIdTest = new System.Windows.Forms.TextBox();
-            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Razred = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UcenikId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.brojSatiReadOnly = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.uceniciGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // uceniciGridView
             // 
+            this.uceniciGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.uceniciGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.uceniciGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PrisustvoId,
+            this.UcenikId,
             this.Ime,
-            this.Username,
-            this.Password,
             this.Prezime,
             this.Razred,
-            this.UcenikId});
+            this.Prisutan});
             this.uceniciGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.uceniciGridView.Location = new System.Drawing.Point(0, 98);
+            this.uceniciGridView.Location = new System.Drawing.Point(0, 128);
             this.uceniciGridView.Name = "uceniciGridView";
-            this.uceniciGridView.Size = new System.Drawing.Size(495, 368);
+            this.uceniciGridView.Size = new System.Drawing.Size(495, 338);
             this.uceniciGridView.TabIndex = 0;
+            // 
+            // PrisustvoId
+            // 
+            this.PrisustvoId.DataPropertyName = "PrisustvoId";
+            this.PrisustvoId.HeaderText = "PrisustvoId";
+            this.PrisustvoId.Name = "PrisustvoId";
+            this.PrisustvoId.ReadOnly = true;
+            this.PrisustvoId.Visible = false;
+            // 
+            // UcenikId
+            // 
+            this.UcenikId.DataPropertyName = "UcenikId";
+            this.UcenikId.HeaderText = "UcenikId";
+            this.UcenikId.Name = "UcenikId";
+            this.UcenikId.ReadOnly = true;
+            this.UcenikId.Visible = false;
+            // 
+            // Ime
+            // 
+            this.Ime.DataPropertyName = "Ime";
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            // 
+            // Prezime
+            // 
+            this.Prezime.DataPropertyName = "Prezime";
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.Name = "Prezime";
+            this.Prezime.ReadOnly = true;
+            // 
+            // Razred
+            // 
+            this.Razred.DataPropertyName = "Razred";
+            this.Razred.HeaderText = "Razred";
+            this.Razred.Name = "Razred";
+            this.Razred.ReadOnly = true;
+            // 
+            // Prisutan
+            // 
+            this.Prisutan.DataPropertyName = "Prisutan";
+            this.Prisutan.HeaderText = "Prisutan";
+            this.Prisutan.Name = "Prisutan";
+            this.Prisutan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Prisutan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // dodajIzostanakButton
             // 
-            this.dodajIzostanakButton.Location = new System.Drawing.Point(377, 69);
+            this.dodajIzostanakButton.Location = new System.Drawing.Point(377, 99);
             this.dodajIzostanakButton.Name = "dodajIzostanakButton";
             this.dodajIzostanakButton.Size = new System.Drawing.Size(106, 23);
             this.dodajIzostanakButton.TabIndex = 1;
@@ -106,62 +154,37 @@
             // 
             // casIdTest
             // 
-            this.casIdTest.Location = new System.Drawing.Point(81, 61);
+            this.casIdTest.Location = new System.Drawing.Point(81, 88);
             this.casIdTest.Name = "casIdTest";
             this.casIdTest.ReadOnly = true;
             this.casIdTest.Size = new System.Drawing.Size(205, 20);
             this.casIdTest.TabIndex = 6;
+            this.casIdTest.Visible = false;
             // 
-            // Ime
+            // brojSatiReadOnly
             // 
-            this.Ime.DataPropertyName = "Ime";
-            this.Ime.HeaderText = "Ime";
-            this.Ime.Name = "Ime";
-            this.Ime.ReadOnly = true;
+            this.brojSatiReadOnly.Location = new System.Drawing.Point(81, 62);
+            this.brojSatiReadOnly.Name = "brojSatiReadOnly";
+            this.brojSatiReadOnly.ReadOnly = true;
+            this.brojSatiReadOnly.Size = new System.Drawing.Size(205, 20);
+            this.brojSatiReadOnly.TabIndex = 7;
             // 
-            // Username
+            // label3
             // 
-            this.Username.DataPropertyName = "Username";
-            this.Username.HeaderText = "Username";
-            this.Username.Name = "Username";
-            this.Username.ReadOnly = true;
-            this.Username.Visible = false;
-            // 
-            // Password
-            // 
-            this.Password.DataPropertyName = "Password";
-            this.Password.HeaderText = "Password";
-            this.Password.Name = "Password";
-            this.Password.ReadOnly = true;
-            this.Password.Visible = false;
-            // 
-            // Prezime
-            // 
-            this.Prezime.DataPropertyName = "Prezime";
-            this.Prezime.HeaderText = "Prezime";
-            this.Prezime.Name = "Prezime";
-            this.Prezime.ReadOnly = true;
-            // 
-            // Razred
-            // 
-            this.Razred.DataPropertyName = "Razred";
-            this.Razred.HeaderText = "Razred";
-            this.Razred.Name = "Razred";
-            this.Razred.ReadOnly = true;
-            // 
-            // UcenikId
-            // 
-            this.UcenikId.DataPropertyName = "UcenikId";
-            this.UcenikId.HeaderText = "UcenikId";
-            this.UcenikId.Name = "UcenikId";
-            this.UcenikId.ReadOnly = true;
-            this.UcenikId.Visible = false;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Broj sati";
             // 
             // DodajIzostanakForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(495, 466);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.brojSatiReadOnly);
             this.Controls.Add(this.casIdTest);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.datumReadOnly);
@@ -170,7 +193,8 @@
             this.Controls.Add(this.dodajIzostanakButton);
             this.Controls.Add(this.uceniciGridView);
             this.Name = "DodajIzostanakForm";
-            this.Text = "DodajIzostanakForm";
+            this.ShowIcon = false;
+            this.Text = "Dodaj izostanak";
             this.Load += new System.EventHandler(this.DodajIzostanakForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.uceniciGridView)).EndInit();
             this.ResumeLayout(false);
@@ -187,11 +211,13 @@
         private System.Windows.Forms.TextBox datumReadOnly;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox casIdTest;
+        private System.Windows.Forms.TextBox brojSatiReadOnly;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrisustvoId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UcenikId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Username;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Razred;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UcenikId;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Prisutan;
     }
 }

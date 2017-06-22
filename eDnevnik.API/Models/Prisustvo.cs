@@ -12,12 +12,13 @@ namespace eDnevnik.API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Ocjena
+    public partial class Prisustvo
     {
-        public int OcjenaId { get; set; }
-        public int OcjenaVrijednost { get; set; }
+        public int PrisustvoId { get; set; }
         public int UcenikId { get; set; }
         public int CasId { get; set; }
+        public int BrojSati { get; set; }
+        public Nullable<bool> Prisutan { get; set; }
     
         public virtual Cas Cas { get; set; }
         public virtual Ucenik Ucenik { get; set; }

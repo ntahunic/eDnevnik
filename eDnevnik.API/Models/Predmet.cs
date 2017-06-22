@@ -18,14 +18,19 @@ namespace eDnevnik.API.Models
         public Predmet()
         {
             this.Cas = new HashSet<Cas>();
+            this.Obavijest = new HashSet<Obavijest>();
         }
     
         public int PredmetId { get; set; }
         public string Naziv { get; set; }
         public Nullable<int> AkademskaGodinaId { get; set; }
+        public Nullable<int> NastavnikId { get; set; }
     
+        public virtual AkademskaGodina AkademskaGodina { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cas> Cas { get; set; }
-        public virtual AkademskaGodina AkademskaGodina { get; set; }
+        public virtual Nastavnik Nastavnik { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Obavijest> Obavijest { get; set; }
     }
 }

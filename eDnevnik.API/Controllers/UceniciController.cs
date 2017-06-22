@@ -21,8 +21,11 @@ namespace eDnevnik.API.Controllers
                 Ime = x.Korisnik.Ime,
                 Prezime = x.Korisnik.Prezime,
                 Username = x.Korisnik.Username,
-                Password = x.Korisnik.Password
+                Password = x.Korisnik.Password,
+                ImePrezime = x.Korisnik.Ime + " " +x.Korisnik.Prezime
             }).ToList();
         }
+
+        
     }
 }

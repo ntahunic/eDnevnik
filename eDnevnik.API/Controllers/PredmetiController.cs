@@ -21,5 +21,21 @@ namespace eDnevnik.API.Controllers
                 PredmetId = x.PredmetId
             }).ToList();
         }
+
+
+        [HttpGet]
+        [Route("api/Predmeti/getPredmetiByNastavnik/{nastavnikId}")]
+        public IHttpActionResult GetPredmeti(int nastavnikId)
+        {
+            List<PredmetVM> predmeti =_db.Predmet.Where(y=>y.NastavnikId == nastavnikId).Select(x => new PredmetVM()
+            {
+                Naziv = x.Naziv,
+                PredmetId = x.PredmetId
+            }).ToList();
+
+            if (predmeti == null)
+                return NotFound();
+            return Ok(predmeti);
+        }
     }
 }

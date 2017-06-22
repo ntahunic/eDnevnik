@@ -27,18 +27,17 @@ namespace eDnevnik.UI
             HttpResponseMessage response = nastavniciService.GetResponse(KorisnickoImeInput.Text);
             if (response.IsSuccessStatusCode)
             {
-                Nastavnik n = response.Content.ReadAsAsync<Nastavnik>().Result;
-                if (n.Korisnik.Password == LozinkaInput.Text)
+                NastavnikVM n = response.Content.ReadAsAsync<NastavnikVM>().Result;
+                if (n.Password == LozinkaInput.Text)
                 {
                     DialogResult = DialogResult.OK;
                     Global.TrenutniKorisnik = new Korisnik
                     {
-                        Nastavnik = n,
-                        Ime = n.Korisnik.Ime,
-                        Prezime = n.Korisnik.Prezime,
-                        KorisnikId = n.Korisnik.KorisnikId,
-                        Password = n.Korisnik.Password,
-                        Username = n.Korisnik.Username
+                        Ime = n.Ime,
+                        Prezime = n.Prezime,
+                        KorisnikId = n.NastavnikId,
+                        Password = n.Password,
+                        Username = n.Username
                     };
                 }
                 else

@@ -12,14 +12,16 @@ namespace eDnevnik.API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Izostanak
+    public partial class Obavijest
     {
-        public int IzostanakId { get; set; }
-        public int UcenikId { get; set; }
-        public int CasId { get; set; }
-        public int BrojSati { get; set; }
+        public int ObavijestId { get; set; }
+        public string Naslov { get; set; }
+        public string Sadrzaj { get; set; }
+        public int NastavnikId { get; set; }
+        public int PredmetId { get; set; }
+        public string Datum { get; set; }
     
-        public virtual Cas Cas { get; set; }
-        public virtual Ucenik Ucenik { get; set; }
+        public virtual Nastavnik Nastavnik { get; set; }
+        public virtual Predmet Predmet { get; set; }
     }
 }

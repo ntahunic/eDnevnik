@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.casoviGridView = new System.Windows.Forms.DataGridView();
+            this.CasId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nastavnik = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Predmet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojSati = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.predmetiInput = new System.Windows.Forms.ComboBox();
             this.brojSatiInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,16 +42,12 @@
             this.datumCasaInput = new System.Windows.Forms.DateTimePicker();
             this.dodajIzostanakButton = new System.Windows.Forms.Button();
             this.dodajCasButton = new System.Windows.Forms.Button();
-            this.CasId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nastavnik = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Predmet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrojSati = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.casoviGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // casoviGridView
             // 
+            this.casoviGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.casoviGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CasId,
             this.Datum,
@@ -56,10 +57,46 @@
             this.casoviGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.casoviGridView.Location = new System.Drawing.Point(0, 162);
             this.casoviGridView.Name = "casoviGridView";
-            this.casoviGridView.RowHeadersWidth = 50;
+            this.casoviGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.casoviGridView.Size = new System.Drawing.Size(516, 272);
             this.casoviGridView.TabIndex = 11;
             this.casoviGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.casoviGridView_CellContentClick);
+            // 
+            // CasId
+            // 
+            this.CasId.DataPropertyName = "CasId";
+            this.CasId.HeaderText = "CasId";
+            this.CasId.Name = "CasId";
+            this.CasId.ReadOnly = true;
+            this.CasId.Visible = false;
+            // 
+            // Datum
+            // 
+            this.Datum.DataPropertyName = "Datum";
+            this.Datum.HeaderText = "Datum";
+            this.Datum.Name = "Datum";
+            this.Datum.ReadOnly = true;
+            // 
+            // Nastavnik
+            // 
+            this.Nastavnik.DataPropertyName = "Nastavnik";
+            this.Nastavnik.HeaderText = "Nastavnik";
+            this.Nastavnik.Name = "Nastavnik";
+            this.Nastavnik.ReadOnly = true;
+            // 
+            // Predmet
+            // 
+            this.Predmet.DataPropertyName = "Predmet";
+            this.Predmet.HeaderText = "Predmet";
+            this.Predmet.Name = "Predmet";
+            this.Predmet.ReadOnly = true;
+            // 
+            // BrojSati
+            // 
+            this.BrojSati.DataPropertyName = "BrojSati";
+            this.BrojSati.HeaderText = "Broj sati";
+            this.BrojSati.Name = "BrojSati";
+            this.BrojSati.ReadOnly = true;
             // 
             // predmetiInput
             // 
@@ -117,7 +154,7 @@
             this.dodajIzostanakButton.Name = "dodajIzostanakButton";
             this.dodajIzostanakButton.Size = new System.Drawing.Size(106, 23);
             this.dodajIzostanakButton.TabIndex = 9;
-            this.dodajIzostanakButton.Text = "Dodaj izostanak";
+            this.dodajIzostanakButton.Text = "Izostanci sa časa";
             this.dodajIzostanakButton.UseVisualStyleBackColor = true;
             this.dodajIzostanakButton.Click += new System.EventHandler(this.dodajIzostanakButton_Click);
             // 
@@ -130,42 +167,6 @@
             this.dodajCasButton.Text = "Dodaj čas";
             this.dodajCasButton.UseVisualStyleBackColor = true;
             this.dodajCasButton.Click += new System.EventHandler(this.dodajCasButton_Click);
-            // 
-            // CasId
-            // 
-            this.CasId.DataPropertyName = "CasId";
-            this.CasId.HeaderText = "CasId";
-            this.CasId.Name = "CasId";
-            this.CasId.ReadOnly = true;
-            this.CasId.Visible = false;
-            // 
-            // Datum
-            // 
-            this.Datum.DataPropertyName = "Datum";
-            this.Datum.HeaderText = "Datum";
-            this.Datum.Name = "Datum";
-            this.Datum.ReadOnly = true;
-            // 
-            // Nastavnik
-            // 
-            this.Nastavnik.DataPropertyName = "Nastavnik";
-            this.Nastavnik.HeaderText = "Nastavnik";
-            this.Nastavnik.Name = "Nastavnik";
-            this.Nastavnik.ReadOnly = true;
-            // 
-            // Predmet
-            // 
-            this.Predmet.DataPropertyName = "Predmet";
-            this.Predmet.HeaderText = "Predmet";
-            this.Predmet.Name = "Predmet";
-            this.Predmet.ReadOnly = true;
-            // 
-            // BrojSati
-            // 
-            this.BrojSati.DataPropertyName = "BrojSati";
-            this.BrojSati.HeaderText = "Broj sati";
-            this.BrojSati.Name = "BrojSati";
-            this.BrojSati.ReadOnly = true;
             // 
             // DodajCasForm
             // 
