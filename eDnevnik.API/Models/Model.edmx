@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="eDnevnikModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="eDnevnikModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AkademskaGodina">
           <Key>
             <PropertyRef Name="AkademskaGodinaId" />
@@ -86,16 +86,6 @@
           <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Odjeljenje" Type="nvarchar" MaxLength="5" Nullable="false" />
           <Property Name="AkademskaGodinaId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Ucenik">
           <Key>
@@ -282,7 +272,6 @@
           <EntitySet Name="Predmet" EntityType="Self.Predmet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prisustvo" EntityType="Self.Prisustvo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Razred" EntityType="Self.Razred" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ucenik" EntityType="Self.Ucenik" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Cas_Nastavnik" Association="Self.FK_Cas_Nastavnik">
             <End Role="Nastavnik" EntitySet="Nastavnik" />
@@ -341,7 +330,8 @@
             <End Role="Ucenik" EntitySet="Ucenik" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="eDnevnikModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -366,7 +356,7 @@
           <NavigationProperty Name="Nastavnik" Relationship="Self.FK_Cas_Nastavnik" FromRole="Cas" ToRole="Nastavnik" />
           <NavigationProperty Name="Predmet" Relationship="Self.FK_Cas_Predmet" FromRole="Cas" ToRole="Predmet" />
           <NavigationProperty Name="Prisustvo" Relationship="Self.FK_Izostanak_Cas" FromRole="Cas" ToRole="Prisustvo" />
-          <NavigationProperty Name="Ocjena" Relationship="eDnevnikModel.FK_Ocjena_Cas" FromRole="Cas" ToRole="Ocjena" />
+          <NavigationProperty Name="Ocjena" Relationship="Self.FK_Ocjena_Cas" FromRole="Cas" ToRole="Ocjena" />
         </EntityType>
         <EntityType Name="Korisnik">
           <Key>
@@ -404,6 +394,17 @@
           <NavigationProperty Name="Nastavnik" Relationship="Self.FK_Obavijest_Nastavnik" FromRole="Obavijest" ToRole="Nastavnik" />
           <NavigationProperty Name="Predmet" Relationship="Self.FK_Obavijest_Predmet" FromRole="Obavijest" ToRole="Predmet" />
         </EntityType>
+        <EntityType Name="Ocjena">
+          <Key>
+            <PropertyRef Name="OcjenaId" />
+          </Key>
+          <Property Name="OcjenaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OcjenaVrijednost" Type="Int32" Nullable="false" />
+          <Property Name="UcenikId" Type="Int32" Nullable="false" />
+          <Property Name="CasId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cas" Relationship="Self.FK_Ocjena_Cas" FromRole="Ocjena" ToRole="Cas" />
+          <NavigationProperty Name="Ucenik" Relationship="Self.FK_Ocjena_Ucenik" FromRole="Ocjena" ToRole="Ucenik" />
+        </EntityType>
         <EntityType Name="Predmet">
           <Key>
             <PropertyRef Name="PredmetId" />
@@ -440,16 +441,6 @@
           <NavigationProperty Name="AkademskaGodina" Relationship="Self.FK_Razred_AkademskaGodina" FromRole="Razred" ToRole="AkademskaGodina" />
           <NavigationProperty Name="Ucenik" Relationship="Self.FK_Ucenik_Razred" FromRole="Razred" ToRole="Ucenik" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Ucenik">
           <Key>
             <PropertyRef Name="UcenikId" />
@@ -457,9 +448,9 @@
           <Property Name="UcenikId" Type="Int32" Nullable="false" />
           <Property Name="RazredId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Korisnik" Relationship="Self.FK_Ucenik_Korisnik" FromRole="Ucenik" ToRole="Korisnik" />
+          <NavigationProperty Name="Ocjena" Relationship="Self.FK_Ocjena_Ucenik" FromRole="Ucenik" ToRole="Ocjena" />
           <NavigationProperty Name="Prisustvo" Relationship="Self.FK_Izostanak_Ucenik" FromRole="Ucenik" ToRole="Prisustvo" />
           <NavigationProperty Name="Razred" Relationship="Self.FK_Ucenik_Razred" FromRole="Ucenik" ToRole="Razred" />
-          <NavigationProperty Name="Ocjena" Relationship="eDnevnikModel.FK_Ocjena_Ucenik" FromRole="Ucenik" ToRole="Ocjena" />
         </EntityType>
         <Association Name="FK_Predmet_AkademskaGodina">
           <End Role="AkademskaGodina" Type="Self.AkademskaGodina" Multiplicity="0..1" />
@@ -517,6 +508,18 @@
               <PropertyRef Name="CasId" />
             </Principal>
             <Dependent Role="Prisustvo">
+              <PropertyRef Name="CasId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ocjena_Cas">
+          <End Role="Cas" Type="Self.Cas" Multiplicity="1" />
+          <End Role="Ocjena" Type="Self.Ocjena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cas">
+              <PropertyRef Name="CasId" />
+            </Principal>
+            <Dependent Role="Ocjena">
               <PropertyRef Name="CasId" />
             </Dependent>
           </ReferentialConstraint>
@@ -581,6 +584,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Ocjena_Ucenik">
+          <End Role="Ucenik" Type="Self.Ucenik" Multiplicity="1" />
+          <End Role="Ocjena" Type="Self.Ocjena" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ucenik">
+              <PropertyRef Name="UcenikId" />
+            </Principal>
+            <Dependent Role="Ocjena">
+              <PropertyRef Name="UcenikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Izostanak_Ucenik">
           <End Role="Ucenik" Type="Self.Ucenik" Multiplicity="1" />
           <End Role="Prisustvo" Type="Self.Prisustvo" Multiplicity="*" />
@@ -611,10 +626,10 @@
           <EntitySet Name="Korisnik" EntityType="Self.Korisnik" />
           <EntitySet Name="Nastavnik" EntityType="Self.Nastavnik" />
           <EntitySet Name="Obavijest" EntityType="Self.Obavijest" />
+          <EntitySet Name="Ocjena" EntityType="Self.Ocjena" />
           <EntitySet Name="Predmet" EntityType="Self.Predmet" />
           <EntitySet Name="Prisustvo" EntityType="Self.Prisustvo" />
           <EntitySet Name="Razred" EntityType="Self.Razred" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Ucenik" EntityType="Self.Ucenik" />
           <AssociationSet Name="FK_Predmet_AkademskaGodina" Association="Self.FK_Predmet_AkademskaGodina">
             <End Role="AkademskaGodina" EntitySet="AkademskaGodina" />
@@ -636,6 +651,10 @@
             <End Role="Cas" EntitySet="Cas" />
             <End Role="Prisustvo" EntitySet="Prisustvo" />
           </AssociationSet>
+          <AssociationSet Name="FK_Ocjena_Cas" Association="Self.FK_Ocjena_Cas">
+            <End Role="Cas" EntitySet="Cas" />
+            <End Role="Ocjena" EntitySet="Ocjena" />
+          </AssociationSet>
           <AssociationSet Name="FK_Nastavnik_Korisnik" Association="Self.FK_Nastavnik_Korisnik">
             <End Role="Korisnik" EntitySet="Korisnik" />
             <End Role="Nastavnik" EntitySet="Nastavnik" />
@@ -656,6 +675,10 @@
             <End Role="Predmet" EntitySet="Predmet" />
             <End Role="Obavijest" EntitySet="Obavijest" />
           </AssociationSet>
+          <AssociationSet Name="FK_Ocjena_Ucenik" Association="Self.FK_Ocjena_Ucenik">
+            <End Role="Ucenik" EntitySet="Ucenik" />
+            <End Role="Ocjena" EntitySet="Ocjena" />
+          </AssociationSet>
           <AssociationSet Name="FK_Izostanak_Ucenik" Association="Self.FK_Izostanak_Ucenik">
             <End Role="Ucenik" EntitySet="Ucenik" />
             <End Role="Prisustvo" EntitySet="Prisustvo" />
@@ -664,51 +687,7 @@
             <End Role="Razred" EntitySet="Razred" />
             <End Role="Ucenik" EntitySet="Ucenik" />
           </AssociationSet>
-          <EntitySet Name="Ocjena" EntityType="eDnevnikModel.Ocjena" />
-          <AssociationSet Name="FK_Ocjena_Cas" Association="eDnevnikModel.FK_Ocjena_Cas">
-            <End Role="Cas" EntitySet="Cas" />
-            <End Role="Ocjena" EntitySet="Ocjena" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ocjena_Ucenik" Association="eDnevnikModel.FK_Ocjena_Ucenik">
-            <End Role="Ucenik" EntitySet="Ucenik" />
-            <End Role="Ocjena" EntitySet="Ocjena" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Ocjena">
-          <Key>
-            <PropertyRef Name="OcjenaId" />
-          </Key>
-          <Property Name="OcjenaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OcjenaVrijednost" Type="Int32" Nullable="false" />
-          <Property Name="UcenikId" Type="Int32" Nullable="false" />
-          <Property Name="CasId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cas" Relationship="eDnevnikModel.FK_Ocjena_Cas" FromRole="Ocjena" ToRole="Cas" />
-          <NavigationProperty Name="Ucenik" Relationship="eDnevnikModel.FK_Ocjena_Ucenik" FromRole="Ocjena" ToRole="Ucenik" />
-        </EntityType>
-        <Association Name="FK_Ocjena_Cas">
-          <End Type="eDnevnikModel.Cas" Role="Cas" Multiplicity="1" />
-          <End Type="eDnevnikModel.Ocjena" Role="Ocjena" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cas">
-              <PropertyRef Name="CasId" />
-            </Principal>
-            <Dependent Role="Ocjena">
-              <PropertyRef Name="CasId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ocjena_Ucenik">
-          <End Type="eDnevnikModel.Ucenik" Role="Ucenik" Multiplicity="1" />
-          <End Type="eDnevnikModel.Ocjena" Role="Ocjena" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ucenik">
-              <PropertyRef Name="UcenikId" />
-            </Principal>
-            <Dependent Role="Ocjena">
-              <PropertyRef Name="UcenikId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -765,6 +744,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Ocjena">
+            <EntityTypeMapping TypeName="eDnevnikModel.Ocjena">
+              <MappingFragment StoreEntitySet="Ocjena">
+                <ScalarProperty Name="OcjenaId" ColumnName="OcjenaId" />
+                <ScalarProperty Name="OcjenaVrijednost" ColumnName="OcjenaVrijednost" />
+                <ScalarProperty Name="UcenikId" ColumnName="UcenikId" />
+                <ScalarProperty Name="CasId" ColumnName="CasId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Predmet">
             <EntityTypeMapping TypeName="eDnevnikModel.Predmet">
               <MappingFragment StoreEntitySet="Predmet">
@@ -796,32 +785,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="eDnevnikModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Ucenik">
             <EntityTypeMapping TypeName="eDnevnikModel.Ucenik">
               <MappingFragment StoreEntitySet="Ucenik">
                 <ScalarProperty Name="UcenikId" ColumnName="UcenikId" />
                 <ScalarProperty Name="RazredId" ColumnName="RazredId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ocjena">
-            <EntityTypeMapping TypeName="eDnevnikModel.Ocjena">
-              <MappingFragment StoreEntitySet="Ocjena">
-                <ScalarProperty Name="CasId" ColumnName="CasId" />
-                <ScalarProperty Name="UcenikId" ColumnName="UcenikId" />
-                <ScalarProperty Name="OcjenaVrijednost" ColumnName="OcjenaVrijednost" />
-                <ScalarProperty Name="OcjenaId" ColumnName="OcjenaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
