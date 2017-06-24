@@ -25,6 +25,7 @@ namespace eDnevnik.API.Models
         public string Naziv { get; set; }
         public Nullable<int> AkademskaGodinaId { get; set; }
         public Nullable<int> NastavnikId { get; set; }
+        public Nullable<int> RazredId { get; set; }
     
         public virtual AkademskaGodina AkademskaGodina { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -32,5 +33,6 @@ namespace eDnevnik.API.Models
         public virtual Nastavnik Nastavnik { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Obavijest> Obavijest { get; set; }
+        public virtual Razred Razred { get; set; }
     }
 }

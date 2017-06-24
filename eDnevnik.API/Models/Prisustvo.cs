@@ -19,6 +19,7 @@ namespace eDnevnik.API.Models
         public int CasId { get; set; }
         public int BrojSati { get; set; }
         public Nullable<bool> Prisutan { get; set; }
+        public Nullable<bool> Opravdano { get; set; }
     
         public virtual Cas Cas { get; set; }
         public virtual Ucenik Ucenik { get; set; }

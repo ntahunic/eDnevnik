@@ -1,14 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:eDnevnik.MOBILE"
-             x:Class="eDnevnik.MOBILE.MainPage"
-             >
+             x:Class="eDnevnik.MOBILE.PredmetiPage">
 
 
     <ContentPage.Content>
         <StackLayout Margin="15">
-            <ListView x:Name="obavijestiList" ItemTapped="obavijestiList_ItemTapped">
+            <ListView x:Name="predmetiList">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -20,13 +18,8 @@
 
 
                                 <StackLayout>
-                                    <Label Text="{Binding Naslov}" FontAttributes="Bold"></Label>
-                                    <Label Text="{Binding Sadrzaj}" ></Label>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Datum} " ></Label>
-                                        <Label Text="{Binding Predmet, StringFormat='{0} napisao/la'}"></Label>
-                                        <Label Text="{Binding Nastavnik}" ></Label>
-                                    </StackLayout>                                    
+                                    <Label Text="{Binding Naziv}" FontAttributes="Bold" FontSize="20"></Label>
+                                    <Label Text="{Binding Nastavnik}" ></Label>                                    
                                 </StackLayout>
                             </Grid>
                         </ViewCell>
@@ -35,5 +28,4 @@
             </ListView>
         </StackLayout>
     </ContentPage.Content>
-
 </ContentPage>

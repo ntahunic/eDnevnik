@@ -32,6 +32,23 @@ namespace eDnevnik.API.Controllers
             });
         }
 
+        // GET: api/Obavijesti/GetObavijestiByRazred/1
+        [Route("api/Obavijesti/GetObavijestiByRazred/{razredId}")]
+        public IQueryable<ObavijestVM> GetObavijestiByRazred(int razredId)
+        {
+            return db.Obavijest.Where(y => y.Predmet.RazredId == razredId).Select(x => new ObavijestVM
+            {
+                ObavijestId = x.ObavijestId,
+                Naslov = x.Naslov,
+                Sadrzaj = x.Sadrzaj,
+                Datum = x.Datum,
+                Nastavnik = x.Nastavnik.Korisnik.Ime + " " + x.Nastavnik.Korisnik.Prezime,
+                NastavnikId = x.NastavnikId,
+                Predmet = x.Predmet.Naziv,
+                PredmetId = x.PredmetId
+            });
+        }
+
         // GET: api/Obavijesti/5
         [ResponseType(typeof(Obavijest))]
         public IHttpActionResult GetObavijest(int id)

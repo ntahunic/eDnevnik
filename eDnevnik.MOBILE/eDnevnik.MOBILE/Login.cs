@@ -4,12 +4,18 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using eDnevnik.PCL.Util;
+using System.Net.Http;
+using Newtonsoft.Json;
+using eDnevnik.PCL.Model;
 
 namespace eDnevnik.MOBILE
 {
 	public class Login : ContentPage
 	{
-		public Login ()
+        private WebAPIHelper _nastavniciService = new WebAPIHelper("/api/nastavnici");
+
+        public Login ()
 		{
             StackLayout stek = new StackLayout();
             stek.Margin = 10;
@@ -27,7 +33,7 @@ namespace eDnevnik.MOBILE
             Button prijavaButton = new Button() { Text = "Prijava" };
             prijavaButton.Clicked += (sender, args) =>
             {
-                DisplayAlert("Info", "Prijava na sistem ce biti uskoro omogucena INSALLAH", "Ok");
+                prijavaButton_Clicked(korisnickoImeInput, lozinkaInput);
             };
             
             stek.Children.Add(zaglavljeLabel);
@@ -36,7 +42,34 @@ namespace eDnevnik.MOBILE
             stek.Children.Add(prijavaButton);
 
             Content = stek;
-		}
-        
+        }
+
+        private void prijavaButton_Clicked(Entry korisnickoImeInput, Entry lozinkaInput)
+        {
+            HttpResponseMessage response = _nastavniciService.GetResponse(korisnickoImeInput.Text);
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResult = response.Content.ReadAsStringAsync();
+                UcenikVM n = JsonConvert.DeserializeObject<UcenikVM>(jsonResult.Result);
+
+                if (n.Password == lozinkaInput.Text)
+                {
+                    this.Navigation.PushModalAsync(new Navigation.MyPage());
+                    
+                    Global.TrenutniKorisnik = new KorisnikVM
+                    {
+                        Ime = n.Ime,
+                        Prezime = n.Prezime,
+                        KorisnikId = n.UcenikId,
+                        Password = n.Password,
+                        Username = n.Username
+                    };
+                }
+                else
+                    DisplayAlert("Info", "Podaci nisu validni", "Ok");
+            }
+            else
+                DisplayAlert("Info", "Podaci nisu validni", "Ok");
+        }
     }
 }

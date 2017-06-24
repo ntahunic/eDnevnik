@@ -13,7 +13,7 @@ namespace eDnevnik.MOBILE
 		{
 			InitializeComponent();
 
-			MainPage = new eDnevnik.MOBILE.Login();
+            MainPage = new eDnevnik.MOBILE.Login();
 		}
 
 		protected override void OnStart ()

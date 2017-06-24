@@ -1,16 +1,17 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace eDnevnik.PCL.Util
 {
-    class WebAPIHelper
+    public class WebAPIHelper
     {
         public HttpClient client { get; set; }
         public string route { get; set; }
-
         public WebAPIHelper(string route)
         {
             client = new HttpClient();
@@ -37,10 +38,11 @@ namespace eDnevnik.PCL.Util
             return client.GetAsync(route + "/" + action + "/" + parameter).Result;
         }
 
-        //public HttpResponseMessage PostResponse(object obj)
-        //{
-        //    return client.PostAsJsonAsync(route, obj).Result;
-        //}
+        public HttpResponseMessage PostResponse(Object newObject)
+        {
+            var jsonObject = new StringContent(JsonConvert.SerializeObject(newObject), Encoding.UTF8, "application/json");
+            return client.PostAsync(route, jsonObject).Result;
+        }
 
         //public HttpResponseMessage PutResponse(object obj)
         //{

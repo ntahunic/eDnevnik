@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="eDnevnikModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="eDnevnikModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AkademskaGodina">
           <Key>
             <PropertyRef Name="AkademskaGodinaId" />
@@ -67,6 +67,7 @@
           <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="AkademskaGodinaId" Type="int" />
           <Property Name="NastavnikId" Type="int" />
+          <Property Name="RazredId" Type="int" />
         </EntityType>
         <EntityType Name="Prisustvo">
           <Key>
@@ -77,6 +78,7 @@
           <Property Name="CasId" Type="int" Nullable="false" />
           <Property Name="BrojSati" Type="int" Nullable="false" />
           <Property Name="Prisutan" Type="bit" />
+          <Property Name="Opravdano" Type="bit" />
         </EntityType>
         <EntityType Name="Razred">
           <Key>
@@ -226,6 +228,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Predmet_Razred">
+          <End Role="Razred" Type="Self.Razred" Multiplicity="0..1" />
+          <End Role="Predmet" Type="Self.Predmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Razred">
+              <PropertyRef Name="RazredId" />
+            </Principal>
+            <Dependent Role="Predmet">
+              <PropertyRef Name="RazredId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Razred_AkademskaGodina">
           <End Role="AkademskaGodina" Type="Self.AkademskaGodina" Multiplicity="1" />
           <End Role="Razred" Type="Self.Razred" Multiplicity="*" />
@@ -317,6 +331,10 @@
             <End Role="Nastavnik" EntitySet="Nastavnik" />
             <End Role="Predmet" EntitySet="Predmet" />
           </AssociationSet>
+          <AssociationSet Name="FK_Predmet_Razred" Association="Self.FK_Predmet_Razred">
+            <End Role="Razred" EntitySet="Razred" />
+            <End Role="Predmet" EntitySet="Predmet" />
+          </AssociationSet>
           <AssociationSet Name="FK_Razred_AkademskaGodina" Association="Self.FK_Razred_AkademskaGodina">
             <End Role="AkademskaGodina" EntitySet="AkademskaGodina" />
             <End Role="Razred" EntitySet="Razred" />
@@ -330,8 +348,7 @@
             <End Role="Ucenik" EntitySet="Ucenik" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="eDnevnikModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -417,6 +434,8 @@
           <NavigationProperty Name="Cas" Relationship="Self.FK_Cas_Predmet" FromRole="Predmet" ToRole="Cas" />
           <NavigationProperty Name="Nastavnik" Relationship="Self.FK_Predmet_Nastavnik" FromRole="Predmet" ToRole="Nastavnik" />
           <NavigationProperty Name="Obavijest" Relationship="Self.FK_Obavijest_Predmet" FromRole="Predmet" ToRole="Obavijest" />
+          <Property Name="RazredId" Type="Int32" />
+          <NavigationProperty Name="Razred" Relationship="eDnevnikModel.FK_Predmet_Razred" FromRole="Predmet" ToRole="Razred" />
         </EntityType>
         <EntityType Name="Prisustvo">
           <Key>
@@ -429,6 +448,7 @@
           <Property Name="Prisutan" Type="Boolean" />
           <NavigationProperty Name="Cas" Relationship="Self.FK_Izostanak_Cas" FromRole="Prisustvo" ToRole="Cas" />
           <NavigationProperty Name="Ucenik" Relationship="Self.FK_Izostanak_Ucenik" FromRole="Prisustvo" ToRole="Ucenik" />
+          <Property Name="Opravdano" Type="Boolean" />
         </EntityType>
         <EntityType Name="Razred">
           <Key>
@@ -440,6 +460,7 @@
           <Property Name="AkademskaGodinaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AkademskaGodina" Relationship="Self.FK_Razred_AkademskaGodina" FromRole="Razred" ToRole="AkademskaGodina" />
           <NavigationProperty Name="Ucenik" Relationship="Self.FK_Ucenik_Razred" FromRole="Razred" ToRole="Ucenik" />
+          <NavigationProperty Name="Predmet" Relationship="eDnevnikModel.FK_Predmet_Razred" FromRole="Razred" ToRole="Predmet" />
         </EntityType>
         <EntityType Name="Ucenik">
           <Key>
@@ -687,7 +708,23 @@
             <End Role="Razred" EntitySet="Razred" />
             <End Role="Ucenik" EntitySet="Ucenik" />
           </AssociationSet>
+          <AssociationSet Name="FK_Predmet_Razred" Association="eDnevnikModel.FK_Predmet_Razred">
+            <End Role="Razred" EntitySet="Razred" />
+            <End Role="Predmet" EntitySet="Predmet" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Predmet_Razred">
+          <End Type="eDnevnikModel.Razred" Role="Razred" Multiplicity="0..1" />
+          <End Type="eDnevnikModel.Predmet" Role="Predmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Razred">
+              <PropertyRef Name="RazredId" />
+            </Principal>
+            <Dependent Role="Predmet">
+              <PropertyRef Name="RazredId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -757,6 +794,7 @@
           <EntitySetMapping Name="Predmet">
             <EntityTypeMapping TypeName="eDnevnikModel.Predmet">
               <MappingFragment StoreEntitySet="Predmet">
+                <ScalarProperty Name="RazredId" ColumnName="RazredId" />
                 <ScalarProperty Name="PredmetId" ColumnName="PredmetId" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
                 <ScalarProperty Name="AkademskaGodinaId" ColumnName="AkademskaGodinaId" />
@@ -767,6 +805,7 @@
           <EntitySetMapping Name="Prisustvo">
             <EntityTypeMapping TypeName="eDnevnikModel.Prisustvo">
               <MappingFragment StoreEntitySet="Prisustvo">
+                <ScalarProperty Name="Opravdano" ColumnName="Opravdano" />
                 <ScalarProperty Name="PrisustvoId" ColumnName="PrisustvoId" />
                 <ScalarProperty Name="UcenikId" ColumnName="UcenikId" />
                 <ScalarProperty Name="CasId" ColumnName="CasId" />

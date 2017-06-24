@@ -29,6 +29,7 @@
         <AssociationConnector Association="eDnevnikModel.FK_Ocjena_Ucenik" ManuallyRouted="false" />
         <AssociationConnector Association="eDnevnikModel.FK_Izostanak_Ucenik" ManuallyRouted="false" />
         <AssociationConnector Association="eDnevnikModel.FK_Ucenik_Razred" ManuallyRouted="false" />
+        <AssociationConnector Association="eDnevnikModel.FK_Predmet_Razred" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

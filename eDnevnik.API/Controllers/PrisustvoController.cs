@@ -40,6 +40,28 @@ namespace eDnevnik.API.Controllers
             }).ToList();
         }
 
+        [Route("api/prisustvo/GetOdsustvoByUcenik/{ucenikId}")]
+        public List<PrisustvoVM> GetOdsustvoByUcenik(int ucenikId)
+        {
+            return _db.Prisustvo.Where(i => i.UcenikId == ucenikId && i.Prisutan == false).Select(x => new PrisustvoVM
+            {
+                Ime = x.Ucenik.Korisnik.Ime,
+                Prezime = x.Ucenik.Korisnik.Prezime,
+                UcenikId = x.UcenikId,
+                PrisustvoId = x.PrisustvoId,
+                Prisutan = x.Prisutan,
+                Razred = x.Ucenik.Razred.Naziv + " - " + x.Ucenik.Razred.Odjeljenje,
+                ImePrezime = x.Ucenik.Korisnik.Ime + " " + x.Ucenik.Korisnik.Prezime,
+                BrojSati = x.Cas.BrojSati,
+                Datum = x.Cas.Datum,
+                Predmet = x.Cas.Predmet.Naziv,
+                Opravdano = x.Opravdano==true?"Opravdano":"Neopravdano"
+            }).ToList();
+        }
+
+
+
+
         //public IHttpActionResult PostPrisustvo(Prisustvo obj)
         //{
         //    if (obj == null)
