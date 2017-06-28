@@ -67,6 +67,7 @@
           <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="AkademskaGodinaId" Type="int" />
           <Property Name="NastavnikId" Type="int" />
+          <Property Name="RazredId" Type="int" />
         </EntityType>
         <EntityType Name="Prisustvo">
           <Key>
@@ -236,6 +237,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Predmet_Razred">
+          <End Role="Razred" Type="Self.Razred" Multiplicity="0..1" />
+          <End Role="Predmet" Type="Self.Predmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Razred">
+              <PropertyRef Name="RazredId" />
+            </Principal>
+            <Dependent Role="Predmet">
+              <PropertyRef Name="RazredId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Razred_AkademskaGodina">
           <End Role="AkademskaGodina" Type="Self.AkademskaGodina" Multiplicity="1" />
           <End Role="Razred" Type="Self.Razred" Multiplicity="*" />
@@ -328,6 +341,10 @@
             <End Role="Nastavnik" EntitySet="Nastavnik" />
             <End Role="Predmet" EntitySet="Predmet" />
           </AssociationSet>
+          <AssociationSet Name="FK_Predmet_Razred" Association="Self.FK_Predmet_Razred">
+            <End Role="Razred" EntitySet="Razred" />
+            <End Role="Predmet" EntitySet="Predmet" />
+          </AssociationSet>
           <AssociationSet Name="FK_Razred_AkademskaGodina" Association="Self.FK_Razred_AkademskaGodina">
             <End Role="AkademskaGodina" EntitySet="AkademskaGodina" />
             <End Role="Razred" EntitySet="Razred" />
@@ -416,6 +433,8 @@
           <NavigationProperty Name="Cas" Relationship="Self.FK_Cas_Predmet" FromRole="Predmet" ToRole="Cas" />
           <NavigationProperty Name="Nastavnik" Relationship="Self.FK_Predmet_Nastavnik" FromRole="Predmet" ToRole="Nastavnik" />
           <NavigationProperty Name="Obavijest" Relationship="Self.FK_Obavijest_Predmet" FromRole="Predmet" ToRole="Obavijest" />
+          <Property Name="RazredId" Type="Int32" />
+          <NavigationProperty Name="Razred" Relationship="eDnevnikModel.FK_Predmet_Razred" FromRole="Predmet" ToRole="Razred" />
         </EntityType>
         <EntityType Name="Prisustvo">
           <Key>
@@ -439,6 +458,7 @@
           <Property Name="AkademskaGodinaId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AkademskaGodina" Relationship="Self.FK_Razred_AkademskaGodina" FromRole="Razred" ToRole="AkademskaGodina" />
           <NavigationProperty Name="Ucenik" Relationship="Self.FK_Ucenik_Razred" FromRole="Razred" ToRole="Ucenik" />
+          <NavigationProperty Name="Predmet" Relationship="eDnevnikModel.FK_Predmet_Razred" FromRole="Razred" ToRole="Predmet" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -673,6 +693,10 @@
             <End Role="Ucenik" EntitySet="Ucenik" />
             <End Role="Ocjena" EntitySet="Ocjena" />
           </AssociationSet>
+          <AssociationSet Name="FK_Predmet_Razred" Association="eDnevnikModel.FK_Predmet_Razred">
+            <End Role="Razred" EntitySet="Razred" />
+            <End Role="Predmet" EntitySet="Predmet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Ocjena">
           <Key>
@@ -706,6 +730,18 @@
             </Principal>
             <Dependent Role="Ocjena">
               <PropertyRef Name="UcenikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Predmet_Razred">
+          <End Type="eDnevnikModel.Razred" Role="Razred" Multiplicity="0..1" />
+          <End Type="eDnevnikModel.Predmet" Role="Predmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Razred">
+              <PropertyRef Name="RazredId" />
+            </Principal>
+            <Dependent Role="Predmet">
+              <PropertyRef Name="RazredId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -768,6 +804,7 @@
           <EntitySetMapping Name="Predmet">
             <EntityTypeMapping TypeName="eDnevnikModel.Predmet">
               <MappingFragment StoreEntitySet="Predmet">
+                <ScalarProperty Name="RazredId" ColumnName="RazredId" />
                 <ScalarProperty Name="PredmetId" ColumnName="PredmetId" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
                 <ScalarProperty Name="AkademskaGodinaId" ColumnName="AkademskaGodinaId" />

@@ -30,6 +30,7 @@
         <EntityTypeShape EntityType="eDnevnikModel.Ocjena" Width="1.5" PointX="7.5" PointY="11.375" />
         <AssociationConnector Association="eDnevnikModel.FK_Ocjena_Cas" />
         <AssociationConnector Association="eDnevnikModel.FK_Ocjena_Ucenik" />
+        <AssociationConnector Association="eDnevnikModel.FK_Predmet_Razred" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

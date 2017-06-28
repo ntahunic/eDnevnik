@@ -52,5 +52,23 @@ namespace eDnevnik.UI
             Form frm = new UrediOcjenuForm();
             frm.Show();
         }
+
+        private void nastavničkiKadarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new DodajNastavnikaForm();
+            frm.Show();
+        }
+
+        private void predmetiToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form frm = new DodajPredmetForm();
+            frm.Show();
+        }
+
+        private void razrediToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new DodajRazredForm();
+            frm.Show();
+        }
     }
 }

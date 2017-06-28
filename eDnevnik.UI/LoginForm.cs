@@ -24,7 +24,7 @@ namespace eDnevnik.UI
 
         private void PrijavaButton_Click(object sender, EventArgs e)
         {
-            HttpResponseMessage response = nastavniciService.GetResponse(KorisnickoImeInput.Text);
+            HttpResponseMessage response = nastavniciService.GetActionResponse("getByUsername", KorisnickoImeInput.Text);
             if (response.IsSuccessStatusCode)
             {
                 NastavnikVM n = response.Content.ReadAsAsync<NastavnikVM>().Result;

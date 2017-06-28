@@ -66,6 +66,12 @@
     <Compile Include="DodajIzostanakForm.Designer.cs">
       <DependentUpon>DodajIzostanakForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DodajNastavnikaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajNastavnikaForm.Designer.cs">
+      <DependentUpon>DodajNastavnikaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DodajObavijestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,18 @@
     </Compile>
     <Compile Include="DodajOcjenuForm.Designer.cs">
       <DependentUpon>DodajOcjenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodajPredmetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajPredmetForm.Designer.cs">
+      <DependentUpon>DodajPredmetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodajRazredForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajRazredForm.Designer.cs">
+      <DependentUpon>DodajRazredForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="IzmijeniOcjenuForm.cs">
@@ -130,11 +148,20 @@
     <EmbeddedResource Include="DodajIzostanakForm.resx">
       <DependentUpon>DodajIzostanakForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DodajNastavnikaForm.resx">
+      <DependentUpon>DodajNastavnikaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DodajObavijestForm.resx">
       <DependentUpon>DodajObavijestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DodajOcjenuForm.resx">
       <DependentUpon>DodajOcjenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodajPredmetForm.resx">
+      <DependentUpon>DodajPredmetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodajRazredForm.resx">
+      <DependentUpon>DodajRazredForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IzmijeniOcjenuForm.resx">
       <DependentUpon>IzmijeniOcjenuForm.cs</DependentUpon>

@@ -52,5 +52,14 @@ namespace eDnevnik.UI.Util
         {
             return client.PutAsJsonAsync(route + "/" + id, existingObject).Result;
         }
+        public HttpResponseMessage DeleteResponse(int id)
+        {
+            return client.DeleteAsync($"{route}/{id}").Result;
+        }
+
+        public HttpResponseMessage DeleteActionResponse(string action, int id)
+        {
+            return client.DeleteAsync($"{route}/{action}/{id}").Result;
+        }
     }
 }
