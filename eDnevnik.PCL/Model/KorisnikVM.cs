@@ -13,6 +13,7 @@ namespace eDnevnik.PCL.Model
         public string Prezime { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public int  RazredId { get; set; }
 
     }
 }

@@ -36,6 +36,7 @@ namespace eDnevnik.MOBILE.Navigation
                     new MyPageMenuItem { Title = "Obavijesti", TargetType = typeof(MainPage) },
                     new MyPageMenuItem { Title = "Predmeti", TargetType = typeof(PredmetiPage) },
                     new MyPageMenuItem { Title = "Izostanci", TargetType = typeof(IzostanciPage) },
+                    new MyPageMenuItem { Title = "Materijali", TargetType = typeof(MaterijaliPage) },
                     new MyPageMenuItem { Title = "Log out", TargetType = typeof(LogOut) },
                 });
             }

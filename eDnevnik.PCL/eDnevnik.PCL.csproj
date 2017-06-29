@@ -36,8 +36,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Model\KorisnikVM.cs" />
+    <Compile Include="Model\Materijal.cs" />
+    <Compile Include="Model\MaterijalVM.cs" />
     <Compile Include="Model\NastavnikVM.cs" />
     <Compile Include="Model\ObavijestVM.cs" />
+    <Compile Include="Model\OcjenaMaterijalVM.cs" />
+    <Compile Include="Model\OcjenaTemp.cs" />
+    <Compile Include="Model\OcjenaVM.cs" />
     <Compile Include="Model\PredmetVM.cs" />
     <Compile Include="Model\PrisustvoVM.cs" />
     <Compile Include="Model\UcenikVM.cs" />

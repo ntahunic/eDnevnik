@@ -1,12 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="eDnevnik.MOBILE.PredmetiPage">
-
+             x:Class="eDnevnik.MOBILE.MaterijalDetalji">
 
     <ContentPage.Content>
-        <StackLayout Margin="15">
-            <ListView x:Name="predmetiList" ItemTapped="predmetiList_ItemTapped">
+        <StackLayout>
+            <Label>Detalji</Label>
+            <Label x:Name="NazivText" Text="{Binding Naslov}" FontAttributes="Bold" FontSize="Large"></Label>
+            <Label x:Name="DatumText" Text="{Binding Datum}" FontAttributes="Bold" FontSize="Small"></Label>
+            <Picker x:Name="ocjenaPicker" Title="Ocjena:" SelectedIndexChanged="ocjenaPicker_SelectedIndexChanged"></Picker>
+
+            <Label>Slicni materijali</Label>
+            <ListView x:Name="materijaliList" ItemTapped="materijaliList_ItemTapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -19,13 +24,13 @@
 
                                 <StackLayout>
                                     <Label Text="{Binding Naziv}" FontAttributes="Bold" FontSize="20"></Label>
-                                    <Label Text="{Binding Nastavnik}" ></Label>                                    
                                 </StackLayout>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

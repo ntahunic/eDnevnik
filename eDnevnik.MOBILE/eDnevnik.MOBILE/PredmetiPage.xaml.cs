@@ -36,5 +36,13 @@ namespace eDnevnik.MOBILE
             
             base.OnAppearing();
         }
+
+        private void predmetiList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item != null)
+            {
+                this.Navigation.PushAsync(new PredmetDetalji((e.Item as PredmetVM).PredmetId));
+            }
+        }
     }
 }

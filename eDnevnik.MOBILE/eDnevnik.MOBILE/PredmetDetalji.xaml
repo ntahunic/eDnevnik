@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eDnevnik.MOBILE.PredmetDetalji">
+
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="NazivPredmetaText" Text="{Binding Naziv}" FontAttributes="Bold" FontSize="Medium"></Label>
+            <Label x:Name="NastavnikNaPredmetuText" Text="{Binding Nastavnik}" FontAttributes="Bold" FontSize="Medium"></Label>
+            
+            <StackLayout Orientation="Horizontal">
+                <Label   FontSize="Micro">Ukupno izostanaka: </Label>
+                <Label x:Name="UkupnoIzostanakaText" Text="{Binding ukupnoIzostanaka}"  FontSize="Micro"></Label>                
+            </StackLayout>
+
+            <StackLayout>
+                <Label   FontSize="Micro">Ocjene na predmetu:</Label>
+                <ListView x:Name="OcjeneNaPredmetuList" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <StackLayout>                                        
+                                        <Label Text="{Binding Datum}" FontAttributes="Bold"></Label>
+                                        <Label Text="{Binding OcjenaVrijednost}" FontAttributes="Bold" ></Label>
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

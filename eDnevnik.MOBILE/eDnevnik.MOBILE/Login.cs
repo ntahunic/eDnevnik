@@ -13,7 +13,7 @@ namespace eDnevnik.MOBILE
 {
 	public class Login : ContentPage
 	{
-        private WebAPIHelper _nastavniciService = new WebAPIHelper("/api/nastavnici");
+        private WebAPIHelper _uceniciService = new WebAPIHelper("/api/ucenici");
 
         public Login ()
 		{
@@ -46,7 +46,7 @@ namespace eDnevnik.MOBILE
 
         private void prijavaButton_Clicked(Entry korisnickoImeInput, Entry lozinkaInput)
         {
-            HttpResponseMessage response = _nastavniciService.GetResponse(korisnickoImeInput.Text);
+            HttpResponseMessage response = _uceniciService.GetActionResponse("GetUcenikByUsername", korisnickoImeInput.Text);
             if (response.IsSuccessStatusCode)
             {
                 var jsonResult = response.Content.ReadAsStringAsync();
@@ -62,7 +62,8 @@ namespace eDnevnik.MOBILE
                         Prezime = n.Prezime,
                         KorisnikId = n.UcenikId,
                         Password = n.Password,
-                        Username = n.Username
+                        Username = n.Username,
+                        RazredId = n.RazredId
                     };
                 }
                 else

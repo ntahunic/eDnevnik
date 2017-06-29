@@ -18,6 +18,7 @@ namespace eDnevnik.API.Models
         public Predmet()
         {
             this.Cas = new HashSet<Cas>();
+            this.Materijal = new HashSet<Materijal>();
             this.Obavijest = new HashSet<Obavijest>();
         }
     
@@ -30,6 +31,8 @@ namespace eDnevnik.API.Models
         public virtual AkademskaGodina AkademskaGodina { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cas> Cas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Materijal> Materijal { get; set; }
         public virtual Nastavnik Nastavnik { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Obavijest> Obavijest { get; set; }

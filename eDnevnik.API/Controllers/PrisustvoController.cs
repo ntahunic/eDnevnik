@@ -59,7 +59,11 @@ namespace eDnevnik.API.Controllers
             }).ToList();
         }
 
-
+        [Route("api/prisustvo/GetOdsustvoFromPredmetByUcenik/{predmetId}/{ucenikId}")]
+        public int GetOdsustvoByUcenik(int predmetId, int ucenikId)
+        {
+            return _db.Prisustvo.Where(i => i.UcenikId == ucenikId && i.Cas.PredmetId == predmetId).Sum(y => y.BrojSati);
+        }
 
 
         //public IHttpActionResult PostPrisustvo(Prisustvo obj)

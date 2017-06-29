@@ -10,6 +10,7 @@ namespace eDnevnik.PCL.Model
     {
         public int UcenikId { get; set; }
         public string Razred { get; set; }
+        public int RazredId { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string ImePrezime { get; set; }

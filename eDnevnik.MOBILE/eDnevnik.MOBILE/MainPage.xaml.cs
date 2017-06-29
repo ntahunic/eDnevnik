@@ -38,7 +38,7 @@ namespace eDnevnik.MOBILE
         {
             if(e.Item != null)
             {
-                this.Navigation.PushModalAsync(new ObavijestDetalji((e.Item as ObavijestVM).ObavijestId));
+                this.Navigation.PushAsync(new ObavijestDetalji((e.Item as ObavijestVM).ObavijestId));
             }
         }
     }

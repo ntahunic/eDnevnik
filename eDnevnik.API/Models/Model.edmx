@@ -32,6 +32,15 @@
           <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="Materijal">
+          <Key>
+            <PropertyRef Name="MaterijalId" />
+          </Key>
+          <Property Name="MaterijalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PredmetId" Type="int" Nullable="false" />
+          <Property Name="Datum" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Nastavnik">
           <Key>
             <PropertyRef Name="NastavnikId" />
@@ -58,6 +67,16 @@
           <Property Name="OcjenaVrijednost" Type="int" Nullable="false" />
           <Property Name="UcenikId" Type="int" Nullable="false" />
           <Property Name="CasId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OcjenaMaterijal">
+          <Key>
+            <PropertyRef Name="OcjenaMaterijalId" />
+          </Key>
+          <Property Name="OcjenaMaterijalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OcjenaVrijednost" Type="int" Nullable="false" />
+          <Property Name="Datum" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaterijalId" Type="int" Nullable="false" />
+          <Property Name="UcenikId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Predmet">
           <Key>
@@ -88,6 +107,16 @@
           <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Odjeljenje" Type="nvarchar" MaxLength="5" Nullable="false" />
           <Property Name="AkademskaGodinaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Ucenik">
           <Key>
@@ -141,6 +170,18 @@
             </Principal>
             <Dependent Role="Prisustvo">
               <PropertyRef Name="UcenikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Materijal_Predmet">
+          <End Role="Predmet" Type="Self.Predmet" Multiplicity="1" />
+          <End Role="Materijal" Type="Self.Materijal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmet">
+              <PropertyRef Name="PredmetId" />
+            </Principal>
+            <Dependent Role="Materijal">
+              <PropertyRef Name="PredmetId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -200,6 +241,30 @@
               <PropertyRef Name="UcenikId" />
             </Principal>
             <Dependent Role="Ocjena">
+              <PropertyRef Name="UcenikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OcjenaMaterijal_Materijal">
+          <End Role="Materijal" Type="Self.Materijal" Multiplicity="1" />
+          <End Role="OcjenaMaterijal" Type="Self.OcjenaMaterijal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materijal">
+              <PropertyRef Name="MaterijalId" />
+            </Principal>
+            <Dependent Role="OcjenaMaterijal">
+              <PropertyRef Name="MaterijalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OcjenaMaterijal_Ucenik">
+          <End Role="Ucenik" Type="Self.Ucenik" Multiplicity="1" />
+          <End Role="OcjenaMaterijal" Type="Self.OcjenaMaterijal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ucenik">
+              <PropertyRef Name="UcenikId" />
+            </Principal>
+            <Dependent Role="OcjenaMaterijal">
               <PropertyRef Name="UcenikId" />
             </Dependent>
           </ReferentialConstraint>
@@ -280,12 +345,15 @@
           <EntitySet Name="AkademskaGodina" EntityType="Self.AkademskaGodina" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cas" EntityType="Self.Cas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Korisnik" EntityType="Self.Korisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materijal" EntityType="Self.Materijal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nastavnik" EntityType="Self.Nastavnik" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Obavijest" EntityType="Self.Obavijest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ocjena" EntityType="Self.Ocjena" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OcjenaMaterijal" EntityType="Self.OcjenaMaterijal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Predmet" EntityType="Self.Predmet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prisustvo" EntityType="Self.Prisustvo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Razred" EntityType="Self.Razred" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ucenik" EntityType="Self.Ucenik" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Cas_Nastavnik" Association="Self.FK_Cas_Nastavnik">
             <End Role="Nastavnik" EntitySet="Nastavnik" />
@@ -302,6 +370,10 @@
           <AssociationSet Name="FK_Izostanak_Ucenik" Association="Self.FK_Izostanak_Ucenik">
             <End Role="Ucenik" EntitySet="Ucenik" />
             <End Role="Prisustvo" EntitySet="Prisustvo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materijal_Predmet" Association="Self.FK_Materijal_Predmet">
+            <End Role="Predmet" EntitySet="Predmet" />
+            <End Role="Materijal" EntitySet="Materijal" />
           </AssociationSet>
           <AssociationSet Name="FK_Nastavnik_Korisnik" Association="Self.FK_Nastavnik_Korisnik">
             <End Role="Korisnik" EntitySet="Korisnik" />
@@ -322,6 +394,14 @@
           <AssociationSet Name="FK_Ocjena_Ucenik" Association="Self.FK_Ocjena_Ucenik">
             <End Role="Ucenik" EntitySet="Ucenik" />
             <End Role="Ocjena" EntitySet="Ocjena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OcjenaMaterijal_Materijal" Association="Self.FK_OcjenaMaterijal_Materijal">
+            <End Role="Materijal" EntitySet="Materijal" />
+            <End Role="OcjenaMaterijal" EntitySet="OcjenaMaterijal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OcjenaMaterijal_Ucenik" Association="Self.FK_OcjenaMaterijal_Ucenik">
+            <End Role="Ucenik" EntitySet="Ucenik" />
+            <End Role="OcjenaMaterijal" EntitySet="OcjenaMaterijal" />
           </AssociationSet>
           <AssociationSet Name="FK_Predmet_AkademskaGodina" Association="Self.FK_Predmet_AkademskaGodina">
             <End Role="AkademskaGodina" EntitySet="AkademskaGodina" />
@@ -352,64 +432,162 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="eDnevnikModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="eDnevnikEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AkademskaGodina" EntityType="eDnevnikModel.AkademskaGodina" />
+          <EntitySet Name="Cas" EntityType="eDnevnikModel.Cas" />
+          <EntitySet Name="Korisnik" EntityType="eDnevnikModel.Korisnik" />
+          <EntitySet Name="Materijal" EntityType="eDnevnikModel.Materijal" />
+          <EntitySet Name="Nastavnik" EntityType="eDnevnikModel.Nastavnik" />
+          <EntitySet Name="Obavijest" EntityType="eDnevnikModel.Obavijest" />
+          <EntitySet Name="Ocjena" EntityType="eDnevnikModel.Ocjena" />
+          <EntitySet Name="OcjenaMaterijal" EntityType="eDnevnikModel.OcjenaMaterijal" />
+          <EntitySet Name="Predmet" EntityType="eDnevnikModel.Predmet" />
+          <EntitySet Name="Prisustvo" EntityType="eDnevnikModel.Prisustvo" />
+          <EntitySet Name="Razred" EntityType="eDnevnikModel.Razred" />
+          <EntitySet Name="sysdiagrams" EntityType="eDnevnikModel.sysdiagrams" />
+          <EntitySet Name="Ucenik" EntityType="eDnevnikModel.Ucenik" />
+          <AssociationSet Name="FK_Predmet_AkademskaGodina" Association="eDnevnikModel.FK_Predmet_AkademskaGodina">
+            <End Role="AkademskaGodina" EntitySet="AkademskaGodina" />
+            <End Role="Predmet" EntitySet="Predmet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Razred_AkademskaGodina" Association="eDnevnikModel.FK_Razred_AkademskaGodina">
+            <End Role="AkademskaGodina" EntitySet="AkademskaGodina" />
+            <End Role="Razred" EntitySet="Razred" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cas_Nastavnik" Association="eDnevnikModel.FK_Cas_Nastavnik">
+            <End Role="Nastavnik" EntitySet="Nastavnik" />
+            <End Role="Cas" EntitySet="Cas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cas_Predmet" Association="eDnevnikModel.FK_Cas_Predmet">
+            <End Role="Predmet" EntitySet="Predmet" />
+            <End Role="Cas" EntitySet="Cas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Izostanak_Cas" Association="eDnevnikModel.FK_Izostanak_Cas">
+            <End Role="Cas" EntitySet="Cas" />
+            <End Role="Prisustvo" EntitySet="Prisustvo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocjena_Cas" Association="eDnevnikModel.FK_Ocjena_Cas">
+            <End Role="Cas" EntitySet="Cas" />
+            <End Role="Ocjena" EntitySet="Ocjena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Nastavnik_Korisnik" Association="eDnevnikModel.FK_Nastavnik_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Nastavnik" EntitySet="Nastavnik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ucenik_Korisnik" Association="eDnevnikModel.FK_Ucenik_Korisnik">
+            <End Role="Korisnik" EntitySet="Korisnik" />
+            <End Role="Ucenik" EntitySet="Ucenik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Materijal_Predmet" Association="eDnevnikModel.FK_Materijal_Predmet">
+            <End Role="Predmet" EntitySet="Predmet" />
+            <End Role="Materijal" EntitySet="Materijal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OcjenaMaterijal_Materijal" Association="eDnevnikModel.FK_OcjenaMaterijal_Materijal">
+            <End Role="Materijal" EntitySet="Materijal" />
+            <End Role="OcjenaMaterijal" EntitySet="OcjenaMaterijal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Obavijest_Nastavnik" Association="eDnevnikModel.FK_Obavijest_Nastavnik">
+            <End Role="Nastavnik" EntitySet="Nastavnik" />
+            <End Role="Obavijest" EntitySet="Obavijest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Predmet_Nastavnik" Association="eDnevnikModel.FK_Predmet_Nastavnik">
+            <End Role="Nastavnik" EntitySet="Nastavnik" />
+            <End Role="Predmet" EntitySet="Predmet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Obavijest_Predmet" Association="eDnevnikModel.FK_Obavijest_Predmet">
+            <End Role="Predmet" EntitySet="Predmet" />
+            <End Role="Obavijest" EntitySet="Obavijest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ocjena_Ucenik" Association="eDnevnikModel.FK_Ocjena_Ucenik">
+            <End Role="Ucenik" EntitySet="Ucenik" />
+            <End Role="Ocjena" EntitySet="Ocjena" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OcjenaMaterijal_Ucenik" Association="eDnevnikModel.FK_OcjenaMaterijal_Ucenik">
+            <End Role="Ucenik" EntitySet="Ucenik" />
+            <End Role="OcjenaMaterijal" EntitySet="OcjenaMaterijal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Predmet_Razred" Association="eDnevnikModel.FK_Predmet_Razred">
+            <End Role="Razred" EntitySet="Razred" />
+            <End Role="Predmet" EntitySet="Predmet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Izostanak_Ucenik" Association="eDnevnikModel.FK_Izostanak_Ucenik">
+            <End Role="Ucenik" EntitySet="Ucenik" />
+            <End Role="Prisustvo" EntitySet="Prisustvo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ucenik_Razred" Association="eDnevnikModel.FK_Ucenik_Razred">
+            <End Role="Razred" EntitySet="Razred" />
+            <End Role="Ucenik" EntitySet="Ucenik" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="AkademskaGodina">
           <Key>
             <PropertyRef Name="AkademskaGodinaId" />
           </Key>
           <Property Name="AkademskaGodinaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Predmet" Relationship="Self.FK_Predmet_AkademskaGodina" FromRole="AkademskaGodina" ToRole="Predmet" />
-          <NavigationProperty Name="Razred" Relationship="Self.FK_Razred_AkademskaGodina" FromRole="AkademskaGodina" ToRole="Razred" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Predmet" Relationship="eDnevnikModel.FK_Predmet_AkademskaGodina" FromRole="AkademskaGodina" ToRole="Predmet" />
+          <NavigationProperty Name="Razred" Relationship="eDnevnikModel.FK_Razred_AkademskaGodina" FromRole="AkademskaGodina" ToRole="Razred" />
         </EntityType>
         <EntityType Name="Cas">
           <Key>
             <PropertyRef Name="CasId" />
           </Key>
           <Property Name="CasId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Datum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Datum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NastavnikId" Type="Int32" Nullable="false" />
           <Property Name="PredmetId" Type="Int32" Nullable="false" />
           <Property Name="BrojSati" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Nastavnik" Relationship="Self.FK_Cas_Nastavnik" FromRole="Cas" ToRole="Nastavnik" />
-          <NavigationProperty Name="Predmet" Relationship="Self.FK_Cas_Predmet" FromRole="Cas" ToRole="Predmet" />
-          <NavigationProperty Name="Prisustvo" Relationship="Self.FK_Izostanak_Cas" FromRole="Cas" ToRole="Prisustvo" />
-          <NavigationProperty Name="Ocjena" Relationship="Self.FK_Ocjena_Cas" FromRole="Cas" ToRole="Ocjena" />
+          <NavigationProperty Name="Nastavnik" Relationship="eDnevnikModel.FK_Cas_Nastavnik" FromRole="Cas" ToRole="Nastavnik" />
+          <NavigationProperty Name="Predmet" Relationship="eDnevnikModel.FK_Cas_Predmet" FromRole="Cas" ToRole="Predmet" />
+          <NavigationProperty Name="Prisustvo" Relationship="eDnevnikModel.FK_Izostanak_Cas" FromRole="Cas" ToRole="Prisustvo" />
+          <NavigationProperty Name="Ocjena" Relationship="eDnevnikModel.FK_Ocjena_Cas" FromRole="Cas" ToRole="Ocjena" />
         </EntityType>
         <EntityType Name="Korisnik">
           <Key>
             <PropertyRef Name="KorisnikId" />
           </Key>
           <Property Name="KorisnikId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Nastavnik" Relationship="Self.FK_Nastavnik_Korisnik" FromRole="Korisnik" ToRole="Nastavnik" />
-          <NavigationProperty Name="Ucenik" Relationship="Self.FK_Ucenik_Korisnik" FromRole="Korisnik" ToRole="Ucenik" />
+          <Property Name="Ime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prezime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Nastavnik" Relationship="eDnevnikModel.FK_Nastavnik_Korisnik" FromRole="Korisnik" ToRole="Nastavnik" />
+          <NavigationProperty Name="Ucenik" Relationship="eDnevnikModel.FK_Ucenik_Korisnik" FromRole="Korisnik" ToRole="Ucenik" />
+        </EntityType>
+        <EntityType Name="Materijal">
+          <Key>
+            <PropertyRef Name="MaterijalId" />
+          </Key>
+          <Property Name="MaterijalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PredmetId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Predmet" Relationship="eDnevnikModel.FK_Materijal_Predmet" FromRole="Materijal" ToRole="Predmet" />
+          <NavigationProperty Name="OcjenaMaterijal" Relationship="eDnevnikModel.FK_OcjenaMaterijal_Materijal" FromRole="Materijal" ToRole="OcjenaMaterijal" />
+          <Property Name="Datum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Nastavnik">
           <Key>
             <PropertyRef Name="NastavnikId" />
           </Key>
           <Property Name="NastavnikId" Type="Int32" Nullable="false" />
-          <Property Name="Titula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Cas" Relationship="Self.FK_Cas_Nastavnik" FromRole="Nastavnik" ToRole="Cas" />
-          <NavigationProperty Name="Korisnik" Relationship="Self.FK_Nastavnik_Korisnik" FromRole="Nastavnik" ToRole="Korisnik" />
-          <NavigationProperty Name="Obavijest" Relationship="Self.FK_Obavijest_Nastavnik" FromRole="Nastavnik" ToRole="Obavijest" />
-          <NavigationProperty Name="Predmet" Relationship="Self.FK_Predmet_Nastavnik" FromRole="Nastavnik" ToRole="Predmet" />
+          <Property Name="Titula" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cas" Relationship="eDnevnikModel.FK_Cas_Nastavnik" FromRole="Nastavnik" ToRole="Cas" />
+          <NavigationProperty Name="Korisnik" Relationship="eDnevnikModel.FK_Nastavnik_Korisnik" FromRole="Nastavnik" ToRole="Korisnik" />
+          <NavigationProperty Name="Obavijest" Relationship="eDnevnikModel.FK_Obavijest_Nastavnik" FromRole="Nastavnik" ToRole="Obavijest" />
+          <NavigationProperty Name="Predmet" Relationship="eDnevnikModel.FK_Predmet_Nastavnik" FromRole="Nastavnik" ToRole="Predmet" />
         </EntityType>
         <EntityType Name="Obavijest">
           <Key>
             <PropertyRef Name="ObavijestId" />
           </Key>
           <Property Name="ObavijestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Naslov" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Sadrzaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Naslov" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sadrzaj" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NastavnikId" Type="Int32" Nullable="false" />
           <Property Name="PredmetId" Type="Int32" Nullable="false" />
-          <Property Name="Datum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Nastavnik" Relationship="Self.FK_Obavijest_Nastavnik" FromRole="Obavijest" ToRole="Nastavnik" />
-          <NavigationProperty Name="Predmet" Relationship="Self.FK_Obavijest_Predmet" FromRole="Obavijest" ToRole="Predmet" />
+          <Property Name="Datum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Nastavnik" Relationship="eDnevnikModel.FK_Obavijest_Nastavnik" FromRole="Obavijest" ToRole="Nastavnik" />
+          <NavigationProperty Name="Predmet" Relationship="eDnevnikModel.FK_Obavijest_Predmet" FromRole="Obavijest" ToRole="Predmet" />
         </EntityType>
         <EntityType Name="Ocjena">
           <Key>
@@ -419,22 +597,35 @@
           <Property Name="OcjenaVrijednost" Type="Int32" Nullable="false" />
           <Property Name="UcenikId" Type="Int32" Nullable="false" />
           <Property Name="CasId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Cas" Relationship="Self.FK_Ocjena_Cas" FromRole="Ocjena" ToRole="Cas" />
-          <NavigationProperty Name="Ucenik" Relationship="Self.FK_Ocjena_Ucenik" FromRole="Ocjena" ToRole="Ucenik" />
+          <NavigationProperty Name="Cas" Relationship="eDnevnikModel.FK_Ocjena_Cas" FromRole="Ocjena" ToRole="Cas" />
+          <NavigationProperty Name="Ucenik" Relationship="eDnevnikModel.FK_Ocjena_Ucenik" FromRole="Ocjena" ToRole="Ucenik" />
+        </EntityType>
+        <EntityType Name="OcjenaMaterijal">
+          <Key>
+            <PropertyRef Name="OcjenaMaterijalId" />
+          </Key>
+          <Property Name="OcjenaMaterijalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OcjenaVrijednost" Type="Int32" Nullable="false" />
+          <Property Name="Datum" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaterijalId" Type="Int32" Nullable="false" />
+          <Property Name="UcenikId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Materijal" Relationship="eDnevnikModel.FK_OcjenaMaterijal_Materijal" FromRole="OcjenaMaterijal" ToRole="Materijal" />
+          <NavigationProperty Name="Ucenik" Relationship="eDnevnikModel.FK_OcjenaMaterijal_Ucenik" FromRole="OcjenaMaterijal" ToRole="Ucenik" />
         </EntityType>
         <EntityType Name="Predmet">
           <Key>
             <PropertyRef Name="PredmetId" />
           </Key>
           <Property Name="PredmetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AkademskaGodinaId" Type="Int32" />
           <Property Name="NastavnikId" Type="Int32" />
-          <NavigationProperty Name="AkademskaGodina" Relationship="Self.FK_Predmet_AkademskaGodina" FromRole="Predmet" ToRole="AkademskaGodina" />
-          <NavigationProperty Name="Cas" Relationship="Self.FK_Cas_Predmet" FromRole="Predmet" ToRole="Cas" />
-          <NavigationProperty Name="Nastavnik" Relationship="Self.FK_Predmet_Nastavnik" FromRole="Predmet" ToRole="Nastavnik" />
-          <NavigationProperty Name="Obavijest" Relationship="Self.FK_Obavijest_Predmet" FromRole="Predmet" ToRole="Obavijest" />
           <Property Name="RazredId" Type="Int32" />
+          <NavigationProperty Name="AkademskaGodina" Relationship="eDnevnikModel.FK_Predmet_AkademskaGodina" FromRole="Predmet" ToRole="AkademskaGodina" />
+          <NavigationProperty Name="Cas" Relationship="eDnevnikModel.FK_Cas_Predmet" FromRole="Predmet" ToRole="Cas" />
+          <NavigationProperty Name="Materijal" Relationship="eDnevnikModel.FK_Materijal_Predmet" FromRole="Predmet" ToRole="Materijal" />
+          <NavigationProperty Name="Nastavnik" Relationship="eDnevnikModel.FK_Predmet_Nastavnik" FromRole="Predmet" ToRole="Nastavnik" />
+          <NavigationProperty Name="Obavijest" Relationship="eDnevnikModel.FK_Obavijest_Predmet" FromRole="Predmet" ToRole="Obavijest" />
           <NavigationProperty Name="Razred" Relationship="eDnevnikModel.FK_Predmet_Razred" FromRole="Predmet" ToRole="Razred" />
         </EntityType>
         <EntityType Name="Prisustvo">
@@ -446,21 +637,31 @@
           <Property Name="CasId" Type="Int32" Nullable="false" />
           <Property Name="BrojSati" Type="Int32" Nullable="false" />
           <Property Name="Prisutan" Type="Boolean" />
-          <NavigationProperty Name="Cas" Relationship="Self.FK_Izostanak_Cas" FromRole="Prisustvo" ToRole="Cas" />
-          <NavigationProperty Name="Ucenik" Relationship="Self.FK_Izostanak_Ucenik" FromRole="Prisustvo" ToRole="Ucenik" />
           <Property Name="Opravdano" Type="Boolean" />
+          <NavigationProperty Name="Cas" Relationship="eDnevnikModel.FK_Izostanak_Cas" FromRole="Prisustvo" ToRole="Cas" />
+          <NavigationProperty Name="Ucenik" Relationship="eDnevnikModel.FK_Izostanak_Ucenik" FromRole="Prisustvo" ToRole="Ucenik" />
         </EntityType>
         <EntityType Name="Razred">
           <Key>
             <PropertyRef Name="RazredId" />
           </Key>
           <Property Name="RazredId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Odjeljenje" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Odjeljenje" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="AkademskaGodinaId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AkademskaGodina" Relationship="Self.FK_Razred_AkademskaGodina" FromRole="Razred" ToRole="AkademskaGodina" />
-          <NavigationProperty Name="Ucenik" Relationship="Self.FK_Ucenik_Razred" FromRole="Razred" ToRole="Ucenik" />
+          <NavigationProperty Name="AkademskaGodina" Relationship="eDnevnikModel.FK_Razred_AkademskaGodina" FromRole="Razred" ToRole="AkademskaGodina" />
           <NavigationProperty Name="Predmet" Relationship="eDnevnikModel.FK_Predmet_Razred" FromRole="Razred" ToRole="Predmet" />
+          <NavigationProperty Name="Ucenik" Relationship="eDnevnikModel.FK_Ucenik_Razred" FromRole="Razred" ToRole="Ucenik" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Ucenik">
           <Key>
@@ -468,14 +669,15 @@
           </Key>
           <Property Name="UcenikId" Type="Int32" Nullable="false" />
           <Property Name="RazredId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Korisnik" Relationship="Self.FK_Ucenik_Korisnik" FromRole="Ucenik" ToRole="Korisnik" />
-          <NavigationProperty Name="Ocjena" Relationship="Self.FK_Ocjena_Ucenik" FromRole="Ucenik" ToRole="Ocjena" />
-          <NavigationProperty Name="Prisustvo" Relationship="Self.FK_Izostanak_Ucenik" FromRole="Ucenik" ToRole="Prisustvo" />
-          <NavigationProperty Name="Razred" Relationship="Self.FK_Ucenik_Razred" FromRole="Ucenik" ToRole="Razred" />
+          <NavigationProperty Name="Korisnik" Relationship="eDnevnikModel.FK_Ucenik_Korisnik" FromRole="Ucenik" ToRole="Korisnik" />
+          <NavigationProperty Name="Ocjena" Relationship="eDnevnikModel.FK_Ocjena_Ucenik" FromRole="Ucenik" ToRole="Ocjena" />
+          <NavigationProperty Name="OcjenaMaterijal" Relationship="eDnevnikModel.FK_OcjenaMaterijal_Ucenik" FromRole="Ucenik" ToRole="OcjenaMaterijal" />
+          <NavigationProperty Name="Prisustvo" Relationship="eDnevnikModel.FK_Izostanak_Ucenik" FromRole="Ucenik" ToRole="Prisustvo" />
+          <NavigationProperty Name="Razred" Relationship="eDnevnikModel.FK_Ucenik_Razred" FromRole="Ucenik" ToRole="Razred" />
         </EntityType>
         <Association Name="FK_Predmet_AkademskaGodina">
-          <End Role="AkademskaGodina" Type="Self.AkademskaGodina" Multiplicity="0..1" />
-          <End Role="Predmet" Type="Self.Predmet" Multiplicity="*" />
+          <End Type="eDnevnikModel.AkademskaGodina" Role="AkademskaGodina" Multiplicity="0..1" />
+          <End Type="eDnevnikModel.Predmet" Role="Predmet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AkademskaGodina">
               <PropertyRef Name="AkademskaGodinaId" />
@@ -486,8 +688,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Razred_AkademskaGodina">
-          <End Role="AkademskaGodina" Type="Self.AkademskaGodina" Multiplicity="1" />
-          <End Role="Razred" Type="Self.Razred" Multiplicity="*" />
+          <End Type="eDnevnikModel.AkademskaGodina" Role="AkademskaGodina" Multiplicity="1" />
+          <End Type="eDnevnikModel.Razred" Role="Razred" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AkademskaGodina">
               <PropertyRef Name="AkademskaGodinaId" />
@@ -498,8 +700,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cas_Nastavnik">
-          <End Role="Nastavnik" Type="Self.Nastavnik" Multiplicity="1" />
-          <End Role="Cas" Type="Self.Cas" Multiplicity="*" />
+          <End Type="eDnevnikModel.Nastavnik" Role="Nastavnik" Multiplicity="1" />
+          <End Type="eDnevnikModel.Cas" Role="Cas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Nastavnik">
               <PropertyRef Name="NastavnikId" />
@@ -510,8 +712,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cas_Predmet">
-          <End Role="Predmet" Type="Self.Predmet" Multiplicity="1" />
-          <End Role="Cas" Type="Self.Cas" Multiplicity="*" />
+          <End Type="eDnevnikModel.Predmet" Role="Predmet" Multiplicity="1" />
+          <End Type="eDnevnikModel.Cas" Role="Cas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Predmet">
               <PropertyRef Name="PredmetId" />
@@ -522,8 +724,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Izostanak_Cas">
-          <End Role="Cas" Type="Self.Cas" Multiplicity="1" />
-          <End Role="Prisustvo" Type="Self.Prisustvo" Multiplicity="*" />
+          <End Type="eDnevnikModel.Cas" Role="Cas" Multiplicity="1" />
+          <End Type="eDnevnikModel.Prisustvo" Role="Prisustvo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cas">
               <PropertyRef Name="CasId" />
@@ -534,8 +736,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ocjena_Cas">
-          <End Role="Cas" Type="Self.Cas" Multiplicity="1" />
-          <End Role="Ocjena" Type="Self.Ocjena" Multiplicity="*" />
+          <End Type="eDnevnikModel.Cas" Role="Cas" Multiplicity="1" />
+          <End Type="eDnevnikModel.Ocjena" Role="Ocjena" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cas">
               <PropertyRef Name="CasId" />
@@ -546,8 +748,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Nastavnik_Korisnik">
-          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
-          <End Role="Nastavnik" Type="Self.Nastavnik" Multiplicity="0..1" />
+          <End Type="eDnevnikModel.Korisnik" Role="Korisnik" Multiplicity="1" />
+          <End Type="eDnevnikModel.Nastavnik" Role="Nastavnik" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Korisnik">
               <PropertyRef Name="KorisnikId" />
@@ -558,8 +760,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ucenik_Korisnik">
-          <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
-          <End Role="Ucenik" Type="Self.Ucenik" Multiplicity="0..1" />
+          <End Type="eDnevnikModel.Korisnik" Role="Korisnik" Multiplicity="1" />
+          <End Type="eDnevnikModel.Ucenik" Role="Ucenik" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Korisnik">
               <PropertyRef Name="KorisnikId" />
@@ -569,9 +771,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Materijal_Predmet">
+          <End Type="eDnevnikModel.Predmet" Role="Predmet" Multiplicity="1" />
+          <End Type="eDnevnikModel.Materijal" Role="Materijal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Predmet">
+              <PropertyRef Name="PredmetId" />
+            </Principal>
+            <Dependent Role="Materijal">
+              <PropertyRef Name="PredmetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OcjenaMaterijal_Materijal">
+          <End Type="eDnevnikModel.Materijal" Role="Materijal" Multiplicity="1" />
+          <End Type="eDnevnikModel.OcjenaMaterijal" Role="OcjenaMaterijal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materijal">
+              <PropertyRef Name="MaterijalId" />
+            </Principal>
+            <Dependent Role="OcjenaMaterijal">
+              <PropertyRef Name="MaterijalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Obavijest_Nastavnik">
-          <End Role="Nastavnik" Type="Self.Nastavnik" Multiplicity="1" />
-          <End Role="Obavijest" Type="Self.Obavijest" Multiplicity="*" />
+          <End Type="eDnevnikModel.Nastavnik" Role="Nastavnik" Multiplicity="1" />
+          <End Type="eDnevnikModel.Obavijest" Role="Obavijest" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Nastavnik">
               <PropertyRef Name="NastavnikId" />
@@ -582,8 +808,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Predmet_Nastavnik">
-          <End Role="Nastavnik" Type="Self.Nastavnik" Multiplicity="0..1" />
-          <End Role="Predmet" Type="Self.Predmet" Multiplicity="*" />
+          <End Type="eDnevnikModel.Nastavnik" Role="Nastavnik" Multiplicity="0..1" />
+          <End Type="eDnevnikModel.Predmet" Role="Predmet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Nastavnik">
               <PropertyRef Name="NastavnikId" />
@@ -594,8 +820,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Obavijest_Predmet">
-          <End Role="Predmet" Type="Self.Predmet" Multiplicity="1" />
-          <End Role="Obavijest" Type="Self.Obavijest" Multiplicity="*" />
+          <End Type="eDnevnikModel.Predmet" Role="Predmet" Multiplicity="1" />
+          <End Type="eDnevnikModel.Obavijest" Role="Obavijest" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Predmet">
               <PropertyRef Name="PredmetId" />
@@ -606,8 +832,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ocjena_Ucenik">
-          <End Role="Ucenik" Type="Self.Ucenik" Multiplicity="1" />
-          <End Role="Ocjena" Type="Self.Ocjena" Multiplicity="*" />
+          <End Type="eDnevnikModel.Ucenik" Role="Ucenik" Multiplicity="1" />
+          <End Type="eDnevnikModel.Ocjena" Role="Ocjena" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ucenik">
               <PropertyRef Name="UcenikId" />
@@ -617,9 +843,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_OcjenaMaterijal_Ucenik">
+          <End Type="eDnevnikModel.Ucenik" Role="Ucenik" Multiplicity="1" />
+          <End Type="eDnevnikModel.OcjenaMaterijal" Role="OcjenaMaterijal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ucenik">
+              <PropertyRef Name="UcenikId" />
+            </Principal>
+            <Dependent Role="OcjenaMaterijal">
+              <PropertyRef Name="UcenikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Predmet_Razred">
+          <End Type="eDnevnikModel.Razred" Role="Razred" Multiplicity="0..1" />
+          <End Type="eDnevnikModel.Predmet" Role="Predmet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Razred">
+              <PropertyRef Name="RazredId" />
+            </Principal>
+            <Dependent Role="Predmet">
+              <PropertyRef Name="RazredId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Izostanak_Ucenik">
-          <End Role="Ucenik" Type="Self.Ucenik" Multiplicity="1" />
-          <End Role="Prisustvo" Type="Self.Prisustvo" Multiplicity="*" />
+          <End Type="eDnevnikModel.Ucenik" Role="Ucenik" Multiplicity="1" />
+          <End Type="eDnevnikModel.Prisustvo" Role="Prisustvo" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ucenik">
               <PropertyRef Name="UcenikId" />
@@ -630,97 +880,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ucenik_Razred">
-          <End Role="Razred" Type="Self.Razred" Multiplicity="1" />
-          <End Role="Ucenik" Type="Self.Ucenik" Multiplicity="*" />
+          <End Type="eDnevnikModel.Razred" Role="Razred" Multiplicity="1" />
+          <End Type="eDnevnikModel.Ucenik" Role="Ucenik" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Razred">
               <PropertyRef Name="RazredId" />
             </Principal>
             <Dependent Role="Ucenik">
-              <PropertyRef Name="RazredId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="eDnevnikEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AkademskaGodina" EntityType="Self.AkademskaGodina" />
-          <EntitySet Name="Cas" EntityType="Self.Cas" />
-          <EntitySet Name="Korisnik" EntityType="Self.Korisnik" />
-          <EntitySet Name="Nastavnik" EntityType="Self.Nastavnik" />
-          <EntitySet Name="Obavijest" EntityType="Self.Obavijest" />
-          <EntitySet Name="Ocjena" EntityType="Self.Ocjena" />
-          <EntitySet Name="Predmet" EntityType="Self.Predmet" />
-          <EntitySet Name="Prisustvo" EntityType="Self.Prisustvo" />
-          <EntitySet Name="Razred" EntityType="Self.Razred" />
-          <EntitySet Name="Ucenik" EntityType="Self.Ucenik" />
-          <AssociationSet Name="FK_Predmet_AkademskaGodina" Association="Self.FK_Predmet_AkademskaGodina">
-            <End Role="AkademskaGodina" EntitySet="AkademskaGodina" />
-            <End Role="Predmet" EntitySet="Predmet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Razred_AkademskaGodina" Association="Self.FK_Razred_AkademskaGodina">
-            <End Role="AkademskaGodina" EntitySet="AkademskaGodina" />
-            <End Role="Razred" EntitySet="Razred" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cas_Nastavnik" Association="Self.FK_Cas_Nastavnik">
-            <End Role="Nastavnik" EntitySet="Nastavnik" />
-            <End Role="Cas" EntitySet="Cas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cas_Predmet" Association="Self.FK_Cas_Predmet">
-            <End Role="Predmet" EntitySet="Predmet" />
-            <End Role="Cas" EntitySet="Cas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Izostanak_Cas" Association="Self.FK_Izostanak_Cas">
-            <End Role="Cas" EntitySet="Cas" />
-            <End Role="Prisustvo" EntitySet="Prisustvo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ocjena_Cas" Association="Self.FK_Ocjena_Cas">
-            <End Role="Cas" EntitySet="Cas" />
-            <End Role="Ocjena" EntitySet="Ocjena" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Nastavnik_Korisnik" Association="Self.FK_Nastavnik_Korisnik">
-            <End Role="Korisnik" EntitySet="Korisnik" />
-            <End Role="Nastavnik" EntitySet="Nastavnik" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ucenik_Korisnik" Association="Self.FK_Ucenik_Korisnik">
-            <End Role="Korisnik" EntitySet="Korisnik" />
-            <End Role="Ucenik" EntitySet="Ucenik" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Obavijest_Nastavnik" Association="Self.FK_Obavijest_Nastavnik">
-            <End Role="Nastavnik" EntitySet="Nastavnik" />
-            <End Role="Obavijest" EntitySet="Obavijest" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Predmet_Nastavnik" Association="Self.FK_Predmet_Nastavnik">
-            <End Role="Nastavnik" EntitySet="Nastavnik" />
-            <End Role="Predmet" EntitySet="Predmet" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Obavijest_Predmet" Association="Self.FK_Obavijest_Predmet">
-            <End Role="Predmet" EntitySet="Predmet" />
-            <End Role="Obavijest" EntitySet="Obavijest" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ocjena_Ucenik" Association="Self.FK_Ocjena_Ucenik">
-            <End Role="Ucenik" EntitySet="Ucenik" />
-            <End Role="Ocjena" EntitySet="Ocjena" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Izostanak_Ucenik" Association="Self.FK_Izostanak_Ucenik">
-            <End Role="Ucenik" EntitySet="Ucenik" />
-            <End Role="Prisustvo" EntitySet="Prisustvo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ucenik_Razred" Association="Self.FK_Ucenik_Razred">
-            <End Role="Razred" EntitySet="Razred" />
-            <End Role="Ucenik" EntitySet="Ucenik" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Predmet_Razred" Association="eDnevnikModel.FK_Predmet_Razred">
-            <End Role="Razred" EntitySet="Razred" />
-            <End Role="Predmet" EntitySet="Predmet" />
-          </AssociationSet>
-        </EntityContainer>
-        <Association Name="FK_Predmet_Razred">
-          <End Type="eDnevnikModel.Razred" Role="Razred" Multiplicity="0..1" />
-          <End Type="eDnevnikModel.Predmet" Role="Predmet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Razred">
-              <PropertyRef Name="RazredId" />
-            </Principal>
-            <Dependent Role="Predmet">
               <PropertyRef Name="RazredId" />
             </Dependent>
           </ReferentialConstraint>
@@ -734,60 +900,81 @@
           <EntitySetMapping Name="AkademskaGodina">
             <EntityTypeMapping TypeName="eDnevnikModel.AkademskaGodina">
               <MappingFragment StoreEntitySet="AkademskaGodina">
-                <ScalarProperty Name="AkademskaGodinaId" ColumnName="AkademskaGodinaId" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="AkademskaGodinaId" ColumnName="AkademskaGodinaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cas">
             <EntityTypeMapping TypeName="eDnevnikModel.Cas">
               <MappingFragment StoreEntitySet="Cas">
-                <ScalarProperty Name="CasId" ColumnName="CasId" />
-                <ScalarProperty Name="Datum" ColumnName="Datum" />
-                <ScalarProperty Name="NastavnikId" ColumnName="NastavnikId" />
-                <ScalarProperty Name="PredmetId" ColumnName="PredmetId" />
                 <ScalarProperty Name="BrojSati" ColumnName="BrojSati" />
+                <ScalarProperty Name="PredmetId" ColumnName="PredmetId" />
+                <ScalarProperty Name="NastavnikId" ColumnName="NastavnikId" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="CasId" ColumnName="CasId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Korisnik">
             <EntityTypeMapping TypeName="eDnevnikModel.Korisnik">
               <MappingFragment StoreEntitySet="Korisnik">
-                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
-                <ScalarProperty Name="Ime" ColumnName="Ime" />
-                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materijal">
+            <EntityTypeMapping TypeName="eDnevnikModel.Materijal">
+              <MappingFragment StoreEntitySet="Materijal">
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="PredmetId" ColumnName="PredmetId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="MaterijalId" ColumnName="MaterijalId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Nastavnik">
             <EntityTypeMapping TypeName="eDnevnikModel.Nastavnik">
               <MappingFragment StoreEntitySet="Nastavnik">
-                <ScalarProperty Name="NastavnikId" ColumnName="NastavnikId" />
                 <ScalarProperty Name="Titula" ColumnName="Titula" />
+                <ScalarProperty Name="NastavnikId" ColumnName="NastavnikId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Obavijest">
             <EntityTypeMapping TypeName="eDnevnikModel.Obavijest">
               <MappingFragment StoreEntitySet="Obavijest">
-                <ScalarProperty Name="ObavijestId" ColumnName="ObavijestId" />
-                <ScalarProperty Name="Naslov" ColumnName="Naslov" />
-                <ScalarProperty Name="Sadrzaj" ColumnName="Sadrzaj" />
-                <ScalarProperty Name="NastavnikId" ColumnName="NastavnikId" />
-                <ScalarProperty Name="PredmetId" ColumnName="PredmetId" />
                 <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="PredmetId" ColumnName="PredmetId" />
+                <ScalarProperty Name="NastavnikId" ColumnName="NastavnikId" />
+                <ScalarProperty Name="Sadrzaj" ColumnName="Sadrzaj" />
+                <ScalarProperty Name="Naslov" ColumnName="Naslov" />
+                <ScalarProperty Name="ObavijestId" ColumnName="ObavijestId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ocjena">
             <EntityTypeMapping TypeName="eDnevnikModel.Ocjena">
               <MappingFragment StoreEntitySet="Ocjena">
-                <ScalarProperty Name="OcjenaId" ColumnName="OcjenaId" />
-                <ScalarProperty Name="OcjenaVrijednost" ColumnName="OcjenaVrijednost" />
-                <ScalarProperty Name="UcenikId" ColumnName="UcenikId" />
                 <ScalarProperty Name="CasId" ColumnName="CasId" />
+                <ScalarProperty Name="UcenikId" ColumnName="UcenikId" />
+                <ScalarProperty Name="OcjenaVrijednost" ColumnName="OcjenaVrijednost" />
+                <ScalarProperty Name="OcjenaId" ColumnName="OcjenaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OcjenaMaterijal">
+            <EntityTypeMapping TypeName="eDnevnikModel.OcjenaMaterijal">
+              <MappingFragment StoreEntitySet="OcjenaMaterijal">
+                <ScalarProperty Name="UcenikId" ColumnName="UcenikId" />
+                <ScalarProperty Name="MaterijalId" ColumnName="MaterijalId" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="OcjenaVrijednost" ColumnName="OcjenaVrijednost" />
+                <ScalarProperty Name="OcjenaMaterijalId" ColumnName="OcjenaMaterijalId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -795,10 +982,10 @@
             <EntityTypeMapping TypeName="eDnevnikModel.Predmet">
               <MappingFragment StoreEntitySet="Predmet">
                 <ScalarProperty Name="RazredId" ColumnName="RazredId" />
-                <ScalarProperty Name="PredmetId" ColumnName="PredmetId" />
-                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
-                <ScalarProperty Name="AkademskaGodinaId" ColumnName="AkademskaGodinaId" />
                 <ScalarProperty Name="NastavnikId" ColumnName="NastavnikId" />
+                <ScalarProperty Name="AkademskaGodinaId" ColumnName="AkademskaGodinaId" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="PredmetId" ColumnName="PredmetId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -806,29 +993,40 @@
             <EntityTypeMapping TypeName="eDnevnikModel.Prisustvo">
               <MappingFragment StoreEntitySet="Prisustvo">
                 <ScalarProperty Name="Opravdano" ColumnName="Opravdano" />
-                <ScalarProperty Name="PrisustvoId" ColumnName="PrisustvoId" />
-                <ScalarProperty Name="UcenikId" ColumnName="UcenikId" />
-                <ScalarProperty Name="CasId" ColumnName="CasId" />
-                <ScalarProperty Name="BrojSati" ColumnName="BrojSati" />
                 <ScalarProperty Name="Prisutan" ColumnName="Prisutan" />
+                <ScalarProperty Name="BrojSati" ColumnName="BrojSati" />
+                <ScalarProperty Name="CasId" ColumnName="CasId" />
+                <ScalarProperty Name="UcenikId" ColumnName="UcenikId" />
+                <ScalarProperty Name="PrisustvoId" ColumnName="PrisustvoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Razred">
             <EntityTypeMapping TypeName="eDnevnikModel.Razred">
               <MappingFragment StoreEntitySet="Razred">
-                <ScalarProperty Name="RazredId" ColumnName="RazredId" />
-                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
-                <ScalarProperty Name="Odjeljenje" ColumnName="Odjeljenje" />
                 <ScalarProperty Name="AkademskaGodinaId" ColumnName="AkademskaGodinaId" />
+                <ScalarProperty Name="Odjeljenje" ColumnName="Odjeljenje" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="RazredId" ColumnName="RazredId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="eDnevnikModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ucenik">
             <EntityTypeMapping TypeName="eDnevnikModel.Ucenik">
               <MappingFragment StoreEntitySet="Ucenik">
-                <ScalarProperty Name="UcenikId" ColumnName="UcenikId" />
                 <ScalarProperty Name="RazredId" ColumnName="RazredId" />
+                <ScalarProperty Name="UcenikId" ColumnName="UcenikId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
