@@ -21,6 +21,8 @@ namespace eDnevnik.UI
         public DodajObavijestForm()
         {
             InitializeComponent();
+            this.AutoValidate = AutoValidate.Disable;
+
             HttpResponseMessage response = _predmetiService.GetResponse();
             if (response.IsSuccessStatusCode)
             {
@@ -43,7 +45,7 @@ namespace eDnevnik.UI
 
             obavijestId.Text = obavijest.ObavijestId.ToString();
             predmetiInput.SelectedValue = obavijest.PredmetId;
-            datumObavijestiInput.Text = obavijest.Datum;
+            datumObavijestiInput.Text =  obavijest.Datum;
             naslovObavijestiInput.Text = obavijest.Naslov;
             sadrzajObavijestiInput.Text = obavijest.Sadrzaj;
         }
@@ -54,36 +56,58 @@ namespace eDnevnik.UI
 
         private void dodajObavijestButton_Click(object sender, EventArgs e)
         {
-            Obavijest obavijest = new Obavijest
+            if (this.ValidateChildren())
             {
-                ObavijestId = Convert.ToInt32(obavijestId.Text),
-                Datum = datumObavijestiInput.Text,
-                Naslov = naslovObavijestiInput.Text,
-                Sadrzaj = sadrzajObavijestiInput.Text,
-                NastavnikId = Global.TrenutniKorisnik.KorisnikId,
-                PredmetId = Convert.ToInt32(predmetiInput.SelectedValue)
-            };
-            if (obavijestId.Text != null)
-            {
-                HttpResponseMessage response = _obavijestiService.PutResponse(obavijest.ObavijestId, obavijest);
-                if (response.IsSuccessStatusCode)
+                Obavijest obavijest = new Obavijest
                 {
-                    MessageBox.Show("Obavijest uspješno izmijenjena");
-                }
-            }
-            else
-            {
-                HttpResponseMessage response = _obavijestiService.PostResponse(obavijest);
-                if (response.IsSuccessStatusCode)
+                    Datum = datumObavijestiInput.Text,
+                    Naslov = naslovObavijestiInput.Text,
+                    Sadrzaj = sadrzajObavijestiInput.Text,
+                    NastavnikId = Global.TrenutniKorisnik.KorisnikId,
+                    PredmetId = Convert.ToInt32(predmetiInput.SelectedValue)
+                };
+                if (obavijestId.Text != "")
                 {
-                    MessageBox.Show("Obavijest uspješno dodana");
-
+                    obavijest.ObavijestId = Convert.ToInt32(obavijestId.Text);
+                    HttpResponseMessage response = _obavijestiService.PutResponse(obavijest.ObavijestId, obavijest);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Obavijest uspješno izmijenjena");
+                    }
                 }
-            }
+                else
+                {
+                    HttpResponseMessage response = _obavijestiService.PostResponse(obavijest);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Obavijest uspješno dodana");
 
-            Close();
-            Form frm = new PrikaziObavijestiForm();
-            frm.Show();
+                    }
+                }
+
+                Close();
+                Form frm = new PrikaziObavijestiForm();
+                frm.Show();
+            }
+            
+        }
+
+        private void naslovObavijestiInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(naslovObavijestiInput.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(naslovObavijestiInput, "Molimo unesite naslov");
+            }
+        }
+
+        private void sadrzajObavijestiInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(sadrzajObavijestiInput.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(sadrzajObavijestiInput, "Molimo unesite sadrzaj");
+            }
         }
     }
 }

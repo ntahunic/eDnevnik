@@ -32,7 +32,7 @@ namespace eDnevnik.UI.Util
         //api/Nastavnici/{username}
         public HttpResponseMessage GetResponse(string parametar)
         {
-            return client.GetAsync(route +"/"+ parametar).Result;
+            return client.GetAsync(route + "/" + parametar).Result;
         }
         public HttpResponseMessage GetActionResponse(string action, string parameter = "")
         {
@@ -51,6 +51,15 @@ namespace eDnevnik.UI.Util
         public HttpResponseMessage PutResponse(int id, Object existingObject)
         {
             return client.PutAsJsonAsync(route + "/" + id, existingObject).Result;
+        }
+        public HttpResponseMessage DeleteResponse(int id)
+        {
+            return client.DeleteAsync($"{route}/{id}").Result;
+        }
+
+        public HttpResponseMessage DeleteActionResponse(string action, int id)
+        {
+            return client.DeleteAsync($"{route}/{action}/{id}").Result;
         }
     }
 }

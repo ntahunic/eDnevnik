@@ -43,7 +43,8 @@ namespace eDnevnik.API.Controllers
                 Ime = x.Korisnik.Ime,
                 Prezime = x.Korisnik.Prezime,
                 Username = x.Korisnik.Username,
-                Password = x.Korisnik.Password
+                Password = x.Korisnik.Password,
+                isAdmin = x.Korisnik.IsAdmin
             }).Single();
             if (nastavnik == null)
             {
@@ -64,7 +65,8 @@ namespace eDnevnik.API.Controllers
                 NastavnikId = y.NastavnikId,
                 Password = y.Korisnik.Password,
                 Username = y.Korisnik.Username,
-                Titula = y.Titula
+                Titula = y.Titula,
+                isAdmin= y.Korisnik.IsAdmin
             }).FirstOrDefault();
             if (n == null)
                 return NotFound();
@@ -140,7 +142,7 @@ namespace eDnevnik.API.Controllers
         [ResponseType(typeof(Nastavnik))]
         public IHttpActionResult DeleteNastavnik(int id)
         {
-            Nastavnik nastavnik = db.Nastavnik.Find(id);
+            Nastavnik nastavnik = db.Nastavnik.Where(x => x.NastavnikId == id).FirstOrDefault();
             if (nastavnik == null)
             {
                 return NotFound();

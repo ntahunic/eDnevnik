@@ -14,6 +14,7 @@ namespace eDnevnik.API.Models
         public string ImePrezime { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public bool isAdmin { get; set; }
         //public Korisnik Korisnik { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace eDnevnik.UI
 
         private void obavijestUrediButton_Click(object sender, EventArgs e)
         {
-            int obavijestId = (int)obavijestiGridView.CurrentRow.Cells[0].Value;
+            int obavijestId = (int)obavijestiGridView.CurrentRow.Cells["obavijestId"].Value;
 
             HttpResponseMessage response = _obavijestiService.GetResponse(obavijestId.ToString());
             ObavijestVM obavijest = response.Content.ReadAsAsync<ObavijestVM>().Result;

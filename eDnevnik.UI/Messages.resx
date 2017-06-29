@@ -117,7 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="errorProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="brojSati_len" xml:space="preserve">
+    <value>Broj sati moze biti izmedju 1 i 5.</value>
+  </data>
+  <data name="fname_req" xml:space="preserve">
+    <value>Ime je obavezno.</value>
+  </data>
+  <data name="lname_req" xml:space="preserve">
+    <value>Prezime je obavezno.</value>
+  </data>
+  <data name="password_len" xml:space="preserve">
+    <value>Lozinka mora biti minimalno 4 znaka.</value>
+  </data>
+  <data name="password_match" xml:space="preserve">
+    <value>Lozinke se moraju poklapati.</value>
+  </data>
+  <data name="username_len" xml:space="preserve">
+    <value>Korisničko ime mora biti minimalno 3 znaka.</value>
+  </data>
 </root>

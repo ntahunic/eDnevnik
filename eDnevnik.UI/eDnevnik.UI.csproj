@@ -33,6 +33,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.340.80\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -66,6 +84,12 @@
     <Compile Include="DodajIzostanakForm.Designer.cs">
       <DependentUpon>DodajIzostanakForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DodajNastavnikaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajNastavnikaForm.Designer.cs">
+      <DependentUpon>DodajNastavnikaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DodajObavijestForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +101,24 @@
     </Compile>
     <Compile Include="DodajOcjenuForm.Designer.cs">
       <DependentUpon>DodajOcjenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodajPredmetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajPredmetForm.Designer.cs">
+      <DependentUpon>DodajPredmetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodajRazredForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajRazredForm.Designer.cs">
+      <DependentUpon>DodajRazredForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodajUcenikaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajUcenikaForm.Designer.cs">
+      <DependentUpon>DodajUcenikaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="IzmijeniOcjenuForm.cs">
@@ -96,6 +138,23 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="NoviUcenikForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoviUcenikForm.Designer.cs">
+      <DependentUpon>NoviUcenikForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OcjeneIzPredmetaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OcjeneIzPredmetaForm.Designer.cs">
+      <DependentUpon>OcjeneIzPredmetaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PrikaziObavijestiForm.cs">
       <SubType>Form</SubType>
@@ -117,12 +176,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\ReportViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewForm.Designer.cs">
+      <DependentUpon>ReportViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UrediOcjenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UrediOcjenuForm.Designer.cs">
       <DependentUpon>UrediOcjenuForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util\UIHelper.cs" />
     <Compile Include="Util\WebAPIHelper.cs" />
     <EmbeddedResource Include="DodajCasForm.resx">
       <DependentUpon>DodajCasForm.cs</DependentUpon>
@@ -130,11 +197,23 @@
     <EmbeddedResource Include="DodajIzostanakForm.resx">
       <DependentUpon>DodajIzostanakForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DodajNastavnikaForm.resx">
+      <DependentUpon>DodajNastavnikaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DodajObavijestForm.resx">
       <DependentUpon>DodajObavijestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DodajOcjenuForm.resx">
       <DependentUpon>DodajOcjenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodajPredmetForm.resx">
+      <DependentUpon>DodajPredmetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodajRazredForm.resx">
+      <DependentUpon>DodajRazredForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodajUcenikaForm.resx">
+      <DependentUpon>DodajUcenikaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IzmijeniOcjenuForm.resx">
       <DependentUpon>IzmijeniOcjenuForm.cs</DependentUpon>
@@ -144,6 +223,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NoviUcenikForm.resx">
+      <DependentUpon>NoviUcenikForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OcjeneIzPredmetaForm.resx">
+      <DependentUpon>OcjeneIzPredmetaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrikaziObavijestiForm.resx">
       <DependentUpon>PrikaziObavijestiForm.cs</DependentUpon>
@@ -163,10 +252,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\OcjenePoPredmetuReport.rdlc" />
+    <EmbeddedResource Include="Reports\ReportViewForm.resx">
+      <DependentUpon>ReportViewForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UrediOcjenuForm.resx">
       <DependentUpon>UrediOcjenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\eDnevnik.API.Models.OcjenaVM.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -185,6 +279,21 @@
       <Project>{10bb2be8-a5a7-4bda-96a1-02f511b9c551}</Project>
       <Name>eDnevnik.API</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.uceniciGridView = new System.Windows.Forms.DataGridView();
-            this.PrisustvoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UcenikId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Razred = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prisutan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dodajIzostanakButton = new System.Windows.Forms.Button();
             this.predmetReadOnly = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,6 +37,17 @@
             this.casIdTest = new System.Windows.Forms.TextBox();
             this.brojSatiReadOnly = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.PrisustvoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojSati = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Opravdano = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Predmet = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UcenikId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Razred = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prisutan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.uceniciGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,6 +57,11 @@
             this.uceniciGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.uceniciGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PrisustvoId,
+            this.BrojSati,
+            this.Opravdano,
+            this.Datum,
+            this.Predmet,
+            this.ImePrezime,
             this.UcenikId,
             this.Ime,
             this.Prezime,
@@ -62,51 +72,6 @@
             this.uceniciGridView.Name = "uceniciGridView";
             this.uceniciGridView.Size = new System.Drawing.Size(495, 338);
             this.uceniciGridView.TabIndex = 0;
-            // 
-            // PrisustvoId
-            // 
-            this.PrisustvoId.DataPropertyName = "PrisustvoId";
-            this.PrisustvoId.HeaderText = "PrisustvoId";
-            this.PrisustvoId.Name = "PrisustvoId";
-            this.PrisustvoId.ReadOnly = true;
-            this.PrisustvoId.Visible = false;
-            // 
-            // UcenikId
-            // 
-            this.UcenikId.DataPropertyName = "UcenikId";
-            this.UcenikId.HeaderText = "UcenikId";
-            this.UcenikId.Name = "UcenikId";
-            this.UcenikId.ReadOnly = true;
-            this.UcenikId.Visible = false;
-            // 
-            // Ime
-            // 
-            this.Ime.DataPropertyName = "Ime";
-            this.Ime.HeaderText = "Ime";
-            this.Ime.Name = "Ime";
-            this.Ime.ReadOnly = true;
-            // 
-            // Prezime
-            // 
-            this.Prezime.DataPropertyName = "Prezime";
-            this.Prezime.HeaderText = "Prezime";
-            this.Prezime.Name = "Prezime";
-            this.Prezime.ReadOnly = true;
-            // 
-            // Razred
-            // 
-            this.Razred.DataPropertyName = "Razred";
-            this.Razred.HeaderText = "Razred";
-            this.Razred.Name = "Razred";
-            this.Razred.ReadOnly = true;
-            // 
-            // Prisutan
-            // 
-            this.Prisutan.DataPropertyName = "Prisutan";
-            this.Prisutan.HeaderText = "Prisutan";
-            this.Prisutan.Name = "Prisutan";
-            this.Prisutan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Prisutan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // dodajIzostanakButton
             // 
@@ -178,6 +143,90 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Broj sati";
             // 
+            // PrisustvoId
+            // 
+            this.PrisustvoId.DataPropertyName = "PrisustvoId";
+            this.PrisustvoId.HeaderText = "PrisustvoId";
+            this.PrisustvoId.Name = "PrisustvoId";
+            this.PrisustvoId.ReadOnly = true;
+            this.PrisustvoId.Visible = false;
+            // 
+            // BrojSati
+            // 
+            this.BrojSati.DataPropertyName = "BrojSati";
+            this.BrojSati.HeaderText = "BrojSati";
+            this.BrojSati.Name = "BrojSati";
+            this.BrojSati.ReadOnly = true;
+            this.BrojSati.Visible = false;
+            // 
+            // Opravdano
+            // 
+            this.Opravdano.DataPropertyName = "Opravdano";
+            this.Opravdano.HeaderText = "Opravdano";
+            this.Opravdano.Name = "Opravdano";
+            this.Opravdano.ReadOnly = true;
+            this.Opravdano.Visible = false;
+            // 
+            // Datum
+            // 
+            this.Datum.DataPropertyName = "Datum";
+            this.Datum.HeaderText = "Datum";
+            this.Datum.Name = "Datum";
+            this.Datum.Visible = false;
+            // 
+            // Predmet
+            // 
+            this.Predmet.DataPropertyName = "Predmet";
+            this.Predmet.HeaderText = "Predmet";
+            this.Predmet.Name = "Predmet";
+            this.Predmet.ReadOnly = true;
+            this.Predmet.Visible = false;
+            // 
+            // ImePrezime
+            // 
+            this.ImePrezime.DataPropertyName = "ImePrezime";
+            this.ImePrezime.HeaderText = "ImePrezime";
+            this.ImePrezime.Name = "ImePrezime";
+            this.ImePrezime.ReadOnly = true;
+            this.ImePrezime.Visible = false;
+            // 
+            // UcenikId
+            // 
+            this.UcenikId.DataPropertyName = "UcenikId";
+            this.UcenikId.HeaderText = "UcenikId";
+            this.UcenikId.Name = "UcenikId";
+            this.UcenikId.ReadOnly = true;
+            this.UcenikId.Visible = false;
+            // 
+            // Ime
+            // 
+            this.Ime.DataPropertyName = "Ime";
+            this.Ime.HeaderText = "Ime";
+            this.Ime.Name = "Ime";
+            this.Ime.ReadOnly = true;
+            // 
+            // Prezime
+            // 
+            this.Prezime.DataPropertyName = "Prezime";
+            this.Prezime.HeaderText = "Prezime";
+            this.Prezime.Name = "Prezime";
+            this.Prezime.ReadOnly = true;
+            // 
+            // Razred
+            // 
+            this.Razred.DataPropertyName = "Razred";
+            this.Razred.HeaderText = "Razred";
+            this.Razred.Name = "Razred";
+            this.Razred.ReadOnly = true;
+            // 
+            // Prisutan
+            // 
+            this.Prisutan.DataPropertyName = "Prisutan";
+            this.Prisutan.HeaderText = "Prisutan";
+            this.Prisutan.Name = "Prisutan";
+            this.Prisutan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Prisutan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // DodajIzostanakForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -214,6 +263,11 @@
         private System.Windows.Forms.TextBox brojSatiReadOnly;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrisustvoId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrojSati;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Opravdano;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Datum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Predmet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImePrezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn UcenikId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;

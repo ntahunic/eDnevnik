@@ -28,21 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.casoviGridView = new System.Windows.Forms.DataGridView();
             this.CasId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nastavnik = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Predmet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrojSati = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Opravdano = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.predmetiInput = new System.Windows.Forms.ComboBox();
-            this.brojSatiInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.datumCasaInput = new System.Windows.Forms.DateTimePicker();
             this.dodajIzostanakButton = new System.Windows.Forms.Button();
             this.dodajCasButton = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.brojSatiInput = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.casoviGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // casoviGridView
@@ -53,7 +58,9 @@
             this.Datum,
             this.Nastavnik,
             this.Predmet,
-            this.BrojSati});
+            this.BrojSati,
+            this.ImePrezime,
+            this.Opravdano});
             this.casoviGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.casoviGridView.Location = new System.Drawing.Point(0, 162);
             this.casoviGridView.Name = "casoviGridView";
@@ -98,6 +105,21 @@
             this.BrojSati.Name = "BrojSati";
             this.BrojSati.ReadOnly = true;
             // 
+            // ImePrezime
+            // 
+            this.ImePrezime.DataPropertyName = "ImePrezime";
+            this.ImePrezime.HeaderText = "ImePrezime";
+            this.ImePrezime.Name = "ImePrezime";
+            this.ImePrezime.ReadOnly = true;
+            this.ImePrezime.Visible = false;
+            // 
+            // Opravdano
+            // 
+            this.Opravdano.HeaderText = "Opravdano";
+            this.Opravdano.Name = "Opravdano";
+            this.Opravdano.ReadOnly = true;
+            this.Opravdano.Visible = false;
+            // 
             // predmetiInput
             // 
             this.predmetiInput.FormattingEnabled = true;
@@ -105,13 +127,6 @@
             this.predmetiInput.Name = "predmetiInput";
             this.predmetiInput.Size = new System.Drawing.Size(200, 21);
             this.predmetiInput.TabIndex = 2;
-            // 
-            // brojSatiInput
-            // 
-            this.brojSatiInput.Location = new System.Drawing.Point(81, 66);
-            this.brojSatiInput.Name = "brojSatiInput";
-            this.brojSatiInput.Size = new System.Drawing.Size(200, 20);
-            this.brojSatiInput.TabIndex = 4;
             // 
             // label1
             // 
@@ -168,18 +183,30 @@
             this.dodajCasButton.UseVisualStyleBackColor = true;
             this.dodajCasButton.Click += new System.EventHandler(this.dodajCasButton_Click);
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // brojSatiInput
+            // 
+            this.brojSatiInput.Location = new System.Drawing.Point(81, 66);
+            this.brojSatiInput.Name = "brojSatiInput";
+            this.brojSatiInput.Size = new System.Drawing.Size(200, 20);
+            this.brojSatiInput.TabIndex = 12;
+            this.brojSatiInput.Validating += new System.ComponentModel.CancelEventHandler(this.brojSatiInput_Validating_2);
+            // 
             // DodajCasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 434);
+            this.Controls.Add(this.brojSatiInput);
             this.Controls.Add(this.dodajCasButton);
             this.Controls.Add(this.dodajIzostanakButton);
             this.Controls.Add(this.datumCasaInput);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.brojSatiInput);
             this.Controls.Add(this.predmetiInput);
             this.Controls.Add(this.casoviGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -191,6 +218,7 @@
             this.Text = "Dodaj čas";
             this.Load += new System.EventHandler(this.DodajCasForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.casoviGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,7 +227,6 @@
         #endregion
         private System.Windows.Forms.DataGridView casoviGridView;
         private System.Windows.Forms.ComboBox predmetiInput;
-        private System.Windows.Forms.TextBox brojSatiInput;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -211,6 +238,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nastavnik;
         private System.Windows.Forms.DataGridViewTextBoxColumn Predmet;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrojSati;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImePrezime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Opravdano;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.TextBox brojSatiInput;
     }
 }
 

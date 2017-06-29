@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ocjenaLabel = new System.Windows.Forms.Label();
             this.ocjenaInput = new System.Windows.Forms.TextBox();
             this.casoviGridView = new System.Windows.Forms.DataGridView();
@@ -41,7 +42,9 @@
             this.preuzmiUcenikeButton = new System.Windows.Forms.Button();
             this.sacuvajOcjenuButton = new System.Windows.Forms.Button();
             this.ocjenaIdText = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.casoviGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // ocjenaLabel
@@ -59,6 +62,7 @@
             this.ocjenaInput.Name = "ocjenaInput";
             this.ocjenaInput.Size = new System.Drawing.Size(200, 20);
             this.ocjenaInput.TabIndex = 10;
+            this.ocjenaInput.Validating += new System.ComponentModel.CancelEventHandler(this.ocjenaInput_Validating);
             // 
             // casoviGridView
             // 
@@ -119,6 +123,7 @@
             this.ucenikInput.Name = "ucenikInput";
             this.ucenikInput.Size = new System.Drawing.Size(200, 21);
             this.ucenikInput.TabIndex = 16;
+            this.ucenikInput.Validating += new System.ComponentModel.CancelEventHandler(this.ucenikInput_Validating);
             // 
             // ucenikLabel
             // 
@@ -157,6 +162,10 @@
             this.ocjenaIdText.TabIndex = 20;
             this.ocjenaIdText.Visible = false;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // DodajOcjenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,6 +186,7 @@
             this.Text = "DodajOcjenuForm";
             this.Load += new System.EventHandler(this.DodajOcjenuForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.casoviGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,5 +206,6 @@
         private System.Windows.Forms.Button preuzmiUcenikeButton;
         private System.Windows.Forms.Button sacuvajOcjenuButton;
         private System.Windows.Forms.TextBox ocjenaIdText;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

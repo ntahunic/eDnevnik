@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -23,7 +24,8 @@ namespace eDnevnik.UI
 
         public DodajOcjenuForm()
         {
-            InitializeComponent();                    
+            InitializeComponent();
+            this.AutoValidate = AutoValidate.Disable;
         }
         
         private void DodajOcjenuForm_Load(object sender, EventArgs e)
@@ -53,25 +55,49 @@ namespace eDnevnik.UI
 
         private void sacuvajOcjenuButton_Click(object sender, EventArgs e)
         {
-            int casId = (int)casoviGridView.CurrentRow.Cells[0].Value;
-            int ucenikId = (int) ucenikInput.SelectedValue;
-            int ocjenaV = Convert.ToInt32(ocjenaInput.Text);
-
-            Ocjena ocjena = new Ocjena
+            if (this.ValidateChildren())
             {
-                CasId = casId,
-                UcenikId = ucenikId,
-                OcjenaVrijednost = ocjenaV
-            };
+                int casId = (int)casoviGridView.CurrentRow.Cells[0].Value;
+                int ucenikId = (int)ucenikInput.SelectedValue;
+                int ocjenaV = Convert.ToInt32(ocjenaInput.Text);
 
-            HttpResponseMessage response = _ocjeneService.PostResponse(ocjena);
-            if (response.IsSuccessStatusCode)
-            {
-                MessageBox.Show("Ocjena uspješno dodana");
-                Close();
+                Ocjena ocjena = new Ocjena
+                {
+                    CasId = casId,
+                    UcenikId = ucenikId,
+                    OcjenaVrijednost = ocjenaV
+                };
+
+                HttpResponseMessage response = _ocjeneService.PostResponse(ocjena);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Ocjena uspješno dodana");
+                    Close();
+                }
             }
+            
 
 
+        }
+
+        private void ucenikInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(ucenikInput.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(ucenikInput, Messages.lname_req);
+            }
+        }
+
+        private void ocjenaInput_Validating(object sender, CancelEventArgs e)
+        {
+            Regex regex = new Regex(@"^\d$");
+
+            if (!regex.IsMatch(ocjenaInput.Text) || String.IsNullOrEmpty(ocjenaInput.Text) || Convert.ToInt32(ocjenaInput.Text)<1 || Convert.ToInt32(ocjenaInput.Text) >5)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(ocjenaInput, Messages.brojSati_len);
+            }
         }
     }
 }

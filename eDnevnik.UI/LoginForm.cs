@@ -24,11 +24,11 @@ namespace eDnevnik.UI
 
         private void PrijavaButton_Click(object sender, EventArgs e)
         {
-            HttpResponseMessage response = nastavniciService.GetResponse(KorisnickoImeInput.Text);
+            HttpResponseMessage response = nastavniciService.GetActionResponse("getByUsername", KorisnickoImeInput.Text);
             if (response.IsSuccessStatusCode)
             {
                 NastavnikVM n = response.Content.ReadAsAsync<NastavnikVM>().Result;
-                if (n.Password == LozinkaInput.Text)
+                if (LozinkaInput.Text == n.Password)//UIHelper.VerifyMd5Hash(LozinkaInput.Text, n.Password))
                 {
                     DialogResult = DialogResult.OK;
                     Global.TrenutniKorisnik = new Korisnik
@@ -37,8 +37,10 @@ namespace eDnevnik.UI
                         Prezime = n.Prezime,
                         KorisnikId = n.NastavnikId,
                         Password = n.Password,
-                        Username = n.Username
-                    };
+                        Username = n.Username,
+                        IsAdmin = n.isAdmin
+                    };                   
+
                 }
                 else
                 {
@@ -47,7 +49,7 @@ namespace eDnevnik.UI
             }
             else
             {
-                    MessageBox.Show("Podaci nisu validni");
+                MessageBox.Show("Podaci nisu validni");
             }
         }
     }

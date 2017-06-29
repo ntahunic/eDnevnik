@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.predmetiInput = new System.Windows.Forms.ComboBox();
             this.datumObavijestiInput = new System.Windows.Forms.DateTimePicker();
@@ -38,6 +39,8 @@
             this.naslovObavijestiInput = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.obavijestId = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -80,6 +83,7 @@
             this.sadrzajObavijestiInput.Size = new System.Drawing.Size(313, 134);
             this.sadrzajObavijestiInput.TabIndex = 11;
             this.sadrzajObavijestiInput.Text = "";
+            this.sadrzajObavijestiInput.Validating += new System.ComponentModel.CancelEventHandler(this.sadrzajObavijestiInput_Validating);
             // 
             // label3
             // 
@@ -106,6 +110,7 @@
             this.naslovObavijestiInput.Name = "naslovObavijestiInput";
             this.naslovObavijestiInput.Size = new System.Drawing.Size(200, 20);
             this.naslovObavijestiInput.TabIndex = 14;
+            this.naslovObavijestiInput.Validating += new System.ComponentModel.CancelEventHandler(this.naslovObavijestiInput_Validating);
             // 
             // label4
             // 
@@ -123,6 +128,10 @@
             this.obavijestId.Size = new System.Drawing.Size(100, 20);
             this.obavijestId.TabIndex = 16;
             this.obavijestId.Visible = false;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // DodajObavijestForm
             // 
@@ -146,6 +155,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj obavijest";
             this.Load += new System.EventHandler(this.DodajObavijestForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,5 +173,6 @@
         private System.Windows.Forms.TextBox naslovObavijestiInput;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox obavijestId;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
