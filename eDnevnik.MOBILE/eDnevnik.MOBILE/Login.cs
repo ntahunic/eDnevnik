@@ -52,7 +52,7 @@ namespace eDnevnik.MOBILE
                 var jsonResult = response.Content.ReadAsStringAsync();
                 UcenikVM n = JsonConvert.DeserializeObject<UcenikVM>(jsonResult.Result);
 
-                if (n.Password ==  lozinkaInput.Text)
+                if (Cryptography.VerifyPassword(n.Password, lozinkaInput.Text))
                 {
                     this.Navigation.PushModalAsync(new Navigation.MyPage());
                     

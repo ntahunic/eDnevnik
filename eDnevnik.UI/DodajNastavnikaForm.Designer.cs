@@ -54,23 +54,26 @@
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsAdmin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nastavniciGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // nastavnikIdText
             // 
-            this.nastavnikIdText.Location = new System.Drawing.Point(109, 4);
+            this.nastavnikIdText.Location = new System.Drawing.Point(145, 5);
+            this.nastavnikIdText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nastavnikIdText.Name = "nastavnikIdText";
-            this.nastavnikIdText.Size = new System.Drawing.Size(100, 20);
+            this.nastavnikIdText.Size = new System.Drawing.Size(132, 22);
             this.nastavnikIdText.TabIndex = 31;
             this.nastavnikIdText.Visible = false;
             // 
             // izmijeniNastavnikaButton
             // 
-            this.izmijeniNastavnikaButton.Location = new System.Drawing.Point(369, 240);
+            this.izmijeniNastavnikaButton.Location = new System.Drawing.Point(492, 295);
+            this.izmijeniNastavnikaButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.izmijeniNastavnikaButton.Name = "izmijeniNastavnikaButton";
-            this.izmijeniNastavnikaButton.Size = new System.Drawing.Size(75, 23);
+            this.izmijeniNastavnikaButton.Size = new System.Drawing.Size(100, 28);
             this.izmijeniNastavnikaButton.TabIndex = 30;
             this.izmijeniNastavnikaButton.Text = "Izmijeni";
             this.izmijeniNastavnikaButton.UseVisualStyleBackColor = true;
@@ -78,9 +81,10 @@
             // 
             // dodajNastavnikaButton
             // 
-            this.dodajNastavnikaButton.Location = new System.Drawing.Point(232, 192);
+            this.dodajNastavnikaButton.Location = new System.Drawing.Point(309, 236);
+            this.dodajNastavnikaButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dodajNastavnikaButton.Name = "dodajNastavnikaButton";
-            this.dodajNastavnikaButton.Size = new System.Drawing.Size(75, 23);
+            this.dodajNastavnikaButton.Size = new System.Drawing.Size(100, 28);
             this.dodajNastavnikaButton.TabIndex = 29;
             this.dodajNastavnikaButton.Text = "Sačuvaj";
             this.dodajNastavnikaButton.UseVisualStyleBackColor = true;
@@ -89,104 +93,116 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 169);
+            this.label6.Location = new System.Drawing.Point(16, 208);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 13);
+            this.label6.Size = new System.Drawing.Size(118, 17);
             this.label6.TabIndex = 28;
             this.label6.Text = "Lozinka - potvrda";
             // 
             // lozinkaPotvrdaInput
             // 
-            this.lozinkaPotvrdaInput.Location = new System.Drawing.Point(109, 166);
+            this.lozinkaPotvrdaInput.Location = new System.Drawing.Point(145, 204);
+            this.lozinkaPotvrdaInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lozinkaPotvrdaInput.Name = "lozinkaPotvrdaInput";
             this.lozinkaPotvrdaInput.PasswordChar = '*';
-            this.lozinkaPotvrdaInput.Size = new System.Drawing.Size(198, 20);
+            this.lozinkaPotvrdaInput.Size = new System.Drawing.Size(263, 22);
             this.lozinkaPotvrdaInput.TabIndex = 27;
             this.lozinkaPotvrdaInput.Validating += new System.ComponentModel.CancelEventHandler(this.lozinkaPotvrdaInput_Validating);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 140);
+            this.label5.Location = new System.Drawing.Point(16, 172);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
+            this.label5.Size = new System.Drawing.Size(57, 17);
             this.label5.TabIndex = 26;
             this.label5.Text = "Lozinka";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 114);
+            this.label4.Location = new System.Drawing.Point(16, 140);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 13);
+            this.label4.Size = new System.Drawing.Size(99, 17);
             this.label4.TabIndex = 25;
             this.label4.Text = "Korisnicko ime";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 63);
+            this.label3.Location = new System.Drawing.Point(16, 78);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.Size = new System.Drawing.Size(43, 17);
             this.label3.TabIndex = 24;
             this.label3.Text = "Titula";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 37);
+            this.label2.Location = new System.Drawing.Point(16, 46);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(59, 17);
             this.label2.TabIndex = 23;
             this.label2.Text = "Prezime";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 11);
+            this.label1.Location = new System.Drawing.Point(16, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 13);
+            this.label1.Size = new System.Drawing.Size(30, 17);
             this.label1.TabIndex = 22;
             this.label1.Text = "Ime";
             // 
             // lozinkaInput
             // 
-            this.lozinkaInput.Location = new System.Drawing.Point(109, 140);
+            this.lozinkaInput.Location = new System.Drawing.Point(145, 172);
+            this.lozinkaInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lozinkaInput.Name = "lozinkaInput";
             this.lozinkaInput.PasswordChar = '*';
-            this.lozinkaInput.Size = new System.Drawing.Size(198, 20);
+            this.lozinkaInput.Size = new System.Drawing.Size(263, 22);
             this.lozinkaInput.TabIndex = 21;
             this.lozinkaInput.Validating += new System.ComponentModel.CancelEventHandler(this.lozinkaInput_Validating);
             // 
             // korisnickoImeInput
             // 
-            this.korisnickoImeInput.Location = new System.Drawing.Point(109, 114);
+            this.korisnickoImeInput.Location = new System.Drawing.Point(145, 140);
+            this.korisnickoImeInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.korisnickoImeInput.Name = "korisnickoImeInput";
-            this.korisnickoImeInput.Size = new System.Drawing.Size(198, 20);
+            this.korisnickoImeInput.Size = new System.Drawing.Size(263, 22);
             this.korisnickoImeInput.TabIndex = 20;
             this.korisnickoImeInput.Validating += new System.ComponentModel.CancelEventHandler(this.korisnickoImeInput_Validating);
             // 
             // titulaInput
             // 
-            this.titulaInput.Location = new System.Drawing.Point(109, 60);
+            this.titulaInput.Location = new System.Drawing.Point(145, 74);
+            this.titulaInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.titulaInput.Name = "titulaInput";
-            this.titulaInput.Size = new System.Drawing.Size(198, 20);
+            this.titulaInput.Size = new System.Drawing.Size(263, 22);
             this.titulaInput.TabIndex = 19;
             this.titulaInput.Validating += new System.ComponentModel.CancelEventHandler(this.titulaInput_Validating);
             // 
             // prezimeInput
             // 
-            this.prezimeInput.Location = new System.Drawing.Point(109, 34);
+            this.prezimeInput.Location = new System.Drawing.Point(145, 42);
+            this.prezimeInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.prezimeInput.Name = "prezimeInput";
-            this.prezimeInput.Size = new System.Drawing.Size(198, 20);
+            this.prezimeInput.Size = new System.Drawing.Size(263, 22);
             this.prezimeInput.TabIndex = 18;
             this.prezimeInput.Validating += new System.ComponentModel.CancelEventHandler(this.prezimeInput_Validating);
             // 
             // imeInput
             // 
-            this.imeInput.Location = new System.Drawing.Point(109, 8);
+            this.imeInput.Location = new System.Drawing.Point(145, 10);
+            this.imeInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.imeInput.Name = "imeInput";
-            this.imeInput.Size = new System.Drawing.Size(198, 20);
+            this.imeInput.Size = new System.Drawing.Size(263, 22);
             this.imeInput.TabIndex = 17;
             this.imeInput.Validating += new System.ComponentModel.CancelEventHandler(this.imeInput_Validating);
             // 
@@ -202,11 +218,13 @@
             this.Username,
             this.Password,
             this.ImePrezime,
-            this.IsAdmin});
+            this.IsAdmin,
+            this.Obrisi});
             this.nastavniciGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.nastavniciGridView.Location = new System.Drawing.Point(0, 269);
+            this.nastavniciGridView.Location = new System.Drawing.Point(0, 331);
+            this.nastavniciGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nastavniciGridView.Name = "nastavniciGridView";
-            this.nastavniciGridView.Size = new System.Drawing.Size(456, 202);
+            this.nastavniciGridView.Size = new System.Drawing.Size(608, 249);
             this.nastavniciGridView.TabIndex = 16;
             this.nastavniciGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.nastavniciGridView_CellContentClick_1);
             // 
@@ -275,11 +293,16 @@
             this.IsAdmin.ReadOnly = true;
             this.IsAdmin.Visible = false;
             // 
+            // Obrisi
+            // 
+            this.Obrisi.HeaderText = "Obrisi";
+            this.Obrisi.Name = "Obrisi";
+            // 
             // DodajNastavnikaForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 471);
+            this.ClientSize = new System.Drawing.Size(608, 580);
             this.Controls.Add(this.nastavnikIdText);
             this.Controls.Add(this.izmijeniNastavnikaButton);
             this.Controls.Add(this.dodajNastavnikaButton);
@@ -296,6 +319,7 @@
             this.Controls.Add(this.prezimeInput);
             this.Controls.Add(this.imeInput);
             this.Controls.Add(this.nastavniciGridView);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DodajNastavnikaForm";
@@ -336,5 +360,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn ImePrezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsAdmin;
+        private System.Windows.Forms.DataGridViewButtonColumn Obrisi;
     }
 }

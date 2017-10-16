@@ -42,7 +42,6 @@ namespace eDnevnik.UI
                 {
                     Naziv = nazivPredmetaInput.Text,
                     AkademskaGodinaId = Convert.ToInt32(akademskaGodinaInput.SelectedValue),
-                    NastavnikId = Convert.ToInt32(nastavnikInput.SelectedValue),
                     RazredId = Convert.ToInt32(razredInput.SelectedValue)
                 };
 
@@ -66,7 +65,11 @@ namespace eDnevnik.UI
 
         private void izmijeniPredmetButton_Click(object sender, EventArgs e)
         {
+            nastavniciNaPredmetuButton.Visible = true;
+            nastavniciNaPredmetuLabel.Visible = true;
+
             int predmetId = (int)predmetiGridView.CurrentRow.Cells["PredmetId"].Value;
+
 
             HttpResponseMessage response = _predmetiService.GetResponse(predmetId.ToString());
             if (response.IsSuccessStatusCode)
@@ -76,7 +79,7 @@ namespace eDnevnik.UI
                 predmetIdText.Text = predmet.PredmetId.ToString();
                 nazivPredmetaInput.Text = predmet.Naziv;
                 akademskaGodinaInput.SelectedValue = predmet.AkademskaGodinaId;
-                nastavnikInput.SelectedValue = predmet.NastavnikId;
+                //nastavniciGridView.DataSource = predmet.Nastavnici; //changed
                 razredInput.SelectedValue = predmet.RazredId;
             }
         }
@@ -93,7 +96,7 @@ namespace eDnevnik.UI
                 {
                     int predmetId = (int)predmetiGridView.CurrentRow.Cells["PredmetId"].Value;
 
-                    HttpResponseMessage response = _predmetiService.DeleteResponse(predmetId);
+                    HttpResponseMessage response = _predmetiService.DeleteResponse(predmetId.ToString());
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Predmet obrisan");
@@ -114,6 +117,9 @@ namespace eDnevnik.UI
 
         private void DataBind()
         {
+            nastavniciNaPredmetuButton.Visible = false;
+            nastavniciNaPredmetuLabel.Visible = false;
+
             HttpResponseMessage response = _predmetiService.GetResponse();
             if (response.IsSuccessStatusCode)
             {
@@ -128,15 +134,6 @@ namespace eDnevnik.UI
                 akademskaGodinaInput.ValueMember = "AkademskaGodinaId";
                 akademskaGodinaInput.DisplayMember = "Naziv";
             }
-            response = _nastavniciService.GetResponse();
-            if (response.IsSuccessStatusCode)
-            {
-                List<NastavnikVM> nastavnici = response.Content.ReadAsAsync<List<NastavnikVM>>().Result;
-                nastavnici.Insert(0, new NastavnikVM());
-                nastavnikInput.DataSource = nastavnici;
-                nastavnikInput.ValueMember = "NastavnikId";
-                nastavnikInput.DisplayMember = "ImePrezime";
-            }
             response = _razrediService.GetResponse();
             if (response.IsSuccessStatusCode)
             {
@@ -150,7 +147,7 @@ namespace eDnevnik.UI
 
         private void nazivPredmetaInput_Validating(object sender, CancelEventArgs e)
         {
-            if (nazivPredmetaInput.Text.Length < 4)
+            if (nazivPredmetaInput.Text.Length < 3)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(nazivPredmetaInput, "Naziv predmeta mora biti minimalno 3 slova");
@@ -166,15 +163,6 @@ namespace eDnevnik.UI
             }
         }
 
-        private void nastavnikInput_Validating(object sender, CancelEventArgs e)
-        {
-            if (String.IsNullOrEmpty(nastavnikInput.Text))
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(nastavnikInput, "Molimo odaberite");
-            }
-        }
-
         private void razredInput_Validating(object sender, CancelEventArgs e)
         {
             if (String.IsNullOrEmpty(razredInput.Text))
@@ -182,6 +170,12 @@ namespace eDnevnik.UI
                 e.Cancel = true;
                 errorProvider1.SetError(razredInput, "Molimo odaberite");
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form frm = new NastavniciNaPredmetuForm(Convert.ToInt32(predmetIdText.Text.ToString()));
+            frm.Show();
         }
     }
 }

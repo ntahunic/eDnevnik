@@ -28,7 +28,7 @@ namespace eDnevnik.UI
             if (response.IsSuccessStatusCode)
             {
                 NastavnikVM n = response.Content.ReadAsAsync<NastavnikVM>().Result;
-                if (LozinkaInput.Text == n.Password)//UIHelper.VerifyMd5Hash(LozinkaInput.Text, n.Password))
+                if (UIHelper.VerifyMd5Hash(LozinkaInput.Text, n.Password))
                 {
                     DialogResult = DialogResult.OK;
                     Global.TrenutniKorisnik = new Korisnik
@@ -38,7 +38,11 @@ namespace eDnevnik.UI
                         KorisnikId = n.NastavnikId,
                         Password = n.Password,
                         Username = n.Username,
-                        IsAdmin = n.isAdmin
+                        Uloga = n.Uloge.Select(u => new Uloga
+                        {
+                            UlogaId = u.UlogaId,
+                            Naziv = u.Naziv
+                        }).ToList()
                     };                   
 
                 }

@@ -77,7 +77,7 @@ namespace eDnevnik.API.Controllers
 
         // PUT: api/Materijali/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutObavijest(int id, Materijal materijal)
+        public IHttpActionResult PutMaterijal(int id, Materijal materijal)
         {
             if (!ModelState.IsValid)
             {
@@ -112,14 +112,14 @@ namespace eDnevnik.API.Controllers
 
         // POST: api/Materijali
         [ResponseType(typeof(Materijal))]
-        public IHttpActionResult PostMaterijal(Obavijest materijal)
+        public IHttpActionResult PostMaterijal(Materijal materijal)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Obavijest.Add(materijal);
+            db.Materijal.Add(materijal);
 
             try
             {
@@ -127,7 +127,7 @@ namespace eDnevnik.API.Controllers
             }
             catch (DbUpdateException)
             {
-                if (MaterijalExists(materijal.ObavijestId))
+                if (MaterijalExists(materijal.MaterijalId))
                 {
                     return Conflict();
                 }
@@ -137,7 +137,7 @@ namespace eDnevnik.API.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = materijal.ObavijestId }, materijal);
+            return CreatedAtRoute("DefaultApi", new { id = materijal.MaterijalId }, materijal);
         }
 
         // DELETE: api/Obavijesti/5

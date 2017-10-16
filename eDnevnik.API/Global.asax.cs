@@ -16,6 +16,9 @@ namespace eDnevnik.API
                 .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             GlobalConfiguration.Configuration.Formatters
                 .Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
+
+            GlobalConfiguration.Configuration.IncludeErrorDetailPolicy =
+    IncludeErrorDetailPolicy.Always;
         }
     }
 }

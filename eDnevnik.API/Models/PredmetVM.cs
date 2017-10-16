@@ -11,8 +11,7 @@ namespace eDnevnik.API.Models
         public string Naziv { get; set; }
         public string AkademskaGodina { get; set; }
         public int? AkademskaGodinaId { get; set; }
-        public string Nastavnik { get; set; }
-        public int? NastavnikId { get; set; }
+        public List<NastavnikVM> Nastavnici { get; set; }
         public string Razred { get; set; }
         public int? RazredId { get; set; }
     }

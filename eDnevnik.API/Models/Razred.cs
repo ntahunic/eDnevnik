@@ -18,8 +18,8 @@ namespace eDnevnik.API.Models
         public Razred()
         {
             this.Predmet = new HashSet<Predmet>();
+            this.RasporedCasova = new HashSet<RasporedCasova>();
             this.Ucenik = new HashSet<Ucenik>();
-            this.Predmet = new HashSet<Predmet>();
         }
     
         public int RazredId { get; set; }
@@ -31,8 +31,8 @@ namespace eDnevnik.API.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Predmet> Predmet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ucenik> Ucenik { get; set; }
+        public virtual ICollection<RasporedCasova> RasporedCasova { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Predmet> Predmet { get; set; }
+        public virtual ICollection<Ucenik> Ucenik { get; set; }
     }
 }

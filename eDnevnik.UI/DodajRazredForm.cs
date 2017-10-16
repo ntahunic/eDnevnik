@@ -17,6 +17,7 @@ namespace eDnevnik.UI
     {
         private WebAPIHelper _razrediService = new WebAPIHelper("api/razredi");
         private WebAPIHelper _akademskeGodineService = new WebAPIHelper("api/akademskeGodine");
+        private WebAPIHelper _rasporedCasovaService = new WebAPIHelper("api/rasporedCasova");
 
 
         public DodajRazredForm()
@@ -38,7 +39,19 @@ namespace eDnevnik.UI
                 };
 
                 if (razredIdText.Text == "")
+                {
                     response = _razrediService.PostResponse(razred);
+                    RasporedCasova rasporedCasova = new RasporedCasova
+                    {
+                        RazredId = response.Content.ReadAsAsync<Razred>().Result.RazredId,
+                        Pon = ",,,,,,",
+                        Uto = ",,,,,,",
+                        Sri = ",,,,,,",
+                        Cet = ",,,,,,",
+                        Pet = ",,,,,,"
+                    };
+                    _rasporedCasovaService.PostResponse(rasporedCasova);
+                }
                 else
                 {
                     razred.RazredId = Convert.ToInt32(razredIdText.Text);

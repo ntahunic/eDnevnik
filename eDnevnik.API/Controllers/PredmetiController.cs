@@ -24,9 +24,22 @@ namespace eDnevnik.API.Controllers
                 PredmetId = x.PredmetId,
                 AkademskaGodina = x.AkademskaGodina.Naziv,
                 Razred = x.Razred.Naziv,
-                Nastavnik = x.Nastavnik.Titula + " " + x.Nastavnik.Korisnik.Ime + " " + x.Nastavnik.Korisnik.Prezime,
                 AkademskaGodinaId = x.AkademskaGodinaId,
-                NastavnikId = x.NastavnikId,
+                Nastavnici = x.Nastavnik.Select(n => new NastavnikVM
+                {
+                    Ime = n.Korisnik.Ime,
+                    Prezime = n.Korisnik.Prezime,
+                    ImePrezime = n.Korisnik.Ime+ " "+n.Korisnik.Prezime,
+                    NastavnikId = n.Korisnik.KorisnikId,
+                    Username = n.Korisnik.Username,
+                    Password = n.Korisnik.Password,
+                    Titula = n.Titula,
+                    Uloge = n.Korisnik.Uloga.Select(u=> new UlogaVM
+                    {
+                        Naziv = u.Naziv,
+                        UlogaId = u.UlogaId
+                    }).ToList(),
+                }).ToList(),
                 RazredId = x.RazredId
             }).ToList();
         }
@@ -41,10 +54,23 @@ namespace eDnevnik.API.Controllers
                 PredmetId = x.PredmetId,
                 AkademskaGodina = x.AkademskaGodina.Naziv,
                 Razred = x.Razred.Naziv,
-                Nastavnik = x.Nastavnik.Titula + " " + x.Nastavnik.Korisnik.Ime + " " + x.Nastavnik.Korisnik.Prezime,
                 AkademskaGodinaId = x.AkademskaGodinaId,
-                NastavnikId = x.NastavnikId,
-                RazredId = x.RazredId
+                RazredId = x.RazredId,
+                Nastavnici = x.Nastavnik.Select(n => new NastavnikVM
+                {
+                    Ime = n.Korisnik.Ime,
+                    Prezime = n.Korisnik.Prezime,
+                    ImePrezime = n.Korisnik.Ime + " " + n.Korisnik.Prezime,
+                    NastavnikId = n.Korisnik.KorisnikId,
+                    Username = n.Korisnik.Username,
+                    Password = n.Korisnik.Password,
+                    Titula = n.Titula,
+                    Uloge = n.Korisnik.Uloga.Select(u => new UlogaVM
+                    {
+                        Naziv = u.Naziv,
+                        UlogaId = u.UlogaId
+                    }).ToList(),
+                }).ToList(),
             }).Single();
             if (predmet == null)
             {
@@ -58,14 +84,54 @@ namespace eDnevnik.API.Controllers
         [Route("api/Predmeti/getPredmetiByNastavnik/{nastavnikId}")]
         public IHttpActionResult GetPredmetiByNastavnik(int nastavnikId)
         {
-            List<PredmetVM> predmeti =db.Predmet.Where(y=>y.NastavnikId == nastavnikId).Select(x => new PredmetVM()
+            List<PredmetVM> predmeti = new List<PredmetVM>();
+            foreach (var p in db.Predmet.Where(p=>p.Nastavnik.Any(n=>n.NastavnikId == nastavnikId)))
             {
-                Naziv = x.Naziv,
-                PredmetId = x.PredmetId,
-                AkademskaGodina = x.AkademskaGodina.Naziv,
-                Nastavnik = x.Nastavnik.Korisnik.Ime + " " + x.Nastavnik.Korisnik.Prezime,
-                Razred = x.Razred.Naziv
-            }).ToList();
+                predmeti.Add(new PredmetVM
+                {
+                    Naziv = p.Naziv,
+                    PredmetId = p.PredmetId,
+                    AkademskaGodina = p.AkademskaGodina.Naziv,
+                    Razred = p.Razred.Naziv,
+                    Nastavnici = p.Nastavnik.Select(n => new NastavnikVM
+                    {
+                        Ime = n.Korisnik.Ime,
+                        Prezime = n.Korisnik.Prezime,
+                        ImePrezime = n.Korisnik.Ime + " " + n.Korisnik.Prezime,
+                        NastavnikId = n.Korisnik.KorisnikId,
+                        Username = n.Korisnik.Username,
+                        Password = n.Korisnik.Password,
+                        Titula = n.Titula,
+                        Uloge = n.Korisnik.Uloga.Select(u => new UlogaVM
+                        {
+                            Naziv = u.Naziv,
+                            UlogaId = u.UlogaId
+                        }).ToList(),
+                    }).ToList(),
+                });
+            }
+            //List<PredmetVM> predmeti = db.Predmet.Where(p=>p.Nastavnik.Where(y=>y.NastavnikId == nastavnikId).Select(x => new PredmetVM()
+            //{
+            //    Naziv = p.Naziv,
+            //    PredmetId = p.PredmetId,
+            //    AkademskaGodina = p.AkademskaGodina.Naziv,
+            //    Razred = p.Razred.Naziv,
+            //    Nastavnici = p.Nastavnik.Select(n => new NastavnikVM
+            //    {
+            //        Ime = n.Korisnik.Ime,
+            //        Prezime = n.Korisnik.Prezime,
+            //        ImePrezime = n.Korisnik.Ime + " " + n.Korisnik.Prezime,
+            //        NastavnikId = n.Korisnik.KorisnikId,
+            //        Username = n.Korisnik.Username,
+            //        Password = n.Korisnik.Password,
+            //        Titula = n.Titula,
+            //        Uloge = n.Korisnik.Uloga.Select(u => new UlogaVM
+            //        {
+            //            Naziv = u.Naziv,
+            //            UlogaId = u.UlogaId
+            //        }).ToList(),
+            //    }).ToList(),
+            //}).ToList());
 
             if (predmeti == null)
                 return NotFound();
@@ -81,7 +147,21 @@ namespace eDnevnik.API.Controllers
                 Naziv = x.Naziv,
                 PredmetId = x.PredmetId,
                 AkademskaGodina = x.AkademskaGodina.Naziv,
-                Nastavnik = x.Nastavnik.Korisnik.Ime + " " + x.Nastavnik.Korisnik.Prezime,
+                Nastavnici = x.Nastavnik.Select(n => new NastavnikVM
+                {
+                    Ime = n.Korisnik.Ime,
+                    Prezime = n.Korisnik.Prezime,
+                    ImePrezime = n.Korisnik.Ime + " " + n.Korisnik.Prezime,
+                    NastavnikId = n.Korisnik.KorisnikId,
+                    Username = n.Korisnik.Username,
+                    Password = n.Korisnik.Password,
+                    Titula = n.Titula,
+                    Uloge = n.Korisnik.Uloga.Select(u => new UlogaVM
+                    {
+                        Naziv = u.Naziv,
+                        UlogaId = u.UlogaId
+                    }).ToList(),
+                }).ToList(),
                 Razred = x.Razred.Naziv
             }).ToList();
 
@@ -125,6 +205,26 @@ namespace eDnevnik.API.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [HttpPut]
+        [Route("api/Predmeti/putPredmetNewNastavnik/{predmetId}/{nastavnikId}")]
+        public IHttpActionResult PutPredmet(int predmetId, int nastavnikId, Predmet obj)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            Nastavnik nastavnik = db.Nastavnik.Where(n => n.NastavnikId == nastavnikId).FirstOrDefault();
+            Predmet predmet = db.Predmet.Where(p => p.PredmetId == predmetId).FirstOrDefault();
+
+            if (predmet != null)
+                predmet.Nastavnik.Add(nastavnik);
+
+            db.SaveChanges();
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
         // POST: api/Predmeti
         [ResponseType(typeof(Predmet))]
         public IHttpActionResult PostPredmet(Predmet predmet)
@@ -156,6 +256,27 @@ namespace eDnevnik.API.Controllers
             return Ok(predmet);
         }
 
+        [Route("api/Predmeti/deletePredmetNewNastavnik/{predmetId}/{nastavnikId}")]
+        public IHttpActionResult DeletePredmet(int predmetId, int nastavnikId)
+        {
+            Nastavnik nastavnik = db.Nastavnik.Where(n => n.NastavnikId == nastavnikId).FirstOrDefault();
+            Predmet predmet = db.Predmet.Where(p => p.PredmetId == predmetId).FirstOrDefault();
+
+            if (predmet == null)
+            {
+                return NotFound();
+            }
+
+            if (predmet != null)
+            {
+                predmet.Nastavnik.Remove(nastavnik);
+                nastavnik.Predmet.Remove(predmet);
+            }
+
+            db.SaveChanges();
+
+            return Ok();
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

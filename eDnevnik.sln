@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.13
+VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eDnevnik.API", "eDnevnik.API\eDnevnik.API.csproj", "{10BB2BE8-A5A7-4BDA-96A1-02F511B9C551}"
 EndProject
@@ -253,6 +253,7 @@ Global
 		{DC5B270C-7D46-4033-9421-E54D6885C75A}.AppStore|x86.Build.0 = Release|x86
 		{DC5B270C-7D46-4033-9421-E54D6885C75A}.AppStore|x86.Deploy.0 = Release|x86
 		{DC5B270C-7D46-4033-9421-E54D6885C75A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{DC5B270C-7D46-4033-9421-E54D6885C75A}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{DC5B270C-7D46-4033-9421-E54D6885C75A}.Debug|ARM.ActiveCfg = Debug|ARM
 		{DC5B270C-7D46-4033-9421-E54D6885C75A}.Debug|ARM.Build.0 = Debug|ARM
 		{DC5B270C-7D46-4033-9421-E54D6885C75A}.Debug|ARM.Deploy.0 = Debug|ARM

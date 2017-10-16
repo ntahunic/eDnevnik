@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>eDnevnik.UI</RootNamespace>
     <AssemblyName>eDnevnik.UI</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -84,6 +85,18 @@
     <Compile Include="DodajIzostanakForm.Designer.cs">
       <DependentUpon>DodajIzostanakForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DodajMaterijalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajMaterijalForm.Designer.cs">
+      <DependentUpon>DodajMaterijalForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodajMaterijalPredmet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajMaterijalPredmet.Designer.cs">
+      <DependentUpon>DodajMaterijalPredmet.cs</DependentUpon>
+    </Compile>
     <Compile Include="DodajNastavnikaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +120,12 @@
     </Compile>
     <Compile Include="DodajPredmetForm.Designer.cs">
       <DependentUpon>DodajPredmetForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DodajRasporedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajRasporedForm.Designer.cs">
+      <DependentUpon>DodajRasporedForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DodajRazredForm.cs">
       <SubType>Form</SubType>
@@ -143,6 +162,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="NastavniciNaPredmetuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NastavniciNaPredmetuForm.Designer.cs">
+      <DependentUpon>NastavniciNaPredmetuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="NoviUcenikForm.cs">
       <SubType>Form</SubType>
@@ -197,6 +222,12 @@
     <EmbeddedResource Include="DodajIzostanakForm.resx">
       <DependentUpon>DodajIzostanakForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DodajMaterijalForm.resx">
+      <DependentUpon>DodajMaterijalForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodajMaterijalPredmet.resx">
+      <DependentUpon>DodajMaterijalPredmet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DodajNastavnikaForm.resx">
       <DependentUpon>DodajNastavnikaForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DodajPredmetForm.resx">
       <DependentUpon>DodajPredmetForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DodajRasporedForm.resx">
+      <DependentUpon>DodajRasporedForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DodajRazredForm.resx">
       <DependentUpon>DodajRazredForm.cs</DependentUpon>
@@ -227,6 +261,9 @@
     <EmbeddedResource Include="Messages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NastavniciNaPredmetuForm.resx">
+      <DependentUpon>NastavniciNaPredmetuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NoviUcenikForm.resx">
       <DependentUpon>NoviUcenikForm.cs</DependentUpon>
@@ -251,6 +288,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Reports\OcjenePoPredmetuReport.rdlc" />
     <EmbeddedResource Include="Reports\ReportViewForm.resx">

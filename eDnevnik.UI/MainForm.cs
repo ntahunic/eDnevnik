@@ -79,7 +79,7 @@ namespace eDnevnik.UI
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if (!Global.TrenutniKorisnik.IsAdmin)
+            if (!Global.TrenutniKorisnik.Uloga.Where(x=>x.Naziv=="admin").Any())
             {
                 administracijaToolStripMenuItem.Visible = false;
             }
@@ -88,6 +88,36 @@ namespace eDnevnik.UI
         private void ocjeneIzPredmetaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frm = new OcjeneIzPredmetaForm();
+            frm.Show();
+        }
+
+        private void dodajČasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form frm = new DodajCasForm();
+            frm.Show();
+        }
+
+        private void dodajOcjenuToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form frm = new DodajOcjenuForm();
+            frm.Show();
+        }
+
+        private void izmijeniOcjenuToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form frm = new UrediOcjenuForm();
+            frm.Show();
+        }
+
+        private void evidencijaRasporedaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new DodajRasporedForm();
+            frm.Show();
+        }
+
+        private void dodavanjeMaterijalaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new DodajMaterijalPredmet();
             frm.Show();
         }
     }

@@ -52,7 +52,7 @@ namespace eDnevnik.UI
                         Ime = imeInput.Text,
                         Prezime = prezimeInput.Text,
                         Username = korisnickoImeInput.Text,
-                        Password = lozinkaInput.Text
+                        Password = UIHelper.GetMd5Hash(lozinkaInput.Text)
                     }
                 };
 
@@ -101,15 +101,15 @@ namespace eDnevnik.UI
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
-                DialogResult dialogResult = MessageBox.Show("Da li ste sigurni da zelite obrisati korisnika?", "Brisanje korisnika", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Da li ste sigurni da zelite obrisati nastavnika?", "Brisanje nastavnika", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     int nastavnikId = (int)nastavniciGridView.CurrentRow.Cells["NastavnikId"].Value;
 
-                    HttpResponseMessage response = _nastavniciService.DeleteResponse(nastavnikId);
+                    HttpResponseMessage response = _nastavniciService.DeleteResponse(nastavnikId.ToString());
                     if (response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Korisnik obrisan");
+                        MessageBox.Show("Nastavnik obrisan");
                     }
                 }
                 else if (dialogResult == DialogResult.No)

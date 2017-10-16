@@ -14,14 +14,21 @@ namespace eDnevnik.API.Models
     
     public partial class Korisnik
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Korisnik()
+        {
+            this.Uloga = new HashSet<Uloga>();
+        }
+    
         public int KorisnikId { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public bool IsAdmin { get; set; }
     
         public virtual Nastavnik Nastavnik { get; set; }
         public virtual Ucenik Ucenik { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Uloga> Uloga { get; set; }
     }
 }

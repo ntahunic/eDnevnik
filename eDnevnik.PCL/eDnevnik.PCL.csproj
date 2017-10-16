@@ -45,8 +45,10 @@
     <Compile Include="Model\OcjenaVM.cs" />
     <Compile Include="Model\PredmetVM.cs" />
     <Compile Include="Model\PrisustvoVM.cs" />
+    <Compile Include="Model\RasporedCasovaVM.cs" />
     <Compile Include="Model\UcenikVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\Cryptography.cs" />
     <Compile Include="Util\UIHelper.cs" />
     <Compile Include="Util\WebAPIHelper.cs" />
   </ItemGroup>

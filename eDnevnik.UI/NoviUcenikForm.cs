@@ -71,7 +71,7 @@ namespace eDnevnik.UI
                         Ime = imeInput.Text,
                         Prezime = prezimeInput.Text,
                         Username = korisnickoImeInput.Text,
-                        Password = lozinkaInput.Text
+                        Password = UIHelper.GetMd5Hash(lozinkaInput.Text)
                     }
                 };
 

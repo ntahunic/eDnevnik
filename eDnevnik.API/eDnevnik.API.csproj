@@ -110,6 +110,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AkademskeGodineController.cs" />
     <Compile Include="Controllers\OcjeneMaterijalController.cs" />
+    <Compile Include="Controllers\RasporedCasovaController.cs" />
     <Compile Include="Controllers\RazrediController.cs" />
     <Compile Include="Controllers\CasoviController.cs" />
     <Compile Include="Controllers\NastavniciController.cs" />
@@ -125,10 +126,10 @@
     <Compile Include="Models\AkademskaGodina.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AkademskaGodinaVM.cs" />
     <Compile Include="Models\Cas.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AkademskaGodinaVM.cs" />
     <Compile Include="Models\CasVM.cs" />
     <Compile Include="Models\Korisnik.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -176,6 +177,10 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PrisustvoVM.cs" />
+    <Compile Include="Models\RasporedCasova.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RasporedCasovaVM.cs" />
     <Compile Include="Models\Razred.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -188,6 +193,10 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UcenikVM.cs" />
+    <Compile Include="Models\Uloga.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UlogaVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\ExceptionFilter.cs" />
     <Compile Include="Util\ExceptionHandler.cs" />

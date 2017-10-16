@@ -12,24 +12,18 @@ namespace eDnevnik.API.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Materijal
+    public partial class Uloga
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Materijal()
+        public Uloga()
         {
-            this.OcjenaMaterijal = new HashSet<OcjenaMaterijal>();
+            this.Korisnik = new HashSet<Korisnik>();
         }
     
-        public int MaterijalId { get; set; }
+        public int UlogaId { get; set; }
         public string Naziv { get; set; }
-        public int PredmetId { get; set; }
-        public string Datum { get; set; }
-        public byte[] Materijal1 { get; set; }
-        public Nullable<int> NastavnikId { get; set; }
     
-        public virtual Nastavnik Nastavnik { get; set; }
-        public virtual Predmet Predmet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OcjenaMaterijal> OcjenaMaterijal { get; set; }
+        public virtual ICollection<Korisnik> Korisnik { get; set; }
     }
 }

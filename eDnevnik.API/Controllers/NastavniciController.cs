@@ -27,7 +27,12 @@ namespace eDnevnik.API.Controllers
                 Prezime = x.Korisnik.Prezime,
                 Username = x.Korisnik.Username,
                 Password = x.Korisnik.Password,
-                ImePrezime = x.Korisnik.Ime + " " + x.Korisnik.Prezime
+                ImePrezime = x.Korisnik.Ime + " " + x.Korisnik.Prezime,
+                Uloge = x.Korisnik.Uloga.Select(u => new UlogaVM
+                {
+                    UlogaId = u.UlogaId,
+                    Naziv = u.Naziv
+                }).ToList()
             }).ToList();
         }
 
@@ -44,7 +49,12 @@ namespace eDnevnik.API.Controllers
                 Prezime = x.Korisnik.Prezime,
                 Username = x.Korisnik.Username,
                 Password = x.Korisnik.Password,
-                isAdmin = x.Korisnik.IsAdmin
+                Uloge = x.Korisnik.Uloga.Select(u => new UlogaVM
+                {
+                    UlogaId = u.UlogaId,
+                    Naziv = u.Naziv
+                }).ToList()
+                //isAdmin = x.Korisnik.IsAdmin
             }).Single();
             if (nastavnik == null)
             {
@@ -66,11 +76,55 @@ namespace eDnevnik.API.Controllers
                 Password = y.Korisnik.Password,
                 Username = y.Korisnik.Username,
                 Titula = y.Titula,
-                isAdmin= y.Korisnik.IsAdmin
+                Uloge = y.Korisnik.Uloga.Select(u => new UlogaVM
+                {
+                    UlogaId = u.UlogaId,
+                    Naziv = u.Naziv
+                }).ToList()
+                //isAdmin= y.Korisnik.IsAdmin
             }).FirstOrDefault();
             if (n == null)
                 return NotFound();
             return Ok(n);
+        }
+
+        // GET: api/Nastavnici/adil
+        [HttpGet]
+        [Route("api/Nastavnici/getNastavniciByPredmet/{predmetId}")]
+        public IHttpActionResult GetNastavnici(int predmetId)
+        {
+            List<NastavnikVM> nastavnici = db.Nastavnik.Where(n => n.Predmet.Any(p => p.PredmetId == predmetId))
+                .Select(x => new NastavnikVM
+                {
+                    Ime = x.Korisnik.Ime,
+                    Prezime = x.Korisnik.Prezime,
+                    Titula = x.Titula,
+                    NastavnikId = x.NastavnikId
+                }).ToList();
+
+            foreach (var item in nastavnici)
+            {
+
+            }
+
+            //NastavnikVM nastavnik = db.Nastavnik.Where(x => x.Korisnik.Username == username).Select(y => new NastavnikVM
+            //{
+            //    Ime = y.Korisnik.Ime,
+            //    Prezime = y.Korisnik.Prezime,
+            //    NastavnikId = y.NastavnikId,
+            //    Password = y.Korisnik.Password,
+            //    Username = y.Korisnik.Username,
+            //    Titula = y.Titula,
+            //    Uloge = y.Korisnik.Uloga.Select(u => new UlogaVM
+            //    {
+            //        UlogaId = u.UlogaId,
+            //        Naziv = u.Naziv
+            //    }).ToList()
+            //    //isAdmin= y.Korisnik.IsAdmin
+            //}).FirstOrDefault();
+            if (nastavnici == null)
+                return Conflict();
+            return Ok(nastavnici);
         }
 
         // PUT: api/Nastavnici/5
@@ -140,18 +194,20 @@ namespace eDnevnik.API.Controllers
 
         // DELETE: api/Nastavnici/5
         [ResponseType(typeof(Nastavnik))]
+        [HttpDelete]
         public IHttpActionResult DeleteNastavnik(int id)
         {
-            Nastavnik nastavnik = db.Nastavnik.Where(x => x.NastavnikId == id).FirstOrDefault();
-            if (nastavnik == null)
-            {
-                return NotFound();
-            }
+            //Nastavnik nastavnik = db.Nastavnik.Where(x => x.NastavnikId == id).FirstOrDefault();
+            //if (nastavnik == null)
+            //{
+            //    return NotFound();
+            //}
 
-            db.Nastavnik.Remove(nastavnik);
-            db.SaveChanges();
+            //db.Nastavnik.Remove(nastavnik);
+            //db.SaveChanges();
 
-            return Ok(nastavnik);
+            //return Ok(nastavnik);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

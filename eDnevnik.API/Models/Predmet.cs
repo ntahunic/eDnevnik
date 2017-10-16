@@ -20,12 +20,12 @@ namespace eDnevnik.API.Models
             this.Cas = new HashSet<Cas>();
             this.Materijal = new HashSet<Materijal>();
             this.Obavijest = new HashSet<Obavijest>();
+            this.Nastavnik = new HashSet<Nastavnik>();
         }
     
         public int PredmetId { get; set; }
         public string Naziv { get; set; }
         public Nullable<int> AkademskaGodinaId { get; set; }
-        public Nullable<int> NastavnikId { get; set; }
         public Nullable<int> RazredId { get; set; }
     
         public virtual AkademskaGodina AkademskaGodina { get; set; }
@@ -33,9 +33,10 @@ namespace eDnevnik.API.Models
         public virtual ICollection<Cas> Cas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Materijal> Materijal { get; set; }
-        public virtual Nastavnik Nastavnik { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Obavijest> Obavijest { get; set; }
         public virtual Razred Razred { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Nastavnik> Nastavnik { get; set; }
     }
 }

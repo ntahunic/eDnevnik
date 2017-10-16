@@ -24,6 +24,7 @@ namespace eDnevnik.API.Models
     
         public int UcenikId { get; set; }
         public int RazredId { get; set; }
+        public Nullable<int> BrojUDnevniku { get; set; }
     
         public virtual Korisnik Korisnik { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
