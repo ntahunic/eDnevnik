@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.materijalNazivInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.materijalPredmetId = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // materijalNazivInput
@@ -41,6 +44,7 @@
             this.materijalNazivInput.Name = "materijalNazivInput";
             this.materijalNazivInput.Size = new System.Drawing.Size(222, 20);
             this.materijalNazivInput.TabIndex = 0;
+            this.materijalNazivInput.Validating += new System.ComponentModel.CancelEventHandler(this.materijalNazivInput_Validating);
             // 
             // label1
             // 
@@ -78,6 +82,10 @@
             this.materijalPredmetId.TabIndex = 4;
             this.materijalPredmetId.Visible = false;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // DodajMaterijalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -94,6 +102,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj materijal";
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -106,5 +115,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox materijalPredmetId;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

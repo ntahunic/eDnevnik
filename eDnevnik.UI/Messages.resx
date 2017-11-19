@@ -126,6 +126,9 @@
   <data name="lname_req" xml:space="preserve">
     <value>Prezime je obavezno.</value>
   </data>
+  <data name="materijalNaziv_req" xml:space="preserve">
+    <value>Naziv je obavezno polje.</value>
+  </data>
   <data name="password_len" xml:space="preserve">
     <value>Lozinka mora biti minimalno 4 znaka.</value>
   </data>

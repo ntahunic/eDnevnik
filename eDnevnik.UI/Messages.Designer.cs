@@ -19,7 +19,7 @@ namespace eDnevnik.UI {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Messages {
@@ -84,6 +84,15 @@ namespace eDnevnik.UI {
         internal static string lname_req {
             get {
                 return ResourceManager.GetString("lname_req", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Naziv je obavezno polje..
+        /// </summary>
+        internal static string materijalNaziv_req {
+            get {
+                return ResourceManager.GetString("materijalNaziv_req", resourceCulture);
             }
         }
         

@@ -1,9 +1,13 @@
-﻿using System;
+﻿using eDnevnik.API.Models;
+using eDnevnik.UI.Reports;
+using eDnevnik.UI.Util;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -87,7 +91,7 @@ namespace eDnevnik.UI
 
         private void ocjeneIzPredmetaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form frm = new OcjeneIzPredmetaForm();
+            Form frm = new ReportViewForm();
             frm.Show();
         }
 
@@ -118,6 +122,18 @@ namespace eDnevnik.UI
         private void dodavanjeMaterijalaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form frm = new DodajMaterijalPredmet();
+            frm.Show();
+        }
+
+        private void izostanciUcenikaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new ReportViewFormPrisustva();
+            frm.Show();
+        }
+
+        private void uceniciIzRazredaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form frm = new ReportViewFormUcenici();
             frm.Show();
         }
     }

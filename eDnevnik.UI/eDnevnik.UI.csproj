@@ -207,6 +207,18 @@
     <Compile Include="Reports\ReportViewForm.Designer.cs">
       <DependentUpon>ReportViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\ReportViewFormPrisustva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewFormPrisustva.Designer.cs">
+      <DependentUpon>ReportViewFormPrisustva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportViewFormUcenici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportViewFormUcenici.Designer.cs">
+      <DependentUpon>ReportViewFormUcenici.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UrediOcjenuForm.cs">
       <SubType>Form</SubType>
@@ -290,15 +302,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\IzostanciPoUceniku.rdlc" />
     <EmbeddedResource Include="Reports\OcjenePoPredmetuReport.rdlc" />
     <EmbeddedResource Include="Reports\ReportViewForm.resx">
       <DependentUpon>ReportViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ReportViewFormPrisustva.resx">
+      <DependentUpon>ReportViewFormPrisustva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\UceniciURazredu.rdlc" />
+    <EmbeddedResource Include="Reports\ReportViewFormUcenici.resx">
+      <DependentUpon>ReportViewFormUcenici.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UrediOcjenuForm.resx">
       <DependentUpon>UrediOcjenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\eDnevnik.API.Models.OcjenaVM.datasource" />
+    <None Include="Properties\DataSources\eDnevnik.API.Models.PredmetVM.datasource" />
+    <None Include="Properties\DataSources\eDnevnik.API.Models.PrisustvoVM.datasource" />
+    <None Include="Properties\DataSources\eDnevnik.API.Models.UcenikVM.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

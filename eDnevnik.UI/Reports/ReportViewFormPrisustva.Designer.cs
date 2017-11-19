@@ -1,6 +1,6 @@
 ﻿namespace eDnevnik.UI.Reports
 {
-    partial class ReportViewForm
+    partial class ReportViewFormPrisustva
     {
         /// <summary>
         /// Required designer variable.
@@ -29,34 +29,30 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.OcjenaVMBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.generisiIzvjestajButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.predmetiInput = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.OcjenaVMBindingSource)).BeginInit();
+            this.prisustvoVMBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.prisustvoVMBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // OcjenaVMBindingSource
+            // reportViewer2
             // 
-            this.OcjenaVMBindingSource.DataSource = typeof(eDnevnik.API.Models.OcjenaVM);
-            // 
-            // reportViewer1
-            // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "eDnevnik.UI.Reports.OcjenePoPredmetuReport.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(0, 68);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(700, 360);
-            this.reportViewer1.TabIndex = 0;
+            this.reportViewer2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.reportViewer2.LocalReport.ReportEmbeddedResource = "eDnevnik.UI.Reports.IzostanciPoUceniku.rdlc";
+            this.reportViewer2.Location = new System.Drawing.Point(0, 68);
+            this.reportViewer2.Name = "reportViewer2";
+            this.reportViewer2.ServerReport.BearerToken = null;
+            this.reportViewer2.Size = new System.Drawing.Size(732, 381);
+            this.reportViewer2.TabIndex = 0;
             // 
             // generisiIzvjestajButton
             // 
-            this.generisiIzvjestajButton.Location = new System.Drawing.Point(157, 39);
+            this.generisiIzvjestajButton.Location = new System.Drawing.Point(160, 38);
             this.generisiIzvjestajButton.Name = "generisiIzvjestajButton";
             this.generisiIzvjestajButton.Size = new System.Drawing.Size(112, 23);
-            this.generisiIzvjestajButton.TabIndex = 13;
+            this.generisiIzvjestajButton.TabIndex = 16;
             this.generisiIzvjestajButton.Text = "Generisi izvjestaj";
             this.generisiIzvjestajButton.UseVisualStyleBackColor = true;
             this.generisiIzvjestajButton.Click += new System.EventHandler(this.generisiIzvjestajButton_Click);
@@ -64,36 +60,37 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 15);
+            this.label1.Location = new System.Drawing.Point(9, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
-            this.label1.TabIndex = 12;
+            this.label1.TabIndex = 15;
             this.label1.Text = "Predmet";
             // 
             // predmetiInput
             // 
             this.predmetiInput.FormattingEnabled = true;
-            this.predmetiInput.Location = new System.Drawing.Point(69, 12);
+            this.predmetiInput.Location = new System.Drawing.Point(72, 12);
             this.predmetiInput.Name = "predmetiInput";
             this.predmetiInput.Size = new System.Drawing.Size(200, 21);
-            this.predmetiInput.TabIndex = 11;
+            this.predmetiInput.TabIndex = 14;
             // 
-            // ReportViewForm
+            // prisustvoVMBindingSource
+            // 
+            this.prisustvoVMBindingSource.DataSource = typeof(eDnevnik.API.Models.PrisustvoVM);
+            // 
+            // ReportViewFormPrisustva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 428);
+            this.ClientSize = new System.Drawing.Size(732, 449);
             this.Controls.Add(this.generisiIzvjestajButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.predmetiInput);
-            this.Controls.Add(this.reportViewer1);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "ReportViewForm";
-            this.ShowIcon = false;
-            this.Text = "Ocjene Report";
-            this.Load += new System.EventHandler(this.ReportViewForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.OcjenaVMBindingSource)).EndInit();
+            this.Controls.Add(this.reportViewer2);
+            this.Name = "ReportViewFormPrisustva";
+            this.Text = "Prisustva Report";
+            this.Load += new System.EventHandler(this.ReportViewFormPrisustva_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.prisustvoVMBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,8 +98,8 @@
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.BindingSource OcjenaVMBindingSource;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
+        private System.Windows.Forms.BindingSource prisustvoVMBindingSource;
         private System.Windows.Forms.Button generisiIzvjestajButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox predmetiInput;

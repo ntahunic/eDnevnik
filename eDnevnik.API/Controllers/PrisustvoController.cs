@@ -11,24 +11,42 @@ namespace eDnevnik.API.Controllers
     {
         private eDnevnikEntities _db = new eDnevnikEntities();
 
+        public List<PrisustvoVM> GetPrisustvos()
+        {
+            return _db.Prisustvo.Select(x => new PrisustvoVM
+            {
+                Ime = x.Ucenik.Korisnik.Ime,
+                BrojSati = x.BrojSati,
+                Datum = x.Cas.Datum,
+                ImePrezime = x.Ucenik.Korisnik.Ime + " " + x.Ucenik.Korisnik.Prezime,
+                Opravdano = x.Opravdano == true ? "Opravdano" : "Neopravdano",
+                Predmet = x.Cas.Predmet.Naziv,
+                Prezime = x.Ucenik.Korisnik.Prezime,
+                UcenikId = x.UcenikId,
+                PrisustvoId = x.PrisustvoId,
+                Prisutan = x.Prisutan,
+                Razred = x.Ucenik.Razred.Naziv + " - " + x.Ucenik.Razred.Odjeljenje
+            }).ToList();
+        }
+
         [Route("api/prisustvo/{casId}")]
         public List<PrisustvoVM> GetPrisustvo(int casId)
         {
-            return _db.Prisustvo.Where(i => i.CasId == casId).Select(x=> new PrisustvoVM
+            return _db.Prisustvo.Where(i => i.CasId == casId).Select(x => new PrisustvoVM
             {
                 Ime = x.Ucenik.Korisnik.Ime,
                 Prezime = x.Ucenik.Korisnik.Prezime,
                 UcenikId = x.UcenikId,
-                PrisustvoId = x.PrisustvoId, 
+                PrisustvoId = x.PrisustvoId,
                 Prisutan = x.Prisutan,
-                Razred = x.Ucenik.Razred.Naziv +" - " +x.Ucenik.Razred.Odjeljenje
+                Razred = x.Ucenik.Razred.Naziv + " - " + x.Ucenik.Razred.Odjeljenje
             }).ToList();
         }
 
         [Route("api/prisustvo/prisutniUcenici/{casId}")]
         public List<PrisustvoVM> GetPrisutniUcenici(int casId)
         {
-            return _db.Prisustvo.Where(i => i.CasId == casId && i.Prisutan==true).Select(x => new PrisustvoVM
+            return _db.Prisustvo.Where(i => i.CasId == casId && i.Prisutan == true).Select(x => new PrisustvoVM
             {
                 Ime = x.Ucenik.Korisnik.Ime,
                 Prezime = x.Ucenik.Korisnik.Prezime,
@@ -55,7 +73,7 @@ namespace eDnevnik.API.Controllers
                 BrojSati = x.Cas.BrojSati,
                 Datum = x.Cas.Datum,
                 Predmet = x.Cas.Predmet.Naziv,
-                Opravdano = x.Opravdano==true?"Opravdano":"Neopravdano"
+                Opravdano = x.Opravdano == true ? "Opravdano" : "Neopravdano"
             }).ToList();
         }
 
@@ -65,6 +83,24 @@ namespace eDnevnik.API.Controllers
             return _db.Prisustvo.Where(i => i.UcenikId == ucenikId && i.Cas.PredmetId == predmetId).Sum(y => y.BrojSati);
         }
 
+        [Route("api/prisustvo/GetPrisustvoByPredmetAndDatum/{predmetId}")]
+        public List<PrisustvoVM> GetPrisustvoByPredmetAndDate(int predmetId)
+        {
+            return _db.Prisustvo.Where(i => i.Cas.PredmetId == predmetId || predmetId == 0).Select(x => new PrisustvoVM
+            {
+                Ime = x.Ucenik.Korisnik.Ime,
+                BrojSati = x.BrojSati,
+                Datum = x.Cas.Datum,
+                ImePrezime = x.Ucenik.Korisnik.Ime + " " + x.Ucenik.Korisnik.Prezime,
+                Opravdano = x.Opravdano == true ? "Opravdano" : "Neopravdano",
+                Predmet = x.Cas.Predmet.Naziv,
+                Prezime = x.Ucenik.Korisnik.Prezime,
+                UcenikId = x.UcenikId,
+                PrisustvoId = x.PrisustvoId,
+                Prisutan = x.Prisutan,
+                Razred = x.Ucenik.Razred.Naziv + " - " + x.Ucenik.Razred.Odjeljenje
+            }).ToList();
+        }
 
         //public IHttpActionResult PostPrisustvo(Prisustvo obj)
         //{

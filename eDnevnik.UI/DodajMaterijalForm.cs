@@ -21,50 +21,54 @@ namespace eDnevnik.UI
         public DodajMaterijalForm(int predmetId)
         {
             InitializeComponent();
+            this.AutoValidate = AutoValidate.Disable;
 
             materijalPredmetId.Text = predmetId.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Stream myStream = null;
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-            openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (this.ValidateChildren())
             {
-                try
+                Stream myStream = null;
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+                openFileDialog1.InitialDirectory = "c:\\";
+                openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog1.FilterIndex = 2;
+                openFileDialog1.RestoreDirectory = true;
+
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    if ((myStream = openFileDialog1.OpenFile()) != null)
+                    try
                     {
-                        byte[] array;
-                        using (myStream)
+                        if ((myStream = openFileDialog1.OpenFile()) != null)
                         {
-                           array = ReadFully(myStream);
-                        }
-                        Materijal materijal = new Materijal();
-                        materijal.Datum = DateTime.Now.ToShortDateString();
-                        materijal.Naziv = materijalNazivInput.Text;
-                        materijal.Materijal1 = array;
-                        materijal.NastavnikId = Global.TrenutniKorisnik.KorisnikId;
-                        materijal.PredmetId = Convert.ToInt16(materijalPredmetId.Text);
+                            byte[] array;
+                            using (myStream)
+                            {
+                                array = ReadFully(myStream);
+                            }
+                            Materijal materijal = new Materijal();
+                            materijal.Datum = DateTime.Now.ToShortDateString();
+                            materijal.Naziv = materijalNazivInput.Text;
+                            materijal.Materijal1 = array;
+                            materijal.NastavnikId = Global.TrenutniKorisnik.KorisnikId;
+                            materijal.PredmetId = Convert.ToInt16(materijalPredmetId.Text);
 
-                        HttpResponseMessage response = _materijaliService.PostResponse(materijal);
-                        if(response.IsSuccessStatusCode)
-                        {
-                            MessageBox.Show("Materijal uspjesno dodat");
-                        }
-                        File.WriteAllBytes("Foo.txt", array);
+                            HttpResponseMessage response = _materijaliService.PostResponse(materijal);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                MessageBox.Show("Materijal uspjesno dodat");
+                            }
+                            File.WriteAllBytes("C:/Users/Admin/Foo.txt", array);
 
+                        }
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                    }
                 }
             }
         }
@@ -80,6 +84,15 @@ namespace eDnevnik.UI
                     ms.Write(buffer, 0, read);
                 }
                 return ms.ToArray();
+            }
+        }
+
+        private void materijalNazivInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(materijalNazivInput.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(materijalNazivInput, Messages.materijalNaziv_req);
             }
         }
     }

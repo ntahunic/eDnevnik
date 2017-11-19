@@ -32,7 +32,8 @@ namespace eDnevnik.API.Controllers
                 OcjenaId = y.OcjenaId,
                 OcjenaVrijednost = y.OcjenaVrijednost,
                 Ucenik = y.Ucenik.Korisnik.Ime + " " + y.Ucenik.Korisnik.Ime,
-                UcenikId = y.UcenikId
+                UcenikId = y.UcenikId,
+                Datum = y.Cas.Datum
             }).FirstOrDefault();
               
             if (ocjena == null)
@@ -54,7 +55,8 @@ namespace eDnevnik.API.Controllers
                 OcjenaId = y.OcjenaId,
                 OcjenaVrijednost = y.OcjenaVrijednost,
                 Ucenik = y.Ucenik.Korisnik.Ime + " " + y.Ucenik.Korisnik.Prezime,
-                UcenikId = y.UcenikId
+                UcenikId = y.UcenikId,
+                Datum = y.Cas.Datum
             }).ToList();
             if (ocjene == null)
             {

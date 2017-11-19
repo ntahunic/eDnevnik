@@ -49,6 +49,20 @@ namespace eDnevnik.API.Controllers
             return Ok(n);
         }
 
+        [Route("api/Ucenici/GetUceniciByRazred/{razredId}")]
+        public List<UcenikVM> GetUceniciByRazred(int razredId)
+        {
+            return db.Ucenik.Where(x => x.RazredId == razredId).Select(y => new UcenikVM
+            {
+                Ime = y.Korisnik.Ime,
+                Prezime = y.Korisnik.Prezime,
+                UcenikId = y.UcenikId,
+                Password = y.Korisnik.Password,
+                Username = y.Korisnik.Username,
+                Razred = y.Razred.Naziv,
+                RazredId = y.RazredId
+            }).ToList();
+        }
 
         // GET: api/Ucenici/5
         [ResponseType(typeof(UcenikVM))]
