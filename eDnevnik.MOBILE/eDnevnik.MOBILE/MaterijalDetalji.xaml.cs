@@ -42,6 +42,7 @@ namespace eDnevnik.MOBILE
 
                 NazivText.Text = materijal.Naziv;
                 DatumText.Text = materijal.Datum;
+                SadrzajText.Text = materijal.Sadrzaj;
 
                 List<OcjenaTemp> ocjenePrikaz = new List<OcjenaTemp>();
                 for (int i = 1; i <= 5; i++)

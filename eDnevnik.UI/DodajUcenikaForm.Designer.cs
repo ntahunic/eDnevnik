@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.uceniciGridView = new System.Windows.Forms.DataGridView();
+            this.izmijeniUcenikaButton = new System.Windows.Forms.Button();
+            this.noviUcenikButton = new System.Windows.Forms.Button();
+            this.pretraziUcenikeButton = new System.Windows.Forms.Button();
+            this.pretragaUcenikaInput = new System.Windows.Forms.TextBox();
             this.UcenikId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Razred = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,10 +41,7 @@
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RazredId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.izmijeniUcenikaButton = new System.Windows.Forms.Button();
-            this.noviUcenikButton = new System.Windows.Forms.Button();
-            this.pretraziUcenikeButton = new System.Windows.Forms.Button();
-            this.pretragaUcenikaInput = new System.Windows.Forms.TextBox();
+            this.BrojUDnevniku = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.uceniciGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,12 +57,50 @@
             this.Username,
             this.Password,
             this.ImePrezime,
-            this.RazredId});
+            this.RazredId,
+            this.BrojUDnevniku});
             this.uceniciGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.uceniciGridView.Location = new System.Drawing.Point(0, 73);
             this.uceniciGridView.Name = "uceniciGridView";
             this.uceniciGridView.Size = new System.Drawing.Size(628, 247);
             this.uceniciGridView.TabIndex = 9;
+            // 
+            // izmijeniUcenikaButton
+            // 
+            this.izmijeniUcenikaButton.Location = new System.Drawing.Point(521, 5);
+            this.izmijeniUcenikaButton.Name = "izmijeniUcenikaButton";
+            this.izmijeniUcenikaButton.Size = new System.Drawing.Size(75, 23);
+            this.izmijeniUcenikaButton.TabIndex = 8;
+            this.izmijeniUcenikaButton.Text = "Izmijeni";
+            this.izmijeniUcenikaButton.UseVisualStyleBackColor = true;
+            this.izmijeniUcenikaButton.Click += new System.EventHandler(this.izmijeniUcenikaButton_Click);
+            // 
+            // noviUcenikButton
+            // 
+            this.noviUcenikButton.Location = new System.Drawing.Point(440, 5);
+            this.noviUcenikButton.Name = "noviUcenikButton";
+            this.noviUcenikButton.Size = new System.Drawing.Size(75, 23);
+            this.noviUcenikButton.TabIndex = 7;
+            this.noviUcenikButton.Text = "Novi učenik";
+            this.noviUcenikButton.UseVisualStyleBackColor = true;
+            this.noviUcenikButton.Click += new System.EventHandler(this.noviUcenikButton_Click);
+            // 
+            // pretraziUcenikeButton
+            // 
+            this.pretraziUcenikeButton.Location = new System.Drawing.Point(239, 5);
+            this.pretraziUcenikeButton.Name = "pretraziUcenikeButton";
+            this.pretraziUcenikeButton.Size = new System.Drawing.Size(75, 23);
+            this.pretraziUcenikeButton.TabIndex = 6;
+            this.pretraziUcenikeButton.Text = "Pretrazi";
+            this.pretraziUcenikeButton.UseVisualStyleBackColor = true;
+            this.pretraziUcenikeButton.Click += new System.EventHandler(this.pretraziUcenikeButton_Click);
+            // 
+            // pretragaUcenikaInput
+            // 
+            this.pretragaUcenikaInput.Location = new System.Drawing.Point(6, 7);
+            this.pretragaUcenikaInput.Name = "pretragaUcenikaInput";
+            this.pretragaUcenikaInput.Size = new System.Drawing.Size(227, 20);
+            this.pretragaUcenikaInput.TabIndex = 5;
             // 
             // UcenikId
             // 
@@ -124,42 +163,11 @@
             this.RazredId.ReadOnly = true;
             this.RazredId.Visible = false;
             // 
-            // izmijeniUcenikaButton
+            // BrojUDnevniku
             // 
-            this.izmijeniUcenikaButton.Location = new System.Drawing.Point(521, 5);
-            this.izmijeniUcenikaButton.Name = "izmijeniUcenikaButton";
-            this.izmijeniUcenikaButton.Size = new System.Drawing.Size(75, 23);
-            this.izmijeniUcenikaButton.TabIndex = 8;
-            this.izmijeniUcenikaButton.Text = "Izmijeni";
-            this.izmijeniUcenikaButton.UseVisualStyleBackColor = true;
-            this.izmijeniUcenikaButton.Click += new System.EventHandler(this.izmijeniUcenikaButton_Click);
-            // 
-            // noviUcenikButton
-            // 
-            this.noviUcenikButton.Location = new System.Drawing.Point(440, 5);
-            this.noviUcenikButton.Name = "noviUcenikButton";
-            this.noviUcenikButton.Size = new System.Drawing.Size(75, 23);
-            this.noviUcenikButton.TabIndex = 7;
-            this.noviUcenikButton.Text = "Novi učenik";
-            this.noviUcenikButton.UseVisualStyleBackColor = true;
-            this.noviUcenikButton.Click += new System.EventHandler(this.noviUcenikButton_Click);
-            // 
-            // pretraziUcenikeButton
-            // 
-            this.pretraziUcenikeButton.Location = new System.Drawing.Point(239, 5);
-            this.pretraziUcenikeButton.Name = "pretraziUcenikeButton";
-            this.pretraziUcenikeButton.Size = new System.Drawing.Size(75, 23);
-            this.pretraziUcenikeButton.TabIndex = 6;
-            this.pretraziUcenikeButton.Text = "Pretrazi";
-            this.pretraziUcenikeButton.UseVisualStyleBackColor = true;
-            this.pretraziUcenikeButton.Click += new System.EventHandler(this.pretraziUcenikeButton_Click);
-            // 
-            // pretragaUcenikaInput
-            // 
-            this.pretragaUcenikaInput.Location = new System.Drawing.Point(6, 7);
-            this.pretragaUcenikaInput.Name = "pretragaUcenikaInput";
-            this.pretragaUcenikaInput.Size = new System.Drawing.Size(227, 20);
-            this.pretragaUcenikaInput.TabIndex = 5;
+            this.BrojUDnevniku.DataPropertyName = "BrojUDnevniku";
+            this.BrojUDnevniku.HeaderText = "Broj u dnevniku";
+            this.BrojUDnevniku.Name = "BrojUDnevniku";
             // 
             // DodajUcenikaForm
             // 
@@ -176,6 +184,7 @@
             this.Name = "DodajUcenikaForm";
             this.ShowIcon = false;
             this.Text = "Dodaj učenika";
+            this.Load += new System.EventHandler(this.DodajUcenikaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.uceniciGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -185,6 +194,10 @@
         #endregion
 
         private System.Windows.Forms.DataGridView uceniciGridView;
+        private System.Windows.Forms.Button izmijeniUcenikaButton;
+        private System.Windows.Forms.Button noviUcenikButton;
+        private System.Windows.Forms.Button pretraziUcenikeButton;
+        private System.Windows.Forms.TextBox pretragaUcenikaInput;
         private System.Windows.Forms.DataGridViewTextBoxColumn UcenikId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Razred;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
@@ -193,9 +206,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn ImePrezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn RazredId;
-        private System.Windows.Forms.Button izmijeniUcenikaButton;
-        private System.Windows.Forms.Button noviUcenikButton;
-        private System.Windows.Forms.Button pretraziUcenikeButton;
-        private System.Windows.Forms.TextBox pretragaUcenikaInput;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BrojUDnevniku;
     }
 }

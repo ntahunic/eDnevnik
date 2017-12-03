@@ -3,17 +3,17 @@ using eDnevnik.PCL.Util;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace eDnevnik.MOBILE
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MaterijaliPage : ContentPage
 	{
         private WebAPIHelper _materijaliService = new WebAPIHelper("api/materijali");
@@ -43,6 +43,7 @@ namespace eDnevnik.MOBILE
             if (e.Item != null)
             {
                 this.Navigation.PushAsync(new MaterijalDetalji((e.Item as MaterijalVM).MaterijalId));
+
             }
         }
 

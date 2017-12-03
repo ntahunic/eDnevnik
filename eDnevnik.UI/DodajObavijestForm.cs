@@ -60,7 +60,7 @@ namespace eDnevnik.UI
             {
                 Obavijest obavijest = new Obavijest
                 {
-                    Datum = datumObavijestiInput.Text,
+                    Datum = datumObavijestiInput.Value.ToShortDateString(),
                     Naslov = naslovObavijestiInput.Text,
                     Sadrzaj = sadrzajObavijestiInput.Text,
                     NastavnikId = Global.TrenutniKorisnik.KorisnikId,

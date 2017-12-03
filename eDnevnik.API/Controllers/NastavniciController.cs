@@ -23,6 +23,7 @@ namespace eDnevnik.API.Controllers
             {
                 NastavnikId = x.NastavnikId,
                 Titula = x.Titula,
+                Telefon = x.Telefon,
                 Ime = x.Korisnik.Ime,
                 Prezime = x.Korisnik.Prezime,
                 Username = x.Korisnik.Username,
@@ -45,6 +46,7 @@ namespace eDnevnik.API.Controllers
             {
                 NastavnikId = x.NastavnikId,
                 Titula = x.Titula,
+                Telefon = x.Telefon,
                 Ime = x.Korisnik.Ime,
                 Prezime = x.Korisnik.Prezime,
                 Username = x.Korisnik.Username,
@@ -88,7 +90,7 @@ namespace eDnevnik.API.Controllers
             return Ok(n);
         }
 
-        // GET: api/Nastavnici/adil
+        // GET: api/Nastavnici/ooad
         [HttpGet]
         [Route("api/Nastavnici/getNastavniciByPredmet/{predmetId}")]
         public IHttpActionResult GetNastavnici(int predmetId)
@@ -129,6 +131,7 @@ namespace eDnevnik.API.Controllers
 
         // PUT: api/Nastavnici/5
         [ResponseType(typeof(void))]
+        [Route("api/Nastavnici/putNastavnik/{id}")]
         public IHttpActionResult PutNastavnik(int id, Nastavnik nastavnik)
         {
             if (!ModelState.IsValid)
@@ -142,7 +145,7 @@ namespace eDnevnik.API.Controllers
             }
 
             db.Entry(nastavnik).State = EntityState.Modified;
-
+            db.Entry(nastavnik.Korisnik).State = EntityState.Modified;
             try
             {
                 db.SaveChanges();
@@ -195,18 +198,18 @@ namespace eDnevnik.API.Controllers
         // DELETE: api/Nastavnici/5
         [ResponseType(typeof(Nastavnik))]
         [HttpDelete]
+        [Route("api/Nastavnici/deleteNastavnik/{id}")]
         public IHttpActionResult DeleteNastavnik(int id)
         {
-            //Nastavnik nastavnik = db.Nastavnik.Where(x => x.NastavnikId == id).FirstOrDefault();
-            //if (nastavnik == null)
-            //{
-            //    return NotFound();
-            //}
+            Nastavnik nastavnik = db.Nastavnik.Find(id);
+            if (nastavnik == null)
+            {
+                return NotFound();
+            }
 
-            //db.Nastavnik.Remove(nastavnik);
-            //db.SaveChanges();
+            db.Nastavnik.Remove(nastavnik);
+            db.SaveChanges();
 
-            //return Ok(nastavnik);
             return Ok();
         }
 

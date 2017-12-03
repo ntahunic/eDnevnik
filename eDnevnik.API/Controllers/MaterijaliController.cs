@@ -26,7 +26,8 @@ namespace eDnevnik.API.Controllers
                 Naziv = x.Naziv,
                 Predmet = x.Predmet.Naziv,
                 PredmetId = x.PredmetId,
-                Datum = x.Datum
+                Datum = x.Datum,
+                Sadrzaj = x.Sadrzaj
             });
         }
 
@@ -40,7 +41,8 @@ namespace eDnevnik.API.Controllers
                 Naziv = x.Naziv,
                 Predmet = x.Predmet.Naziv,
                 PredmetId = x.PredmetId,
-                Datum = x.Datum
+                Datum = x.Datum,
+                Sadrzaj = x.Sadrzaj
             }).Single();
 
             if (materijal == null)
@@ -61,7 +63,8 @@ namespace eDnevnik.API.Controllers
                 Naziv = x.Naziv,
                 Predmet = x.Predmet.Naziv,
                 PredmetId = x.PredmetId,
-                Datum = x.Datum
+                Datum = x.Datum,
+                Sadrzaj = x.Sadrzaj
             });
         }
 

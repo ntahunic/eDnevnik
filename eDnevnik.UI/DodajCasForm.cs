@@ -62,7 +62,7 @@ namespace eDnevnik.UI
             {
                 Cas cas = new Cas
                 {
-                    Datum = datumCasaInput.Text,
+                    Datum = datumCasaInput.Value.ToShortDateString(),
                     NastavnikId = Global.TrenutniKorisnik.KorisnikId,
                     PredmetId = Convert.ToInt32(predmetiInput.SelectedValue),
                     BrojSati = Convert.ToInt32(brojSatiInput.Text)

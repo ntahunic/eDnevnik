@@ -26,53 +26,6 @@ namespace eDnevnik.UI
             materijalPredmetId.Text = predmetId.ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (this.ValidateChildren())
-            {
-                Stream myStream = null;
-                OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-                openFileDialog1.InitialDirectory = "c:\\";
-                openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                openFileDialog1.FilterIndex = 2;
-                openFileDialog1.RestoreDirectory = true;
-
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        if ((myStream = openFileDialog1.OpenFile()) != null)
-                        {
-                            byte[] array;
-                            using (myStream)
-                            {
-                                array = ReadFully(myStream);
-                            }
-                            Materijal materijal = new Materijal();
-                            materijal.Datum = DateTime.Now.ToShortDateString();
-                            materijal.Naziv = materijalNazivInput.Text;
-                            materijal.Materijal1 = array;
-                            materijal.NastavnikId = Global.TrenutniKorisnik.KorisnikId;
-                            materijal.PredmetId = Convert.ToInt16(materijalPredmetId.Text);
-
-                            HttpResponseMessage response = _materijaliService.PostResponse(materijal);
-                            if (response.IsSuccessStatusCode)
-                            {
-                                MessageBox.Show("Materijal uspjesno dodat");
-                            }
-                            File.WriteAllBytes("C:/Users/Admin/Foo.txt", array);
-
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
-                    }
-                }
-            }
-        }
-
         public static byte[] ReadFully(Stream input)
         {
             byte[] buffer = new byte[16 * 1024];
@@ -93,6 +46,33 @@ namespace eDnevnik.UI
             {
                 e.Cancel = true;
                 errorProvider1.SetError(materijalNazivInput, Messages.materijalNaziv_req);
+            }
+        }
+
+        private void dodajMaterijalButton_Click(object sender, EventArgs e)
+        {
+            if (this.ValidateChildren())
+            {
+                Materijal materijal = new Materijal
+                {
+                    Naziv = materijalNazivInput.Text,
+                    Datum = datumObjaveInput.Value.ToShortDateString(),
+                    NastavnikId = Global.TrenutniKorisnik.KorisnikId,
+                    PredmetId = Convert.ToInt32(materijalPredmetId.Text),
+                    Sadrzaj = sadrzajInput.Text
+                };
+
+                HttpResponseMessage response = _materijaliService.PostResponse(materijal);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Materijal uspješno dodan");
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("Doslo je do greske prilikom dodavanja materijala");
+                }
             }
         }
     }

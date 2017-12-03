@@ -48,7 +48,7 @@
           <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PredmetId" Type="int" Nullable="false" />
           <Property Name="Datum" Type="nvarchar" MaxLength="50" />
-          <Property Name="Materijal" Type="varbinary(max)" />
+          <Property Name="Sadrzaj" Type="nvarchar(max)" />
           <Property Name="NastavnikId" Type="int" />
         </EntityType>
         <EntityType Name="Nastavnik">
@@ -154,7 +154,6 @@
           </Key>
           <Property Name="UcenikId" Type="int" Nullable="false" />
           <Property Name="RazredId" Type="int" Nullable="false" />
-          <Property Name="BrojUDnevniku" Type="int" />
         </EntityType>
         <EntityType Name="Uloga">
           <Key>
@@ -598,11 +597,11 @@
           <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PredmetId" Type="Int32" Nullable="false" />
           <Property Name="Datum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Materijal1" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="NastavnikId" Type="Int32" />
           <NavigationProperty Name="Nastavnik" Relationship="Self.FK_Materijal_Nastavnik" FromRole="Materijal" ToRole="Nastavnik" />
           <NavigationProperty Name="Predmet" Relationship="Self.FK_Materijal_Predmet" FromRole="Materijal" ToRole="Predmet" />
           <NavigationProperty Name="OcjenaMaterijal" Relationship="Self.FK_OcjenaMaterijal_Materijal" FromRole="Materijal" ToRole="OcjenaMaterijal" />
+          <Property Name="Sadrzaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Nastavnik">
           <Key>
@@ -723,7 +722,6 @@
           </Key>
           <Property Name="UcenikId" Type="Int32" Nullable="false" />
           <Property Name="RazredId" Type="Int32" Nullable="false" />
-          <Property Name="BrojUDnevniku" Type="Int32" />
           <NavigationProperty Name="Korisnik" Relationship="Self.FK_Ucenik_Korisnik" FromRole="Ucenik" ToRole="Korisnik" />
           <NavigationProperty Name="Ocjena" Relationship="Self.FK_Ocjena_Ucenik" FromRole="Ucenik" ToRole="Ocjena" />
           <NavigationProperty Name="OcjenaMaterijal" Relationship="Self.FK_OcjenaMaterijal_Ucenik" FromRole="Ucenik" ToRole="OcjenaMaterijal" />
@@ -1114,11 +1112,11 @@
           <EntitySetMapping Name="Materijal">
             <EntityTypeMapping TypeName="eDnevnikModel.Materijal">
               <MappingFragment StoreEntitySet="Materijal">
+                <ScalarProperty Name="Sadrzaj" ColumnName="Sadrzaj" />
                 <ScalarProperty Name="MaterijalId" ColumnName="MaterijalId" />
                 <ScalarProperty Name="Naziv" ColumnName="Naziv" />
                 <ScalarProperty Name="PredmetId" ColumnName="PredmetId" />
                 <ScalarProperty Name="Datum" ColumnName="Datum" />
-                <ScalarProperty Name="Materijal1" ColumnName="Materijal" />
                 <ScalarProperty Name="NastavnikId" ColumnName="NastavnikId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1226,7 +1224,6 @@
               <MappingFragment StoreEntitySet="Ucenik">
                 <ScalarProperty Name="UcenikId" ColumnName="UcenikId" />
                 <ScalarProperty Name="RazredId" ColumnName="RazredId" />
-                <ScalarProperty Name="BrojUDnevniku" ColumnName="BrojUDnevniku" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

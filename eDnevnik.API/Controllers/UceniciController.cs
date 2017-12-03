@@ -26,7 +26,7 @@ namespace eDnevnik.API.Controllers
                 Username = x.Korisnik.Username,
                 Password = x.Korisnik.Password,
                 ImePrezime = x.Korisnik.Ime + " " +x.Korisnik.Prezime,    
-                RazredId = x.RazredId
+                RazredId = x.RazredId,
             }).ToList();
         }
 
@@ -41,7 +41,7 @@ namespace eDnevnik.API.Controllers
                 Password = y.Korisnik.Password,
                 Username = y.Korisnik.Username,
                 Razred = y.Razred.Naziv,
-                RazredId = y.RazredId                
+                RazredId = y.RazredId,
             }).FirstOrDefault();
 
             if (n == null)
@@ -77,7 +77,7 @@ namespace eDnevnik.API.Controllers
                 Username = x.Korisnik.Username,
                 Password = x.Korisnik.Password,
                 ImePrezime = x.Korisnik.Ime + " " + x.Korisnik.Prezime,
-                RazredId = x.RazredId
+                RazredId = x.RazredId,
             }).Single();
 
             if (ucenik == null)
@@ -101,7 +101,7 @@ namespace eDnevnik.API.Controllers
                 Ime = x.Korisnik.Ime,
                 Prezime = x.Korisnik.Prezime,
                 Username = x.Korisnik.Username,
-                Password = x.Korisnik.Password
+                Password = x.Korisnik.Password,
             }).ToList();
 
             if (ucenici == null)
@@ -128,6 +128,7 @@ namespace eDnevnik.API.Controllers
             }
 
             db.Entry(ucenik).State = EntityState.Modified;
+            db.Entry(ucenik.Korisnik).State = EntityState.Modified;
 
             try
             {
@@ -193,7 +194,7 @@ namespace eDnevnik.API.Controllers
             db.Ucenik.Remove(ucenik);
             db.SaveChanges();
 
-            return Ok(ucenik);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

@@ -38,6 +38,7 @@ namespace eDnevnik.API.Controllers
                 Prezime = x.Ucenik.Korisnik.Prezime,
                 UcenikId = x.UcenikId,
                 PrisustvoId = x.PrisustvoId,
+                IsOpravdano = x.Opravdano,
                 Prisutan = x.Prisutan,
                 Razred = x.Ucenik.Razred.Naziv + " - " + x.Ucenik.Razred.Odjeljenje
             }).ToList();
@@ -125,7 +126,8 @@ namespace eDnevnik.API.Controllers
                     BrojSati = uceniciCas.Cas.BrojSati,
                     CasId = uceniciCas.Cas.CasId,
                     Prisutan = true,
-                    UcenikId = ucenik.UcenikId
+                    UcenikId = ucenik.UcenikId,
+                    Opravdano = true,
                 };
                 _db.Prisustvo.Add(p);
                 _db.SaveChanges();
@@ -146,6 +148,7 @@ namespace eDnevnik.API.Controllers
             p.CasId = prisustvo.CasId;
             p.UcenikId = prisustvo.UcenikId;
             p.Prisutan = prisustvo.Prisutan;
+            p.Opravdano = prisustvo.Opravdano;
             _db.SaveChanges();
             return StatusCode(HttpStatusCode.NoContent);
         }

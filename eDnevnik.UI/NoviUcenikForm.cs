@@ -36,6 +36,7 @@ namespace eDnevnik.UI
         public NoviUcenikForm(int ucenikId)
         {
             InitializeComponent();
+            this.AutoValidate = AutoValidate.Disable;
 
             HttpResponseMessage response = _razrediService.GetResponse();
             if (response.IsSuccessStatusCode)
@@ -53,12 +54,12 @@ namespace eDnevnik.UI
             prezimeInput.Text = ucenik.Prezime;
             razredInput.Text = ucenik.RazredId.ToString();
             korisnickoImeInput.Text = ucenik.Username;
-            lozinkaInput.Text = ucenik.Password;
-            lozinkaPotvrdaInput.Text = ucenik.Password;
         }
 
         private void dodajUcenikaButton_Click(object sender, EventArgs e)
         {
+            this.AutoValidate = AutoValidate.Disable;
+
             if (this.ValidateChildren())
             {
                 HttpResponseMessage response;
@@ -144,6 +145,21 @@ namespace eDnevnik.UI
         }
 
         private void NoviUcenikForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void brojUDnevnikuInput_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void razredInput_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

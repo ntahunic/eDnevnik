@@ -38,6 +38,7 @@ namespace eDnevnik.UI
             int predmetId = Convert.ToInt32(predmetiInput.SelectedValue);
             Form frm = new DodajMaterijalForm(predmetId);
             frm.Show();
+            Close();
         }
     }
 }

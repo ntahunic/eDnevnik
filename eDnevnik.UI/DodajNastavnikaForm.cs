@@ -40,6 +40,8 @@ namespace eDnevnik.UI
 
         private void dodajNastavnikaButton_Click_1(object sender, EventArgs e)
         {
+            this.AutoValidate = AutoValidate.Disable;
+
             if (this.ValidateChildren())
             {
                 HttpResponseMessage response;
@@ -47,6 +49,7 @@ namespace eDnevnik.UI
                 Nastavnik nastavnik = new Nastavnik
                 {
                     Titula = titulaInput.Text,
+                    Telefon = telefonInput.Text,
                     Korisnik = new Korisnik
                     {
                         Ime = imeInput.Text,
@@ -62,9 +65,8 @@ namespace eDnevnik.UI
                 {
                     nastavnik.Korisnik.KorisnikId = Convert.ToInt32(nastavnikIdText.Text);
                     nastavnik.NastavnikId = Convert.ToInt32(nastavnikIdText.Text);
-                    response = _nastavniciService.PutResponse(nastavnik.NastavnikId, nastavnik);
+                    response = _nastavniciService.PutActionResponse("putNastavnik", nastavnik.NastavnikId, nastavnik);
                 }
-
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -89,8 +91,7 @@ namespace eDnevnik.UI
                 prezimeInput.Text = n.Prezime;
                 titulaInput.Text = n.Titula;
                 korisnickoImeInput.Text = n.Username;
-                lozinkaInput.Text = n.Password;
-                lozinkaPotvrdaInput.Text = n.Password;
+                telefonInput.Text = n.Telefon;
             }
         }
 
@@ -106,10 +107,11 @@ namespace eDnevnik.UI
                 {
                     int nastavnikId = (int)nastavniciGridView.CurrentRow.Cells["NastavnikId"].Value;
 
-                    HttpResponseMessage response = _nastavniciService.DeleteResponse(nastavnikId.ToString());
+                    HttpResponseMessage response = _nastavniciService.DeleteActionResponse("deleteNastavnik", nastavnikId.ToString());
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Nastavnik obrisan");
+                        DataBind();
                     }
                 }
                 else if (dialogResult == DialogResult.No)
@@ -176,6 +178,11 @@ namespace eDnevnik.UI
                 e.Cancel = true;
                 errorProvider1.SetError(lozinkaPotvrdaInput, Messages.password_len);
             }
+        }
+
+        private void telefonInput_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

@@ -37,16 +37,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lozinkaInput = new System.Windows.Forms.TextBox();
             this.korisnickoImeInput = new System.Windows.Forms.TextBox();
-            this.prezimeInput = new System.Windows.Forms.TextBox();
             this.imeInput = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.prezimeInput = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
             this.SuspendLayout();
             // 
             // razredInput
@@ -56,6 +54,7 @@
             this.razredInput.Name = "razredInput";
             this.razredInput.Size = new System.Drawing.Size(198, 21);
             this.razredInput.TabIndex = 44;
+            this.razredInput.SelectedIndexChanged += new System.EventHandler(this.razredInput_SelectedIndexChanged);
             // 
             // ucenikIdText
             // 
@@ -67,7 +66,7 @@
             // 
             // dodajUcenikaButton
             // 
-            this.dodajUcenikaButton.Location = new System.Drawing.Point(233, 200);
+            this.dodajUcenikaButton.Location = new System.Drawing.Point(233, 202);
             this.dodajUcenikaButton.Name = "dodajUcenikaButton";
             this.dodajUcenikaButton.Size = new System.Drawing.Size(75, 23);
             this.dodajUcenikaButton.TabIndex = 42;
@@ -78,7 +77,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 177);
+            this.label6.Location = new System.Drawing.Point(13, 179);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 13);
             this.label6.TabIndex = 41;
@@ -86,7 +85,7 @@
             // 
             // lozinkaPotvrdaInput
             // 
-            this.lozinkaPotvrdaInput.Location = new System.Drawing.Point(110, 174);
+            this.lozinkaPotvrdaInput.Location = new System.Drawing.Point(110, 176);
             this.lozinkaPotvrdaInput.Name = "lozinkaPotvrdaInput";
             this.lozinkaPotvrdaInput.PasswordChar = '*';
             this.lozinkaPotvrdaInput.Size = new System.Drawing.Size(198, 20);
@@ -96,7 +95,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 148);
+            this.label5.Location = new System.Drawing.Point(13, 150);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 39;
@@ -105,7 +104,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 122);
+            this.label4.Location = new System.Drawing.Point(13, 124);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 13);
             this.label4.TabIndex = 38;
@@ -119,15 +118,7 @@
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 37;
             this.label3.Text = "Razred";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 36;
-            this.label2.Text = "Prezime";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label1
             // 
@@ -140,7 +131,7 @@
             // 
             // lozinkaInput
             // 
-            this.lozinkaInput.Location = new System.Drawing.Point(110, 148);
+            this.lozinkaInput.Location = new System.Drawing.Point(110, 150);
             this.lozinkaInput.Name = "lozinkaInput";
             this.lozinkaInput.PasswordChar = '*';
             this.lozinkaInput.Size = new System.Drawing.Size(198, 20);
@@ -149,19 +140,11 @@
             // 
             // korisnickoImeInput
             // 
-            this.korisnickoImeInput.Location = new System.Drawing.Point(110, 122);
+            this.korisnickoImeInput.Location = new System.Drawing.Point(110, 124);
             this.korisnickoImeInput.Name = "korisnickoImeInput";
             this.korisnickoImeInput.Size = new System.Drawing.Size(198, 20);
             this.korisnickoImeInput.TabIndex = 33;
             this.korisnickoImeInput.Validating += new System.ComponentModel.CancelEventHandler(this.korisnickoImeInput_Validating);
-            // 
-            // prezimeInput
-            // 
-            this.prezimeInput.Location = new System.Drawing.Point(110, 42);
-            this.prezimeInput.Name = "prezimeInput";
-            this.prezimeInput.Size = new System.Drawing.Size(198, 20);
-            this.prezimeInput.TabIndex = 32;
-            this.prezimeInput.Validating += new System.ComponentModel.CancelEventHandler(this.prezimeInput_Validating);
             // 
             // imeInput
             // 
@@ -175,9 +158,22 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // errorProvider2
+            // prezimeInput
             // 
-            this.errorProvider2.ContainerControl = this;
+            this.prezimeInput.Location = new System.Drawing.Point(110, 42);
+            this.prezimeInput.Name = "prezimeInput";
+            this.prezimeInput.Size = new System.Drawing.Size(198, 20);
+            this.prezimeInput.TabIndex = 32;
+            this.prezimeInput.Validating += new System.ComponentModel.CancelEventHandler(this.prezimeInput_Validating);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "Prezime";
             // 
             // NoviUcenikForm
             // 
@@ -205,7 +201,6 @@
             this.Text = "Novi učenik";
             this.Load += new System.EventHandler(this.NoviUcenikForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,13 +216,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox lozinkaInput;
         private System.Windows.Forms.TextBox korisnickoImeInput;
-        private System.Windows.Forms.TextBox prezimeInput;
         private System.Windows.Forms.TextBox imeInput;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.ErrorProvider errorProvider2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox prezimeInput;
     }
 }

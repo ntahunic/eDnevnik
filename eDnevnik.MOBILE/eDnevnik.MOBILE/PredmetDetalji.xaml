@@ -5,7 +5,7 @@
 
 
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="15">
             <Label x:Name="NazivPredmetaText" Text="{Binding Naziv}" FontAttributes="Bold" FontSize="Medium"></Label>
             <Label x:Name="NastavnikNaPredmetuText" Text="{Binding Nastavnik}" FontAttributes="Bold" FontSize="Medium"></Label>
             

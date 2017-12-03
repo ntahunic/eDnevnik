@@ -4,7 +4,7 @@
              x:Class="eDnevnik.MOBILE.ObavijestDetalji">
 
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Margin="15">
             <Label x:Name="NaslovText" Text="{Binding Naslov}" FontAttributes="Bold" FontSize="Large"></Label>
             <StackLayout Orientation="Horizontal">
                 <Label x:Name="DatumText" Text="{Binding Datum} " FontSize="Micro"></Label>

@@ -48,5 +48,10 @@ namespace eDnevnik.UI
             Form frm = new NoviUcenikForm(ucenikId);
             frm.Show();
         }
+
+        private void DodajUcenikaForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

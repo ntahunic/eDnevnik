@@ -39,7 +39,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.PrisustvoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrojSati = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Opravdano = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Predmet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +47,8 @@
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Razred = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prisutan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Opravdano = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.IsOpravdano = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.uceniciGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +59,6 @@
             this.uceniciGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PrisustvoId,
             this.BrojSati,
-            this.Opravdano,
             this.Datum,
             this.Predmet,
             this.ImePrezime,
@@ -66,7 +66,9 @@
             this.Ime,
             this.Prezime,
             this.Razred,
-            this.Prisutan});
+            this.Prisutan,
+            this.Opravdano,
+            this.IsOpravdano});
             this.uceniciGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.uceniciGridView.Location = new System.Drawing.Point(0, 128);
             this.uceniciGridView.Name = "uceniciGridView";
@@ -159,14 +161,6 @@
             this.BrojSati.ReadOnly = true;
             this.BrojSati.Visible = false;
             // 
-            // Opravdano
-            // 
-            this.Opravdano.DataPropertyName = "Opravdano";
-            this.Opravdano.HeaderText = "Opravdano";
-            this.Opravdano.Name = "Opravdano";
-            this.Opravdano.ReadOnly = true;
-            this.Opravdano.Visible = false;
-            // 
             // Datum
             // 
             this.Datum.DataPropertyName = "Datum";
@@ -227,6 +221,22 @@
             this.Prisutan.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Prisutan.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // Opravdano
+            // 
+            this.Opravdano.DataPropertyName = "Opravdano";
+            this.Opravdano.HeaderText = "Opravdano";
+            this.Opravdano.Name = "Opravdano";
+            this.Opravdano.ReadOnly = true;
+            this.Opravdano.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Opravdano.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Opravdano.Visible = false;
+            // 
+            // IsOpravdano
+            // 
+            this.IsOpravdano.DataPropertyName = "IsOpravdano";
+            this.IsOpravdano.HeaderText = "Opravdano";
+            this.IsOpravdano.Name = "IsOpravdano";
+            // 
             // DodajIzostanakForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,7 +274,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrisustvoId;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrojSati;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Opravdano;
         private System.Windows.Forms.DataGridViewTextBoxColumn Datum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Predmet;
         private System.Windows.Forms.DataGridViewTextBoxColumn ImePrezime;
@@ -273,5 +282,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Razred;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Prisutan;
+        private System.Windows.Forms.DataGridViewButtonColumn Opravdano;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsOpravdano;
     }
 }

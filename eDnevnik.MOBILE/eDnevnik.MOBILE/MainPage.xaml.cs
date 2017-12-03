@@ -27,6 +27,12 @@ namespace eDnevnik.MOBILE
                 var jsonResult = response.Content.ReadAsStringAsync();
                 List<ObavijestVM> obavijesti = JsonConvert.DeserializeObject<List<ObavijestVM>>(jsonResult.Result);
 
+                foreach (var item in obavijesti)
+                {
+                    item.Sadrzaj = item.Sadrzaj.Substring(0, 100);
+                    string @continue = "...";
+                    item.Sadrzaj = $"{item.Sadrzaj}{@continue}";
+                }
                 obavijestiList.ItemsSource = obavijesti;
             }
 

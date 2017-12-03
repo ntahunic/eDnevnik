@@ -14,6 +14,7 @@ namespace eDnevnik.API.Models
         public string ImePrezime { get; set; }
         public string Razred { get; set; }
         public bool? Prisutan { get; set; }
+        public bool? IsOpravdano { get; set; }
         public string Opravdano { get; set; }
 
         public string Datum { get; set; }

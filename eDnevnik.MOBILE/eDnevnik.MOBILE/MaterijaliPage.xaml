@@ -4,7 +4,7 @@
              x:Class="eDnevnik.MOBILE.MaterijaliPage">
 
     <ContentPage.Content>
-        <StackLayout Padding="30">
+        <StackLayout Margin="15">
             <Picker x:Name="predmetiPicker" Title="Odaberite predmet" SelectedIndexChanged="predmetiPicker_SelectedIndexChanged"></Picker>
 
 

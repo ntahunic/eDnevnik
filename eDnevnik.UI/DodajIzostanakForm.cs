@@ -56,6 +56,7 @@ namespace eDnevnik.UI
                 Prisustvo prisustvo = new Prisustvo();
                 prisustvo.PrisustvoId = (int)row.Cells["PrisustvoId"].Value;
                 prisustvo.Prisutan = Convert.ToBoolean(row.Cells["Prisutan"].Value);
+                prisustvo.Opravdano = Convert.ToBoolean(row.Cells["IsOpravdano"].Value);
                 prisustvo.BrojSati = Convert.ToInt32(brojSatiReadOnly.Text);
                 prisustvo.CasId = Convert.ToInt32(casIdTest.Text);
                 prisustvo.UcenikId = (int)row.Cells["UcenikId"].Value;

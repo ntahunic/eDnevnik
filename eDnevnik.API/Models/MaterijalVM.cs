@@ -13,5 +13,6 @@ namespace eDnevnik.API.Models
         public int PredmetId { get; set; }
         public string Predmet { get; set; }
         public string Datum { get; set; }
+        public string Sadrzaj { get; set; }
     }
 }

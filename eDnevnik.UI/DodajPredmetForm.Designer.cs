@@ -33,13 +33,6 @@
             this.sacuvajPredmetButton = new System.Windows.Forms.Button();
             this.predmetIdText = new System.Windows.Forms.TextBox();
             this.predmetiGridView = new System.Windows.Forms.DataGridView();
-            this.PredmetId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AkademskaGodina = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Razred = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.RazredId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AkademskaGodinaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.razredInput = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,6 +42,13 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.nastavniciNaPredmetuButton = new System.Windows.Forms.Button();
             this.nastavniciNaPredmetuLabel = new System.Windows.Forms.Label();
+            this.PredmetId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AkademskaGodina = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Razred = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.RazredId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AkademskaGodinaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.predmetiGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -99,58 +99,6 @@
             this.predmetiGridView.Size = new System.Drawing.Size(690, 141);
             this.predmetiGridView.TabIndex = 26;
             this.predmetiGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.predmetiGridView_CellContentClick);
-            // 
-            // PredmetId
-            // 
-            this.PredmetId.DataPropertyName = "PredmetId";
-            this.PredmetId.HeaderText = "PredmetId";
-            this.PredmetId.Name = "PredmetId";
-            this.PredmetId.ReadOnly = true;
-            this.PredmetId.Visible = false;
-            // 
-            // Naziv
-            // 
-            this.Naziv.DataPropertyName = "Naziv";
-            this.Naziv.HeaderText = "Naziv";
-            this.Naziv.Name = "Naziv";
-            this.Naziv.ReadOnly = true;
-            // 
-            // AkademskaGodina
-            // 
-            this.AkademskaGodina.DataPropertyName = "AkademskaGodina";
-            this.AkademskaGodina.HeaderText = "AkademskaGodina";
-            this.AkademskaGodina.Name = "AkademskaGodina";
-            this.AkademskaGodina.ReadOnly = true;
-            // 
-            // Razred
-            // 
-            this.Razred.DataPropertyName = "Razred";
-            this.Razred.HeaderText = "Razred";
-            this.Razred.Name = "Razred";
-            this.Razred.ReadOnly = true;
-            // 
-            // Obrisi
-            // 
-            this.Obrisi.HeaderText = "Obrisi";
-            this.Obrisi.Name = "Obrisi";
-            this.Obrisi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Obrisi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // RazredId
-            // 
-            this.RazredId.DataPropertyName = "RazredId";
-            this.RazredId.HeaderText = "RazredId";
-            this.RazredId.Name = "RazredId";
-            this.RazredId.ReadOnly = true;
-            this.RazredId.Visible = false;
-            // 
-            // AkademskaGodinaId
-            // 
-            this.AkademskaGodinaId.DataPropertyName = "AkademskaGodinaId";
-            this.AkademskaGodinaId.HeaderText = "AkademskaGodinaId";
-            this.AkademskaGodinaId.Name = "AkademskaGodinaId";
-            this.AkademskaGodinaId.ReadOnly = true;
-            this.AkademskaGodinaId.Visible = false;
             // 
             // label4
             // 
@@ -228,6 +176,59 @@
             this.nastavniciNaPredmetuLabel.TabIndex = 31;
             this.nastavniciNaPredmetuLabel.Text = "Nastavnici na predmetu";
             // 
+            // PredmetId
+            // 
+            this.PredmetId.DataPropertyName = "PredmetId";
+            this.PredmetId.HeaderText = "PredmetId";
+            this.PredmetId.Name = "PredmetId";
+            this.PredmetId.ReadOnly = true;
+            this.PredmetId.Visible = false;
+            // 
+            // Naziv
+            // 
+            this.Naziv.DataPropertyName = "Naziv";
+            this.Naziv.HeaderText = "Naziv";
+            this.Naziv.Name = "Naziv";
+            this.Naziv.ReadOnly = true;
+            // 
+            // AkademskaGodina
+            // 
+            this.AkademskaGodina.DataPropertyName = "AkademskaGodina";
+            this.AkademskaGodina.HeaderText = "AkademskaGodina";
+            this.AkademskaGodina.Name = "AkademskaGodina";
+            this.AkademskaGodina.ReadOnly = true;
+            // 
+            // Razred
+            // 
+            this.Razred.DataPropertyName = "Razred";
+            this.Razred.HeaderText = "Razred";
+            this.Razred.Name = "Razred";
+            this.Razred.ReadOnly = true;
+            // 
+            // Obrisi
+            // 
+            this.Obrisi.HeaderText = "Obrisi";
+            this.Obrisi.Name = "Obrisi";
+            this.Obrisi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Obrisi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Obrisi.Visible = false;
+            // 
+            // RazredId
+            // 
+            this.RazredId.DataPropertyName = "RazredId";
+            this.RazredId.HeaderText = "RazredId";
+            this.RazredId.Name = "RazredId";
+            this.RazredId.ReadOnly = true;
+            this.RazredId.Visible = false;
+            // 
+            // AkademskaGodinaId
+            // 
+            this.AkademskaGodinaId.DataPropertyName = "AkademskaGodinaId";
+            this.AkademskaGodinaId.HeaderText = "AkademskaGodinaId";
+            this.AkademskaGodinaId.Name = "AkademskaGodinaId";
+            this.AkademskaGodinaId.ReadOnly = true;
+            this.AkademskaGodinaId.Visible = false;
+            // 
             // DodajPredmetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,6 +272,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox akademskaGodinaInput;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label nastavniciNaPredmetuLabel;
+        private System.Windows.Forms.Button nastavniciNaPredmetuButton;
         private System.Windows.Forms.DataGridViewTextBoxColumn PredmetId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naziv;
         private System.Windows.Forms.DataGridViewTextBoxColumn AkademskaGodina;
@@ -278,7 +281,5 @@
         private System.Windows.Forms.DataGridViewButtonColumn Obrisi;
         private System.Windows.Forms.DataGridViewTextBoxColumn RazredId;
         private System.Windows.Forms.DataGridViewTextBoxColumn AkademskaGodinaId;
-        private System.Windows.Forms.Label nastavniciNaPredmetuLabel;
-        private System.Windows.Forms.Button nastavniciNaPredmetuButton;
     }
 }
