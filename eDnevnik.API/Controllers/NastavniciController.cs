@@ -29,6 +29,7 @@ namespace eDnevnik.API.Controllers
                 Username = x.Korisnik.Username,
                 Password = x.Korisnik.Password,
                 ImePrezime = x.Korisnik.Ime + " " + x.Korisnik.Prezime,
+                Aktivan = x.Korisnik.Aktivan,
                 Uloge = x.Korisnik.Uloga.Select(u => new UlogaVM
                 {
                     UlogaId = u.UlogaId,
@@ -51,6 +52,7 @@ namespace eDnevnik.API.Controllers
                 Prezime = x.Korisnik.Prezime,
                 Username = x.Korisnik.Username,
                 Password = x.Korisnik.Password,
+                Aktivan = x.Korisnik.Aktivan,
                 Uloge = x.Korisnik.Uloga.Select(u => new UlogaVM
                 {
                     UlogaId = u.UlogaId,
@@ -78,6 +80,7 @@ namespace eDnevnik.API.Controllers
                 Password = y.Korisnik.Password,
                 Username = y.Korisnik.Username,
                 Titula = y.Titula,
+                Aktivan = y.Korisnik.Aktivan,
                 Uloge = y.Korisnik.Uloga.Select(u => new UlogaVM
                 {
                     UlogaId = u.UlogaId,
@@ -201,16 +204,28 @@ namespace eDnevnik.API.Controllers
         [Route("api/Nastavnici/deleteNastavnik/{id}")]
         public IHttpActionResult DeleteNastavnik(int id)
         {
-            Nastavnik nastavnik = db.Nastavnik.Find(id);
+            //Nastavnik nastavnik = db.Nastavnik.Find(id);
+            //if (nastavnik == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //db.Nastavnik.Remove(nastavnik);
+            //db.SaveChanges();
+
+            //return Ok();
+
+            Nastavnik nastavnik = db.Nastavnik.Where(x => x.NastavnikId == id).FirstOrDefault();
+
             if (nastavnik == null)
             {
                 return NotFound();
             }
 
-            db.Nastavnik.Remove(nastavnik);
+            nastavnik.Korisnik.Aktivan = !nastavnik.Korisnik.Aktivan;
             db.SaveChanges();
 
-            return Ok();
+            return Ok(nastavnik);
         }
 
         protected override void Dispose(bool disposing)

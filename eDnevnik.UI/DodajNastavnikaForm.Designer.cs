@@ -45,9 +45,6 @@
             this.prezimeInput = new System.Windows.Forms.TextBox();
             this.imeInput = new System.Windows.Forms.TextBox();
             this.nastavniciGridView = new System.Windows.Forms.DataGridView();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label7 = new System.Windows.Forms.Label();
-            this.telefonInput = new System.Windows.Forms.TextBox();
             this.NastavnikId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Titula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +55,10 @@
             this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsAdmin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Aktivan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label7 = new System.Windows.Forms.Label();
+            this.telefonInput = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nastavniciGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -208,34 +209,15 @@
             this.Password,
             this.ImePrezime,
             this.IsAdmin,
-            this.Obrisi});
+            this.Obrisi,
+            this.Aktivan});
             this.nastavniciGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.nastavniciGridView.Location = new System.Drawing.Point(0, 269);
             this.nastavniciGridView.Name = "nastavniciGridView";
             this.nastavniciGridView.Size = new System.Drawing.Size(456, 202);
             this.nastavniciGridView.TabIndex = 16;
-            this.nastavniciGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.nastavniciGridView_CellContentClick_1);
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 89);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 13);
-            this.label7.TabIndex = 33;
-            this.label7.Text = "Telefon";
-            // 
-            // telefonInput
-            // 
-            this.telefonInput.Location = new System.Drawing.Point(109, 86);
-            this.telefonInput.Name = "telefonInput";
-            this.telefonInput.Size = new System.Drawing.Size(198, 20);
-            this.telefonInput.TabIndex = 32;
-            this.telefonInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.telefonInput_KeyPress);
+            this.nastavniciGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.nastavniciGridView_CellContentClick);
+            this.nastavniciGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.nastavniciGridView_CellValueChanged_1);
             // 
             // NastavnikId
             // 
@@ -309,6 +291,33 @@
             this.Obrisi.HeaderText = "Obrisi";
             this.Obrisi.Name = "Obrisi";
             // 
+            // Aktivan
+            // 
+            this.Aktivan.DataPropertyName = "Aktivan";
+            this.Aktivan.HeaderText = "Aktivan";
+            this.Aktivan.Name = "Aktivan";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 89);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(43, 13);
+            this.label7.TabIndex = 33;
+            this.label7.Text = "Telefon";
+            // 
+            // telefonInput
+            // 
+            this.telefonInput.Location = new System.Drawing.Point(109, 86);
+            this.telefonInput.Name = "telefonInput";
+            this.telefonInput.Size = new System.Drawing.Size(198, 20);
+            this.telefonInput.TabIndex = 32;
+            this.telefonInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.telefonInput_KeyPress);
+            // 
             // DodajNastavnikaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -376,5 +385,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ImePrezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsAdmin;
         private System.Windows.Forms.DataGridViewButtonColumn Obrisi;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Aktivan;
     }
 }

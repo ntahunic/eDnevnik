@@ -25,6 +25,7 @@ namespace eDnevnik.API.Models
         public string Prezime { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public Nullable<bool> Aktivan { get; set; }
     
         public virtual Nastavnik Nastavnik { get; set; }
         public virtual Ucenik Ucenik { get; set; }

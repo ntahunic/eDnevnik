@@ -27,6 +27,7 @@ namespace eDnevnik.API.Controllers
                 Password = x.Korisnik.Password,
                 ImePrezime = x.Korisnik.Ime + " " +x.Korisnik.Prezime,    
                 RazredId = x.RazredId,
+                Aktivan = x.Korisnik.Aktivan
             }).ToList();
         }
 
@@ -42,6 +43,7 @@ namespace eDnevnik.API.Controllers
                 Username = y.Korisnik.Username,
                 Razred = y.Razred.Naziv,
                 RazredId = y.RazredId,
+                Aktivan = y.Korisnik.Aktivan,
             }).FirstOrDefault();
 
             if (n == null)
@@ -60,7 +62,8 @@ namespace eDnevnik.API.Controllers
                 Password = y.Korisnik.Password,
                 Username = y.Korisnik.Username,
                 Razred = y.Razred.Naziv,
-                RazredId = y.RazredId
+                RazredId = y.RazredId,
+                Aktivan = y.Korisnik.Aktivan,
             }).ToList();
         }
 
@@ -78,6 +81,7 @@ namespace eDnevnik.API.Controllers
                 Password = x.Korisnik.Password,
                 ImePrezime = x.Korisnik.Ime + " " + x.Korisnik.Prezime,
                 RazredId = x.RazredId,
+                Aktivan = x.Korisnik.Aktivan,
             }).Single();
 
             if (ucenik == null)
@@ -102,6 +106,7 @@ namespace eDnevnik.API.Controllers
                 Prezime = x.Korisnik.Prezime,
                 Username = x.Korisnik.Username,
                 Password = x.Korisnik.Password,
+                Aktivan = x.Korisnik.Aktivan,
             }).ToList();
 
             if (ucenici == null)

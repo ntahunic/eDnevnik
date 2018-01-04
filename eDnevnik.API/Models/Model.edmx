@@ -31,6 +31,7 @@
           <Property Name="Prezime" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aktivan" Type="bit" />
         </EntityType>
         <EntityType Name="KorisnikUloga">
           <Key>
@@ -588,6 +589,7 @@
           <NavigationProperty Name="Nastavnik" Relationship="Self.FK_Nastavnik_Korisnik" FromRole="Korisnik" ToRole="Nastavnik" />
           <NavigationProperty Name="Ucenik" Relationship="Self.FK_Ucenik_Korisnik" FromRole="Korisnik" ToRole="Ucenik" />
           <NavigationProperty Name="Uloga" Relationship="Self.KorisnikUloga" FromRole="Korisnik" ToRole="Uloga" />
+          <Property Name="Aktivan" Type="Boolean" />
         </EntityType>
         <EntityType Name="Materijal">
           <Key>
@@ -1101,6 +1103,7 @@
           <EntitySetMapping Name="Korisnik">
             <EntityTypeMapping TypeName="eDnevnikModel.Korisnik">
               <MappingFragment StoreEntitySet="Korisnik">
+                <ScalarProperty Name="Aktivan" ColumnName="Aktivan" />
                 <ScalarProperty Name="KorisnikId" ColumnName="KorisnikId" />
                 <ScalarProperty Name="Ime" ColumnName="Ime" />
                 <ScalarProperty Name="Prezime" ColumnName="Prezime" />

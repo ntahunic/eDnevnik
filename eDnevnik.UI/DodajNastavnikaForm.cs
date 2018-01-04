@@ -95,31 +95,32 @@ namespace eDnevnik.UI
             }
         }
 
-        private void nastavniciGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            var senderGrid = (DataGridView)sender;
+        //private void nastavniciGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    nastavniciGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
 
-            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
-                e.RowIndex >= 0)
-            {
-                DialogResult dialogResult = MessageBox.Show("Da li ste sigurni da zelite obrisati nastavnika?", "Brisanje nastavnika", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    int nastavnikId = (int)nastavniciGridView.CurrentRow.Cells["NastavnikId"].Value;
+        //    var senderGrid = (DataGridView)sender;
 
-                    HttpResponseMessage response = _nastavniciService.DeleteActionResponse("deleteNastavnik", nastavnikId.ToString());
-                    if (response.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Nastavnik obrisan");
-                        DataBind();
-                    }
-                }
-                else if (dialogResult == DialogResult.No)
-                {
+        //    if (senderGrid.Columns[e.ColumnIndex] is DataGridViewCheckBoxCell && e.RowIndex >= 0)
+        //    {
+        //        DialogResult dialogResult = MessageBox.Show("Da li ste sigurni da zelite obrisati nastavnika?", "Brisanje nastavnika", MessageBoxButtons.YesNo);
+        //        if (dialogResult == DialogResult.Yes)
+        //        {
+        //            int nastavnikId = (int)nastavniciGridView.CurrentRow.Cells["NastavnikId"].Value;
 
-                }
-            }
-        }
+        //            HttpResponseMessage response = _nastavniciService.DeleteActionResponse("deleteNastavnik", nastavnikId.ToString());
+        //            if (response.IsSuccessStatusCode)
+        //            {
+        //                MessageBox.Show("Nastavnik obrisan");
+        //                DataBind();
+        //            }
+        //        }
+        //        else if (dialogResult == DialogResult.No)
+        //        {
+
+        //        }
+        //    }
+        //}
 
         private void imeInput_Validating(object sender, CancelEventArgs e)
         {
@@ -183,6 +184,25 @@ namespace eDnevnik.UI
         private void telefonInput_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void nastavniciGridView_CellValueChanged_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == nastavniciGridView.Columns["Aktivan"]?.Index && e.RowIndex != -1)
+            {
+                int nastavnikId = (int)nastavniciGridView.CurrentRow.Cells["NastavnikId"].Value;
+
+                HttpResponseMessage response = _nastavniciService.DeleteActionResponse("deleteNastavnik", nastavnikId.ToString());
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Izmjena aktivnosti uspjesna.");
+                }
+            }
+        }
+
+        private void nastavniciGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            nastavniciGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
         }
     }
 }
