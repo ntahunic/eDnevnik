@@ -62,10 +62,11 @@
             this.ImePrezime,
             this.Opravdano});
             this.casoviGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.casoviGridView.Location = new System.Drawing.Point(0, 162);
+            this.casoviGridView.Location = new System.Drawing.Point(0, 169);
             this.casoviGridView.Name = "casoviGridView";
             this.casoviGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.casoviGridView.Size = new System.Drawing.Size(516, 272);
+            this.casoviGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.casoviGridView.Size = new System.Drawing.Size(742, 281);
             this.casoviGridView.TabIndex = 11;
             this.casoviGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.casoviGridView_CellContentClick);
             // 
@@ -165,7 +166,7 @@
             // 
             // dodajIzostanakButton
             // 
-            this.dodajIzostanakButton.Location = new System.Drawing.Point(398, 133);
+            this.dodajIzostanakButton.Location = new System.Drawing.Point(624, 140);
             this.dodajIzostanakButton.Name = "dodajIzostanakButton";
             this.dodajIzostanakButton.Size = new System.Drawing.Size(106, 23);
             this.dodajIzostanakButton.TabIndex = 9;
@@ -199,7 +200,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 434);
+            this.ClientSize = new System.Drawing.Size(742, 450);
             this.Controls.Add(this.brojSatiInput);
             this.Controls.Add(this.dodajCasButton);
             this.Controls.Add(this.dodajIzostanakButton);
@@ -214,7 +215,7 @@
             this.MinimizeBox = false;
             this.Name = "DodajCasForm";
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj čas";
             this.Load += new System.EventHandler(this.DodajCasForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.casoviGridView)).EndInit();

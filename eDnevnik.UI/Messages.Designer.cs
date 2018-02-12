@@ -115,6 +115,15 @@ namespace eDnevnik.UI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Neispravan format telefona.
+        /// </summary>
+        internal static string telefon_mask {
+            get {
+                return ResourceManager.GetString("telefon_mask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Korisničko ime mora biti minimalno 3 znaka..
         /// </summary>
         internal static string username_len {

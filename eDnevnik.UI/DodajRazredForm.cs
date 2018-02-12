@@ -62,6 +62,8 @@ namespace eDnevnik.UI
                 if (response.IsSuccessStatusCode)
                 {
                     DataBind();
+                    razredInput.Clear();
+                    odjeljenjeInput.Clear();
                     MessageBox.Show("Uspješno dodan/izmijenjen razred.");
                 }
             }
@@ -113,6 +115,10 @@ namespace eDnevnik.UI
                 e.Cancel = true;
                 errorProvider1.SetError(razredInput, "Molimo unesite razred");
             }
+            else
+            {
+                errorProvider1.SetError(razredInput, null);
+            }
         }
 
         private void odjeljenjeInput_Validating(object sender, CancelEventArgs e)
@@ -122,6 +128,10 @@ namespace eDnevnik.UI
                 e.Cancel = true;
                 errorProvider1.SetError(odjeljenjeInput, "Molimo unesite odjeljenje");
             }
+            else
+            {
+                errorProvider1.SetError(odjeljenjeInput, null);
+            }
         }
 
         private void akademskaGodinaInput_Validating(object sender, CancelEventArgs e)
@@ -130,6 +140,10 @@ namespace eDnevnik.UI
             {
                 e.Cancel = true;
                 errorProvider1.SetError(akademskaGodinaInput, "Molimo unesite akademsku godinu");
+            }
+            else
+            {
+                errorProvider1.SetError(akademskaGodinaInput, null);
             }
         }
     }

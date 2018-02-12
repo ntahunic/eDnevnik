@@ -188,18 +188,31 @@ namespace eDnevnik.API.Controllers
         // DELETE: api/Ucenici/5
         [HttpDelete]
         [ResponseType(typeof(Ucenik))]
+        [Route("api/Ucenici/deleteUcenik/{id}")]
         public IHttpActionResult DeleteUcenik(int id)
         {
-            Ucenik ucenik = db.Ucenik.Find(id);
+            //Ucenik ucenik = db.Ucenik.Find(id);
+            //if (ucenik == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //db.Ucenik.Remove(ucenik);
+            //db.SaveChanges();
+
+            //return Ok();
+
+            Ucenik ucenik = db.Ucenik.Where(x => x.UcenikId == id).FirstOrDefault();
+
             if (ucenik == null)
             {
                 return NotFound();
             }
 
-            db.Ucenik.Remove(ucenik);
+            ucenik.Korisnik.Aktivan = !ucenik.Korisnik.Aktivan;
             db.SaveChanges();
 
-            return Ok();
+            return Ok(ucenik);
         }
 
         protected override void Dispose(bool disposing)

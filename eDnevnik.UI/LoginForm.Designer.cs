@@ -42,6 +42,7 @@
             this.KorisnickoImeInput.Name = "KorisnickoImeInput";
             this.KorisnickoImeInput.Size = new System.Drawing.Size(162, 20);
             this.KorisnickoImeInput.TabIndex = 0;
+            this.KorisnickoImeInput.Text = "nastavnik";
             // 
             // LozinkaInput
             // 
@@ -50,6 +51,7 @@
             this.LozinkaInput.PasswordChar = '*';
             this.LozinkaInput.Size = new System.Drawing.Size(162, 20);
             this.LozinkaInput.TabIndex = 1;
+            this.LozinkaInput.Text = "test";
             // 
             // label1
             // 

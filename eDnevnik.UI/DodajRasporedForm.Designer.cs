@@ -44,20 +44,18 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 17);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(25, 14);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 17);
+            this.label6.Size = new System.Drawing.Size(41, 13);
             this.label6.TabIndex = 27;
             this.label6.Text = "Razred";
             // 
             // razredInput
             // 
             this.razredInput.FormattingEnabled = true;
-            this.razredInput.Location = new System.Drawing.Point(114, 13);
-            this.razredInput.Margin = new System.Windows.Forms.Padding(4);
+            this.razredInput.Location = new System.Drawing.Point(86, 11);
             this.razredInput.Name = "razredInput";
-            this.razredInput.Size = new System.Drawing.Size(265, 24);
+            this.razredInput.Size = new System.Drawing.Size(200, 21);
             this.razredInput.TabIndex = 26;
             // 
             // Petak
@@ -96,18 +94,20 @@
             this.Cetvrtak,
             this.Petak});
             this.rasporedCasovaGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.rasporedCasovaGridView.Location = new System.Drawing.Point(0, 114);
+            this.rasporedCasovaGridView.Location = new System.Drawing.Point(0, 82);
+            this.rasporedCasovaGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rasporedCasovaGridView.Name = "rasporedCasovaGridView";
             this.rasporedCasovaGridView.RowTemplate.Height = 24;
-            this.rasporedCasovaGridView.Size = new System.Drawing.Size(677, 309);
+            this.rasporedCasovaGridView.Size = new System.Drawing.Size(757, 366);
             this.rasporedCasovaGridView.TabIndex = 63;
             this.rasporedCasovaGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rasporedCasovaGridView_CellContentClick);
             // 
             // sacuvajRasporedButton
             // 
-            this.sacuvajRasporedButton.Location = new System.Drawing.Point(590, 73);
+            this.sacuvajRasporedButton.Location = new System.Drawing.Point(690, 50);
+            this.sacuvajRasporedButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.sacuvajRasporedButton.Name = "sacuvajRasporedButton";
-            this.sacuvajRasporedButton.Size = new System.Drawing.Size(75, 35);
+            this.sacuvajRasporedButton.Size = new System.Drawing.Size(56, 28);
             this.sacuvajRasporedButton.TabIndex = 64;
             this.sacuvajRasporedButton.Text = "Sačuvaj";
             this.sacuvajRasporedButton.UseVisualStyleBackColor = true;
@@ -115,9 +115,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(386, 11);
+            this.button1.Location = new System.Drawing.Point(290, 9);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(63, 26);
+            this.button1.Size = new System.Drawing.Size(47, 21);
             this.button1.TabIndex = 65;
             this.button1.Text = "Popuni";
             this.button1.UseVisualStyleBackColor = true;
@@ -125,14 +126,15 @@
             // 
             // DodajRasporedForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(677, 423);
+            this.ClientSize = new System.Drawing.Size(757, 448);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.sacuvajRasporedButton);
             this.Controls.Add(this.rasporedCasovaGridView);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.razredInput);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DodajRasporedForm";

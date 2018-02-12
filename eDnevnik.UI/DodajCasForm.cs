@@ -89,6 +89,7 @@ namespace eDnevnik.UI
                         };
                         _prisustvoService.PostResponse(uceniciCas);
                     }
+                    brojSatiInput.Clear();
                 }
                 else
                 {
@@ -158,6 +159,10 @@ namespace eDnevnik.UI
             {
                 e.Cancel = true;
                 errorProvider1.SetError(brojSatiInput, Messages.brojSati_len);
+            }
+            else
+            {
+                errorProvider1.SetError(brojSatiInput, null);
             }
         }
     }

@@ -81,6 +81,7 @@
             this.ocjeneGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.ocjeneGridView.Location = new System.Drawing.Point(0, 109);
             this.ocjeneGridView.Name = "ocjeneGridView";
+            this.ocjeneGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ocjeneGridView.Size = new System.Drawing.Size(373, 251);
             this.ocjeneGridView.TabIndex = 9;
             // 

@@ -50,19 +50,17 @@
             // ocjenaLabel
             // 
             this.ocjenaLabel.AutoSize = true;
-            this.ocjenaLabel.Location = new System.Drawing.Point(16, 50);
-            this.ocjenaLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ocjenaLabel.Location = new System.Drawing.Point(12, 41);
             this.ocjenaLabel.Name = "ocjenaLabel";
-            this.ocjenaLabel.Size = new System.Drawing.Size(53, 17);
+            this.ocjenaLabel.Size = new System.Drawing.Size(41, 13);
             this.ocjenaLabel.TabIndex = 13;
             this.ocjenaLabel.Text = "Ocjena";
             // 
             // ocjenaInput
             // 
-            this.ocjenaInput.Location = new System.Drawing.Point(107, 47);
-            this.ocjenaInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ocjenaInput.Location = new System.Drawing.Point(80, 38);
             this.ocjenaInput.Name = "ocjenaInput";
-            this.ocjenaInput.Size = new System.Drawing.Size(265, 22);
+            this.ocjenaInput.Size = new System.Drawing.Size(200, 20);
             this.ocjenaInput.TabIndex = 10;
             this.ocjenaInput.Validating += new System.ComponentModel.CancelEventHandler(this.ocjenaInput_Validating);
             // 
@@ -76,11 +74,11 @@
             this.Predmet,
             this.BrojSati});
             this.casoviGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.casoviGridView.Location = new System.Drawing.Point(0, 150);
-            this.casoviGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.casoviGridView.Location = new System.Drawing.Point(0, 122);
             this.casoviGridView.Name = "casoviGridView";
             this.casoviGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.casoviGridView.Size = new System.Drawing.Size(664, 265);
+            this.casoviGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.casoviGridView.Size = new System.Drawing.Size(498, 215);
             this.casoviGridView.TabIndex = 15;
             // 
             // CasId
@@ -122,29 +120,26 @@
             // ucenikInput
             // 
             this.ucenikInput.FormattingEnabled = true;
-            this.ucenikInput.Location = new System.Drawing.Point(107, 14);
-            this.ucenikInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ucenikInput.Location = new System.Drawing.Point(80, 11);
             this.ucenikInput.Name = "ucenikInput";
-            this.ucenikInput.Size = new System.Drawing.Size(265, 24);
+            this.ucenikInput.Size = new System.Drawing.Size(200, 21);
             this.ucenikInput.TabIndex = 16;
             this.ucenikInput.Validating += new System.ComponentModel.CancelEventHandler(this.ucenikInput_Validating);
             // 
             // ucenikLabel
             // 
             this.ucenikLabel.AutoSize = true;
-            this.ucenikLabel.Location = new System.Drawing.Point(16, 17);
-            this.ucenikLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ucenikLabel.Location = new System.Drawing.Point(12, 14);
             this.ucenikLabel.Name = "ucenikLabel";
-            this.ucenikLabel.Size = new System.Drawing.Size(51, 17);
+            this.ucenikLabel.Size = new System.Drawing.Size(41, 13);
             this.ucenikLabel.TabIndex = 17;
             this.ucenikLabel.Text = "Ucenik";
             // 
             // preuzmiUcenikeButton
             // 
-            this.preuzmiUcenikeButton.Location = new System.Drawing.Point(515, 114);
-            this.preuzmiUcenikeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.preuzmiUcenikeButton.Location = new System.Drawing.Point(386, 93);
             this.preuzmiUcenikeButton.Name = "preuzmiUcenikeButton";
-            this.preuzmiUcenikeButton.Size = new System.Drawing.Size(133, 28);
+            this.preuzmiUcenikeButton.Size = new System.Drawing.Size(100, 23);
             this.preuzmiUcenikeButton.TabIndex = 18;
             this.preuzmiUcenikeButton.Text = "Preuzmi učenike";
             this.preuzmiUcenikeButton.UseVisualStyleBackColor = true;
@@ -152,10 +147,9 @@
             // 
             // sacuvajOcjenuButton
             // 
-            this.sacuvajOcjenuButton.Location = new System.Drawing.Point(273, 79);
-            this.sacuvajOcjenuButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sacuvajOcjenuButton.Location = new System.Drawing.Point(205, 64);
             this.sacuvajOcjenuButton.Name = "sacuvajOcjenuButton";
-            this.sacuvajOcjenuButton.Size = new System.Drawing.Size(100, 28);
+            this.sacuvajOcjenuButton.Size = new System.Drawing.Size(75, 23);
             this.sacuvajOcjenuButton.TabIndex = 19;
             this.sacuvajOcjenuButton.Text = "Sačuvaj";
             this.sacuvajOcjenuButton.UseVisualStyleBackColor = true;
@@ -163,10 +157,9 @@
             // 
             // ocjenaIdText
             // 
-            this.ocjenaIdText.Location = new System.Drawing.Point(107, 1);
-            this.ocjenaIdText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ocjenaIdText.Location = new System.Drawing.Point(80, 1);
             this.ocjenaIdText.Name = "ocjenaIdText";
-            this.ocjenaIdText.Size = new System.Drawing.Size(132, 22);
+            this.ocjenaIdText.Size = new System.Drawing.Size(100, 20);
             this.ocjenaIdText.TabIndex = 20;
             this.ocjenaIdText.Visible = false;
             // 
@@ -176,9 +169,9 @@
             // 
             // DodajOcjenuForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 415);
+            this.ClientSize = new System.Drawing.Size(498, 337);
             this.Controls.Add(this.ocjenaIdText);
             this.Controls.Add(this.sacuvajOcjenuButton);
             this.Controls.Add(this.preuzmiUcenikeButton);
@@ -187,7 +180,6 @@
             this.Controls.Add(this.casoviGridView);
             this.Controls.Add(this.ocjenaLabel);
             this.Controls.Add(this.ocjenaInput);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DodajOcjenuForm";

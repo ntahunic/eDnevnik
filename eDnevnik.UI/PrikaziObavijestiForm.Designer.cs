@@ -54,6 +54,7 @@
             this.obavijestiGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.obavijestiGridView.Location = new System.Drawing.Point(0, 64);
             this.obavijestiGridView.Name = "obavijestiGridView";
+            this.obavijestiGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.obavijestiGridView.Size = new System.Drawing.Size(716, 345);
             this.obavijestiGridView.TabIndex = 0;
             this.obavijestiGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.obavijestiGridView_CellContentClick);

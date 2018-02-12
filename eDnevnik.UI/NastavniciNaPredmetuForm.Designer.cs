@@ -29,19 +29,21 @@
         private void InitializeComponent()
         {
             this.nastavniciNaPredmetuGridView = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.nastavnikNaPredmetuiInput = new System.Windows.Forms.ComboBox();
+            this.dodajNastavnikaNaPredmetButton = new System.Windows.Forms.Button();
+            this.predmetIdText = new System.Windows.Forms.TextBox();
             this.NastavnikId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Titula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.IsAdmin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.nastavnikNaPredmetuiInput = new System.Windows.Forms.ComboBox();
-            this.dodajNastavnikaNaPredmetButton = new System.Windows.Forms.Button();
-            this.predmetIdText = new System.Windows.Forms.TextBox();
+            this.Aktivan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nastavniciNaPredmetuGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,16 +58,53 @@
             this.Prezime,
             this.Username,
             this.Password,
+            this.Telefon,
             this.ImePrezime,
             this.Obrisi,
-            this.IsAdmin});
+            this.IsAdmin,
+            this.Aktivan});
             this.nastavniciNaPredmetuGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.nastavniciNaPredmetuGridView.Location = new System.Drawing.Point(0, 215);
-            this.nastavniciNaPredmetuGridView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nastavniciNaPredmetuGridView.Location = new System.Drawing.Point(0, 110);
             this.nastavniciNaPredmetuGridView.Name = "nastavniciNaPredmetuGridView";
-            this.nastavniciNaPredmetuGridView.Size = new System.Drawing.Size(675, 190);
+            this.nastavniciNaPredmetuGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.nastavniciNaPredmetuGridView.Size = new System.Drawing.Size(807, 355);
             this.nastavniciNaPredmetuGridView.TabIndex = 17;
             this.nastavniciNaPredmetuGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.nastavniciNaPredmetuGridView_CellContentClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Nastavnik";
+            // 
+            // nastavnikNaPredmetuiInput
+            // 
+            this.nastavnikNaPredmetuiInput.FormattingEnabled = true;
+            this.nastavnikNaPredmetuiInput.Location = new System.Drawing.Point(87, 23);
+            this.nastavnikNaPredmetuiInput.Name = "nastavnikNaPredmetuiInput";
+            this.nastavnikNaPredmetuiInput.Size = new System.Drawing.Size(200, 21);
+            this.nastavnikNaPredmetuiInput.TabIndex = 18;
+            // 
+            // dodajNastavnikaNaPredmetButton
+            // 
+            this.dodajNastavnikaNaPredmetButton.Location = new System.Drawing.Point(212, 50);
+            this.dodajNastavnikaNaPredmetButton.Name = "dodajNastavnikaNaPredmetButton";
+            this.dodajNastavnikaNaPredmetButton.Size = new System.Drawing.Size(75, 23);
+            this.dodajNastavnikaNaPredmetButton.TabIndex = 20;
+            this.dodajNastavnikaNaPredmetButton.Text = "Dodaj";
+            this.dodajNastavnikaNaPredmetButton.UseVisualStyleBackColor = true;
+            this.dodajNastavnikaNaPredmetButton.Click += new System.EventHandler(this.dodajNastavnikaNaPredmetButton_Click);
+            // 
+            // predmetIdText
+            // 
+            this.predmetIdText.Location = new System.Drawing.Point(87, 12);
+            this.predmetIdText.Name = "predmetIdText";
+            this.predmetIdText.Size = new System.Drawing.Size(100, 20);
+            this.predmetIdText.TabIndex = 32;
+            this.predmetIdText.Visible = false;
             // 
             // NastavnikId
             // 
@@ -112,6 +151,13 @@
             this.Password.ReadOnly = true;
             this.Password.Visible = false;
             // 
+            // Telefon
+            // 
+            this.Telefon.DataPropertyName = "Telefon";
+            this.Telefon.HeaderText = "Telefon";
+            this.Telefon.Name = "Telefon";
+            this.Telefon.Visible = false;
+            // 
             // ImePrezime
             // 
             this.ImePrezime.DataPropertyName = "ImePrezime";
@@ -122,10 +168,13 @@
             // 
             // Obrisi
             // 
-            this.Obrisi.HeaderText = "Obrisi";
+            this.Obrisi.HeaderText = "Akcija";
             this.Obrisi.Name = "Obrisi";
             this.Obrisi.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Obrisi.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Obrisi.Text = "Ukloni";
+            this.Obrisi.ToolTipText = "Ukloni";
+            this.Obrisi.UseColumnTextForButtonValue = true;
             // 
             // IsAdmin
             // 
@@ -135,56 +184,23 @@
             this.IsAdmin.ReadOnly = true;
             this.IsAdmin.Visible = false;
             // 
-            // label1
+            // Aktivan
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 32);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 17);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Nastavnik";
-            // 
-            // nastavnikNaPredmetuiInput
-            // 
-            this.nastavnikNaPredmetuiInput.FormattingEnabled = true;
-            this.nastavnikNaPredmetuiInput.Location = new System.Drawing.Point(116, 28);
-            this.nastavnikNaPredmetuiInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.nastavnikNaPredmetuiInput.Name = "nastavnikNaPredmetuiInput";
-            this.nastavnikNaPredmetuiInput.Size = new System.Drawing.Size(265, 24);
-            this.nastavnikNaPredmetuiInput.TabIndex = 18;
-            // 
-            // dodajNastavnikaNaPredmetButton
-            // 
-            this.dodajNastavnikaNaPredmetButton.Location = new System.Drawing.Point(283, 62);
-            this.dodajNastavnikaNaPredmetButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dodajNastavnikaNaPredmetButton.Name = "dodajNastavnikaNaPredmetButton";
-            this.dodajNastavnikaNaPredmetButton.Size = new System.Drawing.Size(100, 28);
-            this.dodajNastavnikaNaPredmetButton.TabIndex = 20;
-            this.dodajNastavnikaNaPredmetButton.Text = "Dodaj";
-            this.dodajNastavnikaNaPredmetButton.UseVisualStyleBackColor = true;
-            this.dodajNastavnikaNaPredmetButton.Click += new System.EventHandler(this.dodajNastavnikaNaPredmetButton_Click);
-            // 
-            // predmetIdText
-            // 
-            this.predmetIdText.Location = new System.Drawing.Point(116, 15);
-            this.predmetIdText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.predmetIdText.Name = "predmetIdText";
-            this.predmetIdText.Size = new System.Drawing.Size(132, 22);
-            this.predmetIdText.TabIndex = 32;
-            this.predmetIdText.Visible = false;
+            this.Aktivan.DataPropertyName = "Aktivan";
+            this.Aktivan.HeaderText = "Aktivan";
+            this.Aktivan.Name = "Aktivan";
+            this.Aktivan.Visible = false;
             // 
             // NastavniciNaPredmetuForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(675, 405);
+            this.ClientSize = new System.Drawing.Size(807, 465);
             this.Controls.Add(this.predmetIdText);
             this.Controls.Add(this.dodajNastavnikaNaPredmetButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nastavnikNaPredmetuiInput);
             this.Controls.Add(this.nastavniciNaPredmetuGridView);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NastavniciNaPredmetuForm";
@@ -211,8 +227,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefon;
         private System.Windows.Forms.DataGridViewTextBoxColumn ImePrezime;
         private System.Windows.Forms.DataGridViewButtonColumn Obrisi;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsAdmin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Aktivan;
     }
 }

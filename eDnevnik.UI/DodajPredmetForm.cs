@@ -151,6 +151,10 @@ namespace eDnevnik.UI
             {
                 e.Cancel = true;
                 errorProvider1.SetError(nazivPredmetaInput, "Naziv predmeta mora biti minimalno 3 slova");
+            } 
+            else
+            {
+                errorProvider1.SetError(nazivPredmetaInput, null);
             }
         }
 
@@ -161,6 +165,10 @@ namespace eDnevnik.UI
                 e.Cancel = true;
                 errorProvider1.SetError(akademskaGodinaInput, "Molimo odaberite");
             }
+            else
+            {
+                errorProvider1.SetError(akademskaGodinaInput, null);
+            }
         }
 
         private void razredInput_Validating(object sender, CancelEventArgs e)
@@ -169,6 +177,10 @@ namespace eDnevnik.UI
             {
                 e.Cancel = true;
                 errorProvider1.SetError(razredInput, "Molimo odaberite");
+            }
+            else
+            {
+                errorProvider1.SetError(razredInput, null);
             }
         }
 

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.predmetiGridView = new System.Windows.Forms.DataGridView();
-            this.predmetiDetaljiButton = new System.Windows.Forms.Button();
             this.PredmetId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.predmetiDetaljiButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.predmetiGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,17 +45,9 @@
             this.predmetiGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.predmetiGridView.Location = new System.Drawing.Point(0, 42);
             this.predmetiGridView.Name = "predmetiGridView";
+            this.predmetiGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.predmetiGridView.Size = new System.Drawing.Size(389, 129);
             this.predmetiGridView.TabIndex = 0;
-            // 
-            // predmetiDetaljiButton
-            // 
-            this.predmetiDetaljiButton.Location = new System.Drawing.Point(302, 13);
-            this.predmetiDetaljiButton.Name = "predmetiDetaljiButton";
-            this.predmetiDetaljiButton.Size = new System.Drawing.Size(75, 23);
-            this.predmetiDetaljiButton.TabIndex = 1;
-            this.predmetiDetaljiButton.Text = "Detalji";
-            this.predmetiDetaljiButton.UseVisualStyleBackColor = true;
             // 
             // PredmetId
             // 
@@ -71,6 +63,15 @@
             this.Naziv.HeaderText = "Naziv";
             this.Naziv.Name = "Naziv";
             this.Naziv.ReadOnly = true;
+            // 
+            // predmetiDetaljiButton
+            // 
+            this.predmetiDetaljiButton.Location = new System.Drawing.Point(302, 13);
+            this.predmetiDetaljiButton.Name = "predmetiDetaljiButton";
+            this.predmetiDetaljiButton.Size = new System.Drawing.Size(75, 23);
+            this.predmetiDetaljiButton.TabIndex = 1;
+            this.predmetiDetaljiButton.Text = "Detalji";
+            this.predmetiDetaljiButton.UseVisualStyleBackColor = true;
             // 
             // PrikaziPredmeteForm
             // 

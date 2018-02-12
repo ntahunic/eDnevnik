@@ -34,14 +34,15 @@
             this.pretraziUcenikeButton = new System.Windows.Forms.Button();
             this.pretragaUcenikaInput = new System.Windows.Forms.TextBox();
             this.UcenikId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Razred = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Razred = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Aktivan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RazredId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrojUDnevniku = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BrojUDnevniku = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.uceniciGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,23 +52,27 @@
             this.uceniciGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.uceniciGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UcenikId,
-            this.Razred,
             this.Ime,
             this.Prezime,
+            this.Razred,
+            this.Aktivan,
             this.Username,
             this.Password,
             this.ImePrezime,
             this.RazredId,
             this.BrojUDnevniku});
             this.uceniciGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.uceniciGridView.Location = new System.Drawing.Point(0, 73);
+            this.uceniciGridView.Location = new System.Drawing.Point(0, 51);
             this.uceniciGridView.Name = "uceniciGridView";
-            this.uceniciGridView.Size = new System.Drawing.Size(628, 247);
+            this.uceniciGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.uceniciGridView.Size = new System.Drawing.Size(787, 392);
             this.uceniciGridView.TabIndex = 9;
+            this.uceniciGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uceniciGridView_CellContentClick);
+            this.uceniciGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.uceniciGridView_CellValueChanged);
             // 
             // izmijeniUcenikaButton
             // 
-            this.izmijeniUcenikaButton.Location = new System.Drawing.Point(521, 5);
+            this.izmijeniUcenikaButton.Location = new System.Drawing.Point(700, 22);
             this.izmijeniUcenikaButton.Name = "izmijeniUcenikaButton";
             this.izmijeniUcenikaButton.Size = new System.Drawing.Size(75, 23);
             this.izmijeniUcenikaButton.TabIndex = 8;
@@ -77,7 +82,7 @@
             // 
             // noviUcenikButton
             // 
-            this.noviUcenikButton.Location = new System.Drawing.Point(440, 5);
+            this.noviUcenikButton.Location = new System.Drawing.Point(619, 22);
             this.noviUcenikButton.Name = "noviUcenikButton";
             this.noviUcenikButton.Size = new System.Drawing.Size(75, 23);
             this.noviUcenikButton.TabIndex = 7;
@@ -110,13 +115,6 @@
             this.UcenikId.ReadOnly = true;
             this.UcenikId.Visible = false;
             // 
-            // Razred
-            // 
-            this.Razred.DataPropertyName = "Razred";
-            this.Razred.HeaderText = "Razred";
-            this.Razred.Name = "Razred";
-            this.Razred.ReadOnly = true;
-            // 
             // Ime
             // 
             this.Ime.DataPropertyName = "Ime";
@@ -130,6 +128,19 @@
             this.Prezime.HeaderText = "Prezime";
             this.Prezime.Name = "Prezime";
             this.Prezime.ReadOnly = true;
+            // 
+            // Razred
+            // 
+            this.Razred.DataPropertyName = "Razred";
+            this.Razred.HeaderText = "Razred";
+            this.Razred.Name = "Razred";
+            this.Razred.ReadOnly = true;
+            // 
+            // Aktivan
+            // 
+            this.Aktivan.DataPropertyName = "Aktivan";
+            this.Aktivan.HeaderText = "Aktivan";
+            this.Aktivan.Name = "Aktivan";
             // 
             // Username
             // 
@@ -166,14 +177,15 @@
             // BrojUDnevniku
             // 
             this.BrojUDnevniku.DataPropertyName = "BrojUDnevniku";
-            this.BrojUDnevniku.HeaderText = "Broj u dnevniku";
+            this.BrojUDnevniku.HeaderText = "BrojUDnevniku";
             this.BrojUDnevniku.Name = "BrojUDnevniku";
+            this.BrojUDnevniku.Visible = false;
             // 
             // DodajUcenikaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 320);
+            this.ClientSize = new System.Drawing.Size(787, 443);
             this.Controls.Add(this.uceniciGridView);
             this.Controls.Add(this.izmijeniUcenikaButton);
             this.Controls.Add(this.noviUcenikButton);
@@ -199,13 +211,14 @@
         private System.Windows.Forms.Button pretraziUcenikeButton;
         private System.Windows.Forms.TextBox pretragaUcenikaInput;
         private System.Windows.Forms.DataGridViewTextBoxColumn UcenikId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Razred;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Razred;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Aktivan;
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn ImePrezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn RazredId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BrojUDnevniku;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn BrojUDnevniku;
     }
 }

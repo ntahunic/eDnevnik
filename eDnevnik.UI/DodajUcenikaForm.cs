@@ -53,5 +53,24 @@ namespace eDnevnik.UI
         {
 
         }
+
+        private void uceniciGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            uceniciGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void uceniciGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == uceniciGridView.Columns["Aktivan"]?.Index && e.RowIndex != -1)
+            {
+                int ucenikId = (int)uceniciGridView.CurrentRow.Cells["UcenikId"].Value;
+
+                HttpResponseMessage response = _uceniciService.DeleteActionResponse("deleteUcenik", ucenikId.ToString());
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Izmjena aktivnosti uspjesna.");
+                }
+            }
+        }
     }
 }

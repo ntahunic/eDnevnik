@@ -80,7 +80,7 @@
             // 
             this.sadrzajObavijestiInput.Location = new System.Drawing.Point(79, 119);
             this.sadrzajObavijestiInput.Name = "sadrzajObavijestiInput";
-            this.sadrzajObavijestiInput.Size = new System.Drawing.Size(313, 134);
+            this.sadrzajObavijestiInput.Size = new System.Drawing.Size(650, 268);
             this.sadrzajObavijestiInput.TabIndex = 11;
             this.sadrzajObavijestiInput.Text = "";
             this.sadrzajObavijestiInput.Validating += new System.ComponentModel.CancelEventHandler(this.sadrzajObavijestiInput_Validating);
@@ -96,7 +96,7 @@
             // 
             // dodajObavijestButton
             // 
-            this.dodajObavijestButton.Location = new System.Drawing.Point(304, 259);
+            this.dodajObavijestButton.Location = new System.Drawing.Point(641, 393);
             this.dodajObavijestButton.Name = "dodajObavijestButton";
             this.dodajObavijestButton.Size = new System.Drawing.Size(88, 23);
             this.dodajObavijestButton.TabIndex = 13;
@@ -137,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 299);
+            this.ClientSize = new System.Drawing.Size(753, 461);
             this.Controls.Add(this.obavijestId);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.naslovObavijestiInput);

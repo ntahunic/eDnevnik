@@ -55,7 +55,8 @@ namespace eDnevnik.UI
                         Ime = imeInput.Text,
                         Prezime = prezimeInput.Text,
                         Username = korisnickoImeInput.Text,
-                        Password = UIHelper.GetMd5Hash(lozinkaInput.Text)
+                        Password = string.IsNullOrEmpty(nastavnikIdText.Text) ? UIHelper.GetMd5Hash(lozinkaInput.Text) : lozinkaInput.Text,
+                        Aktivan = true
                     }
                 };
 
@@ -72,6 +73,11 @@ namespace eDnevnik.UI
                 {
                     DataBind();
                     MessageBox.Show("Uspješno dodan/izmijenjen nastavnik.");
+                    this.Controls.Clear();
+                    this.InitializeComponent();
+                    lozinkaInput.Visible = true;
+                    lozinkaPotvrdaInput.Visible = true;
+                    DataBind();
                 }
             }
             
@@ -92,6 +98,11 @@ namespace eDnevnik.UI
                 titulaInput.Text = n.Titula;
                 korisnickoImeInput.Text = n.Username;
                 telefonInput.Text = n.Telefon;
+                lozinkaInput.Text = n.Password;
+                lozinkaPotvrdaInput.Text = n.Password;
+
+                lozinkaInput.Visible = false;
+                lozinkaPotvrdaInput.Visible = false;
             }
         }
 
@@ -128,6 +139,10 @@ namespace eDnevnik.UI
             {
                 e.Cancel = true;
                 errorProvider1.SetError(imeInput, Messages.fname_req);
+            } 
+            else
+            {
+                errorProvider1.SetError(imeInput, null);
             }
         }
 
@@ -138,6 +153,10 @@ namespace eDnevnik.UI
                 e.Cancel = true;
                 errorProvider1.SetError(prezimeInput, Messages.lname_req);
             }
+            else
+            {
+                errorProvider1.SetError(prezimeInput, null);
+            }
         }
 
         private void titulaInput_Validating(object sender, CancelEventArgs e)
@@ -147,6 +166,10 @@ namespace eDnevnik.UI
                 e.Cancel = true;
                 errorProvider1.SetError(titulaInput, "Titula je obavezna.");
             }
+            else
+            {
+                errorProvider1.SetError(titulaInput, null);
+            }
         }
 
         private void korisnickoImeInput_Validating(object sender, CancelEventArgs e)
@@ -155,6 +178,10 @@ namespace eDnevnik.UI
             {
                 e.Cancel = true;
                 errorProvider1.SetError(korisnickoImeInput, Messages.username_len);
+            }
+            else
+            {
+                errorProvider1.SetError(korisnickoImeInput, null);
             }
         }
 
@@ -170,6 +197,10 @@ namespace eDnevnik.UI
                 e.Cancel = true;
                 errorProvider1.SetError(lozinkaInput, Messages.password_match);
             }
+            else
+            {
+                errorProvider1.SetError(lozinkaInput, null);
+            }
         }
 
         private void lozinkaPotvrdaInput_Validating(object sender, CancelEventArgs e)
@@ -178,6 +209,10 @@ namespace eDnevnik.UI
             {
                 e.Cancel = true;
                 errorProvider1.SetError(lozinkaPotvrdaInput, Messages.password_len);
+            }
+            else
+            {
+                errorProvider1.SetError(lozinkaPotvrdaInput, null);
             }
         }
 
@@ -203,6 +238,19 @@ namespace eDnevnik.UI
         private void nastavniciGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             nastavniciGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void telefonInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (telefonInput.Text.Length < 17)
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(telefonInput, Messages.telefon_mask);
+            }
+            else
+            {
+                errorProvider1.SetError(telefonInput, null);
+            }
         }
     }
 }

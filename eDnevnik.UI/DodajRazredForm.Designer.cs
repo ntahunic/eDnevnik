@@ -70,9 +70,10 @@
             this.AkademskaGodinaId,
             this.RazredOdjeljenje});
             this.razrediGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.razrediGridView.Location = new System.Drawing.Point(0, 207);
+            this.razrediGridView.Location = new System.Drawing.Point(0, 155);
             this.razrediGridView.Name = "razrediGridView";
-            this.razrediGridView.Size = new System.Drawing.Size(529, 150);
+            this.razrediGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.razrediGridView.Size = new System.Drawing.Size(773, 299);
             this.razrediGridView.TabIndex = 19;
             // 
             // RazredId
@@ -122,7 +123,7 @@
             // 
             // izmijeniRazredButton
             // 
-            this.izmijeniRazredButton.Location = new System.Drawing.Point(442, 178);
+            this.izmijeniRazredButton.Location = new System.Drawing.Point(686, 126);
             this.izmijeniRazredButton.Name = "izmijeniRazredButton";
             this.izmijeniRazredButton.Size = new System.Drawing.Size(75, 23);
             this.izmijeniRazredButton.TabIndex = 27;
@@ -200,7 +201,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 357);
+            this.ClientSize = new System.Drawing.Size(773, 454);
             this.Controls.Add(this.razredIdText);
             this.Controls.Add(this.razrediGridView);
             this.Controls.Add(this.izmijeniRazredButton);
@@ -215,6 +216,7 @@
             this.MinimizeBox = false;
             this.Name = "DodajRazredForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj razred";
             this.Load += new System.EventHandler(this.DodajRazredForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.razrediGridView)).EndInit();

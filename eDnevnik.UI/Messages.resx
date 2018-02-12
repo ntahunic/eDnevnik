@@ -135,6 +135,9 @@
   <data name="password_match" xml:space="preserve">
     <value>Lozinke se moraju poklapati.</value>
   </data>
+  <data name="telefon_mask" xml:space="preserve">
+    <value>Neispravan format telefona</value>
+  </data>
   <data name="username_len" xml:space="preserve">
     <value>Korisničko ime mora biti minimalno 3 znaka.</value>
   </data>

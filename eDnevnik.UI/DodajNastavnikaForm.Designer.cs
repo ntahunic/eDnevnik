@@ -47,10 +47,10 @@
             this.nastavniciGridView = new System.Windows.Forms.DataGridView();
             this.NastavnikId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Titula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImePrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsAdmin = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,7 +58,7 @@
             this.Aktivan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label7 = new System.Windows.Forms.Label();
-            this.telefonInput = new System.Windows.Forms.TextBox();
+            this.telefonInput = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nastavniciGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -73,7 +73,7 @@
             // 
             // izmijeniNastavnikaButton
             // 
-            this.izmijeniNastavnikaButton.Location = new System.Drawing.Point(369, 240);
+            this.izmijeniNastavnikaButton.Location = new System.Drawing.Point(721, 240);
             this.izmijeniNastavnikaButton.Name = "izmijeniNastavnikaButton";
             this.izmijeniNastavnikaButton.Size = new System.Drawing.Size(75, 23);
             this.izmijeniNastavnikaButton.TabIndex = 30;
@@ -202,10 +202,10 @@
             this.nastavniciGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NastavnikId,
             this.Titula,
-            this.Telefon,
             this.Ime,
             this.Prezime,
             this.Username,
+            this.Telefon,
             this.Password,
             this.ImePrezime,
             this.IsAdmin,
@@ -214,7 +214,8 @@
             this.nastavniciGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.nastavniciGridView.Location = new System.Drawing.Point(0, 269);
             this.nastavniciGridView.Name = "nastavniciGridView";
-            this.nastavniciGridView.Size = new System.Drawing.Size(456, 202);
+            this.nastavniciGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.nastavniciGridView.Size = new System.Drawing.Size(808, 202);
             this.nastavniciGridView.TabIndex = 16;
             this.nastavniciGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.nastavniciGridView_CellContentClick);
             this.nastavniciGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.nastavniciGridView_CellValueChanged_1);
@@ -234,12 +235,6 @@
             this.Titula.Name = "Titula";
             this.Titula.ReadOnly = true;
             // 
-            // Telefon
-            // 
-            this.Telefon.DataPropertyName = "Telefon";
-            this.Telefon.HeaderText = "Telefon";
-            this.Telefon.Name = "Telefon";
-            // 
             // Ime
             // 
             this.Ime.DataPropertyName = "Ime";
@@ -257,10 +252,15 @@
             // Username
             // 
             this.Username.DataPropertyName = "Username";
-            this.Username.HeaderText = "Username";
+            this.Username.HeaderText = "Korisnicko ime";
             this.Username.Name = "Username";
             this.Username.ReadOnly = true;
-            this.Username.Visible = false;
+            // 
+            // Telefon
+            // 
+            this.Telefon.DataPropertyName = "Telefon";
+            this.Telefon.HeaderText = "Telefon";
+            this.Telefon.Name = "Telefon";
             // 
             // Password
             // 
@@ -290,6 +290,8 @@
             // 
             this.Obrisi.HeaderText = "Obrisi";
             this.Obrisi.Name = "Obrisi";
+            this.Obrisi.Text = "";
+            this.Obrisi.Visible = false;
             // 
             // Aktivan
             // 
@@ -313,18 +315,19 @@
             // telefonInput
             // 
             this.telefonInput.Location = new System.Drawing.Point(109, 86);
+            this.telefonInput.Mask = "(+999) 99/000-000";
             this.telefonInput.Name = "telefonInput";
-            this.telefonInput.Size = new System.Drawing.Size(198, 20);
-            this.telefonInput.TabIndex = 32;
-            this.telefonInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.telefonInput_KeyPress);
+            this.telefonInput.Size = new System.Drawing.Size(197, 20);
+            this.telefonInput.TabIndex = 34;
+            this.telefonInput.Validating += new System.ComponentModel.CancelEventHandler(this.telefonInput_Validating);
             // 
             // DodajNastavnikaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 471);
-            this.Controls.Add(this.label7);
+            this.ClientSize = new System.Drawing.Size(808, 471);
             this.Controls.Add(this.telefonInput);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.nastavnikIdText);
             this.Controls.Add(this.izmijeniNastavnikaButton);
             this.Controls.Add(this.dodajNastavnikaButton);
@@ -345,6 +348,7 @@
             this.MinimizeBox = false;
             this.Name = "DodajNastavnikaForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj nastavnika";
             this.Load += new System.EventHandler(this.DodajNastavnikaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nastavniciGridView)).EndInit();
@@ -374,13 +378,13 @@
         private System.Windows.Forms.DataGridView nastavniciGridView;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox telefonInput;
+        private System.Windows.Forms.MaskedTextBox telefonInput;
         private System.Windows.Forms.DataGridViewTextBoxColumn NastavnikId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Titula;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telefon;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Username;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefon;
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn ImePrezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn IsAdmin;
