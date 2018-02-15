@@ -178,12 +178,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
-    <Compile Include="NastavniciNaPredmetuForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NastavniciNaPredmetuForm.Designer.cs">
-      <DependentUpon>NastavniciNaPredmetuForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="NoviUcenikForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -288,9 +282,6 @@
     <EmbeddedResource Include="Messages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NastavniciNaPredmetuForm.resx">
-      <DependentUpon>NastavniciNaPredmetuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NoviUcenikForm.resx">
       <DependentUpon>NoviUcenikForm.cs</DependentUpon>

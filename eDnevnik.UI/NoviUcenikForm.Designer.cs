@@ -32,9 +32,9 @@
             this.razredInput = new System.Windows.Forms.ComboBox();
             this.ucenikIdText = new System.Windows.Forms.TextBox();
             this.dodajUcenikaButton = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lozinkaPotvrdaInputLabel = new System.Windows.Forms.Label();
             this.lozinkaPotvrdaInput = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lozinkaInputLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -74,14 +74,14 @@
             this.dodajUcenikaButton.UseVisualStyleBackColor = true;
             this.dodajUcenikaButton.Click += new System.EventHandler(this.dodajUcenikaButton_Click);
             // 
-            // label6
+            // lozinkaPotvrdaInputLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 179);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 13);
-            this.label6.TabIndex = 41;
-            this.label6.Text = "Lozinka - potvrda";
+            this.lozinkaPotvrdaInputLabel.AutoSize = true;
+            this.lozinkaPotvrdaInputLabel.Location = new System.Drawing.Point(13, 179);
+            this.lozinkaPotvrdaInputLabel.Name = "lozinkaPotvrdaInputLabel";
+            this.lozinkaPotvrdaInputLabel.Size = new System.Drawing.Size(89, 13);
+            this.lozinkaPotvrdaInputLabel.TabIndex = 41;
+            this.lozinkaPotvrdaInputLabel.Text = "Lozinka - potvrda";
             // 
             // lozinkaPotvrdaInput
             // 
@@ -92,14 +92,14 @@
             this.lozinkaPotvrdaInput.TabIndex = 40;
             this.lozinkaPotvrdaInput.Validating += new System.ComponentModel.CancelEventHandler(this.lozinkaPotvrdaInput_Validating);
             // 
-            // label5
+            // lozinkaInputLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 150);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
-            this.label5.TabIndex = 39;
-            this.label5.Text = "Lozinka";
+            this.lozinkaInputLabel.AutoSize = true;
+            this.lozinkaInputLabel.Location = new System.Drawing.Point(13, 150);
+            this.lozinkaInputLabel.Name = "lozinkaInputLabel";
+            this.lozinkaInputLabel.Size = new System.Drawing.Size(44, 13);
+            this.lozinkaInputLabel.TabIndex = 39;
+            this.lozinkaInputLabel.Text = "Lozinka";
             // 
             // label4
             // 
@@ -183,9 +183,9 @@
             this.Controls.Add(this.razredInput);
             this.Controls.Add(this.ucenikIdText);
             this.Controls.Add(this.dodajUcenikaButton);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lozinkaPotvrdaInputLabel);
             this.Controls.Add(this.lozinkaPotvrdaInput);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lozinkaInputLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -198,7 +198,9 @@
             this.MinimizeBox = false;
             this.Name = "NoviUcenikForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Novi učenik";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NoviUcenikForm_FormClosing);
             this.Load += new System.EventHandler(this.NoviUcenikForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -211,9 +213,9 @@
         private System.Windows.Forms.ComboBox razredInput;
         private System.Windows.Forms.TextBox ucenikIdText;
         private System.Windows.Forms.Button dodajUcenikaButton;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lozinkaPotvrdaInputLabel;
         private System.Windows.Forms.TextBox lozinkaPotvrdaInput;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lozinkaInputLabel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;

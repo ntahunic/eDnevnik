@@ -54,6 +54,18 @@ namespace eDnevnik.UI
             prezimeInput.Text = ucenik.Prezime;
             razredInput.Text = ucenik.RazredId.ToString();
             korisnickoImeInput.Text = ucenik.Username;
+            lozinkaPotvrdaInput.Text = ucenik.Password;
+            lozinkaInput.Text = ucenik.Password;
+
+            togglePasswordVisibility(false);
+        }
+
+        private void togglePasswordVisibility(bool visibile)
+        {
+            lozinkaInput.Visible = visibile;
+            lozinkaPotvrdaInput.Visible = visibile;
+            lozinkaInputLabel.Visible = visibile;
+            lozinkaPotvrdaInputLabel.Visible = visibile;
         }
 
         private void dodajUcenikaButton_Click(object sender, EventArgs e)
@@ -72,7 +84,7 @@ namespace eDnevnik.UI
                         Ime = imeInput.Text,
                         Prezime = prezimeInput.Text,
                         Username = korisnickoImeInput.Text,
-                        Password = UIHelper.GetMd5Hash(lozinkaInput.Text)
+                        Password = string.IsNullOrEmpty(ucenikIdText.Text) ? UIHelper.GetMd5Hash(lozinkaInput.Text) : lozinkaInput.Text,
                     }
                 };
 
@@ -90,6 +102,7 @@ namespace eDnevnik.UI
                 {
                     Close();
                     MessageBox.Show("Uspješno dodan/izmijenjen učenik.");
+                    togglePasswordVisibility(true);
                 }
             }
         }
@@ -101,6 +114,10 @@ namespace eDnevnik.UI
                 e.Cancel = true;
                 errorProvider1.SetError(imeInput, Messages.fname_req);
             }
+            else
+            {
+                errorProvider1.SetError(imeInput, null);
+            }
         }
 
         private void prezimeInput_Validating(object sender, CancelEventArgs e)
@@ -110,6 +127,10 @@ namespace eDnevnik.UI
                 e.Cancel = true;
                 errorProvider1.SetError(prezimeInput, Messages.lname_req);
             }
+            else
+            {
+                errorProvider1.SetError(prezimeInput, null);
+            }
         }
 
         private void korisnickoImeInput_Validating(object sender, CancelEventArgs e)
@@ -118,6 +139,10 @@ namespace eDnevnik.UI
             {
                 e.Cancel = true;
                 errorProvider1.SetError(korisnickoImeInput, Messages.username_len);
+            }
+            else
+            {
+                errorProvider1.SetError(korisnickoImeInput, null);
             }
         }
 
@@ -133,6 +158,10 @@ namespace eDnevnik.UI
                 e.Cancel = true;
                 errorProvider1.SetError(lozinkaInput, Messages.password_match);
             }
+            else
+            {
+                errorProvider1.SetError(lozinkaInput, null);
+            }
         }
 
         private void lozinkaPotvrdaInput_Validating(object sender, CancelEventArgs e)
@@ -141,6 +170,10 @@ namespace eDnevnik.UI
             {
                 e.Cancel = true;
                 errorProvider1.SetError(lozinkaPotvrdaInput, Messages.password_len);
+            }
+            else
+            {
+                errorProvider1.SetError(lozinkaPotvrdaInput, null);
             }
         }
 
@@ -162,6 +195,12 @@ namespace eDnevnik.UI
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void NoviUcenikForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Form frm = new DodajUcenikaForm();
+            frm.Show();
         }
     }
 }

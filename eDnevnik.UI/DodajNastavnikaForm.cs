@@ -75,8 +75,7 @@ namespace eDnevnik.UI
                     MessageBox.Show("Uspješno dodan/izmijenjen nastavnik.");
                     this.Controls.Clear();
                     this.InitializeComponent();
-                    lozinkaInput.Visible = true;
-                    lozinkaPotvrdaInput.Visible = true;
+                    ToggleVisibility(true);
                     DataBind();
                 }
             }
@@ -100,10 +99,16 @@ namespace eDnevnik.UI
                 telefonInput.Text = n.Telefon;
                 lozinkaInput.Text = n.Password;
                 lozinkaPotvrdaInput.Text = n.Password;
-
-                lozinkaInput.Visible = false;
-                lozinkaPotvrdaInput.Visible = false;
+                ToggleVisibility(false);
             }
+        }
+
+        private void ToggleVisibility(bool visible)
+        {
+            lozinkaInput.Visible = visible;
+            lozinkaPotvrdaInput.Visible = visible;
+            lozinkaPotvrdaInputLabel.Visible = visible;
+            lozinkaInputLabel.Visible = visible;
         }
 
         //private void nastavniciGridView_CellContentClick_1(object sender, DataGridViewCellEventArgs e)

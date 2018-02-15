@@ -20,6 +20,7 @@ namespace eDnevnik.UI
         public DodajUcenikaForm()
         {
             InitializeComponent();
+            DataBind();
         }
 
         private void pretraziUcenikeButton_Click(object sender, EventArgs e)
@@ -27,7 +28,7 @@ namespace eDnevnik.UI
             DataBind();
         }
 
-        private void DataBind()
+        public void DataBind()
         {
             HttpResponseMessage response = _uceniciService.GetActionResponse("GetUcenikByStr", pretragaUcenikaInput.Text);
             if (response.IsSuccessStatusCode)
@@ -38,6 +39,7 @@ namespace eDnevnik.UI
 
         private void noviUcenikButton_Click(object sender, EventArgs e)
         {
+            Close();
             Form frm = new NoviUcenikForm();
             frm.Show();
         }
@@ -45,6 +47,7 @@ namespace eDnevnik.UI
         private void izmijeniUcenikaButton_Click(object sender, EventArgs e)
         {
             int ucenikId = (int)uceniciGridView.CurrentRow.Cells["UcenikId"].Value;
+            Close();
             Form frm = new NoviUcenikForm(ucenikId);
             frm.Show();
         }

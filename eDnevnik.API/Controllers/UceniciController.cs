@@ -212,7 +212,7 @@ namespace eDnevnik.API.Controllers
             ucenik.Korisnik.Aktivan = !ucenik.Korisnik.Aktivan;
             db.SaveChanges();
 
-            return Ok(ucenik);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)
