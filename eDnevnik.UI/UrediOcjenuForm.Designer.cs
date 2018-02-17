@@ -147,6 +147,7 @@
             this.MinimizeBox = false;
             this.Name = "UrediOcjenuForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Uredi ocjenu";
             this.Load += new System.EventHandler(this.UrediOcjenuForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ocjeneGridView)).EndInit();

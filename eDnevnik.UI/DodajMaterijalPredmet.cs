@@ -24,7 +24,7 @@ namespace eDnevnik.UI
 
         private void DodajMaterijalPredmet_Load(object sender, EventArgs e)
         {
-            HttpResponseMessage response = _predmetiService.GetResponse();
+            HttpResponseMessage response = _predmetiService.GetActionResponse("getPredmetiByNastavnik", Global.TrenutniKorisnik.KorisnikId.ToString());
             if (response.IsSuccessStatusCode)
             {
                 predmetiInput.DataSource = response.Content.ReadAsAsync<List<PredmetVM>>().Result;

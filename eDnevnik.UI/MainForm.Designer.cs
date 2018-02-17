@@ -36,9 +36,7 @@
             this.učeniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.evidencijaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.evidencijaČasaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajČasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.evidencijaOcjenaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajOcjenuToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.izmijeniOcjenuToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.evidencijaRasporedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodavanjeMaterijalaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -118,34 +116,18 @@
             // 
             // evidencijaČasaToolStripMenuItem1
             // 
-            this.evidencijaČasaToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dodajČasToolStripMenuItem1});
             this.evidencijaČasaToolStripMenuItem1.Name = "evidencijaČasaToolStripMenuItem1";
             this.evidencijaČasaToolStripMenuItem1.Size = new System.Drawing.Size(185, 22);
-            this.evidencijaČasaToolStripMenuItem1.Text = "Evidencija časa";
-            // 
-            // dodajČasToolStripMenuItem1
-            // 
-            this.dodajČasToolStripMenuItem1.Name = "dodajČasToolStripMenuItem1";
-            this.dodajČasToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
-            this.dodajČasToolStripMenuItem1.Text = "Dodaj čas";
-            this.dodajČasToolStripMenuItem1.Click += new System.EventHandler(this.dodajČasToolStripMenuItem1_Click);
+            this.evidencijaČasaToolStripMenuItem1.Text = "Evidencija nastave";
+            this.evidencijaČasaToolStripMenuItem1.Click += new System.EventHandler(this.evidencijaČasaToolStripMenuItem1_Click);
             // 
             // evidencijaOcjenaToolStripMenuItem1
             // 
             this.evidencijaOcjenaToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dodajOcjenuToolStripMenuItem1,
             this.izmijeniOcjenuToolStripMenuItem1});
             this.evidencijaOcjenaToolStripMenuItem1.Name = "evidencijaOcjenaToolStripMenuItem1";
             this.evidencijaOcjenaToolStripMenuItem1.Size = new System.Drawing.Size(185, 22);
             this.evidencijaOcjenaToolStripMenuItem1.Text = "Evidencija ocjena";
-            // 
-            // dodajOcjenuToolStripMenuItem1
-            // 
-            this.dodajOcjenuToolStripMenuItem1.Name = "dodajOcjenuToolStripMenuItem1";
-            this.dodajOcjenuToolStripMenuItem1.Size = new System.Drawing.Size(154, 22);
-            this.dodajOcjenuToolStripMenuItem1.Text = "Dodaj ocjenu";
-            this.dodajOcjenuToolStripMenuItem1.Click += new System.EventHandler(this.dodajOcjenuToolStripMenuItem1_Click);
             // 
             // izmijeniOcjenuToolStripMenuItem1
             // 
@@ -257,9 +239,7 @@
         private System.Windows.Forms.ToolStripMenuItem ocjeneIzPredmetaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem evidencijaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem evidencijaČasaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem dodajČasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem evidencijaOcjenaToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem dodajOcjenuToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem izmijeniOcjenuToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem evidencijaRasporedaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodavanjeMaterijalaToolStripMenuItem;

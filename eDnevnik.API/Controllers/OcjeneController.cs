@@ -88,6 +88,24 @@ namespace eDnevnik.API.Controllers
             return Ok(ocjene);
         }
 
+        // GET: api/Ocjene/GetOcjeneByCas/5
+        [ResponseType(typeof(Ocjena))]
+        [Route("api/Ocjene/GetOcjeneByCas/{casId}")]
+        public IHttpActionResult GetOcjeneByCas(int casId)
+        {
+            var ocjene = db.Ocjena.Where(x => x.CasId == casId).Select(y => new
+            {
+                OcjenaVrijednost = y.OcjenaVrijednost,
+                Ucenik = y.Ucenik.Korisnik.Ime + " " + y.Ucenik.Korisnik.Prezime,
+            }).ToList();
+            if (ocjene == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(ocjene);
+        }
+
         // PUT: api/Ocjene/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOcjena(int id, Ocjena ocjena)

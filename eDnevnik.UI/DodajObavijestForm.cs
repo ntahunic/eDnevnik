@@ -23,7 +23,7 @@ namespace eDnevnik.UI
             InitializeComponent();
             this.AutoValidate = AutoValidate.Disable;
 
-            HttpResponseMessage response = _predmetiService.GetResponse();
+            HttpResponseMessage response = _predmetiService.GetActionResponse("getPredmetiByNastavnik", Global.TrenutniKorisnik.KorisnikId.ToString());
             if (response.IsSuccessStatusCode)
             {
                 predmetiInput.DataSource = response.Content.ReadAsAsync<List<PredmetVM>>().Result;
@@ -35,7 +35,7 @@ namespace eDnevnik.UI
         {
             InitializeComponent();
 
-            HttpResponseMessage response = _predmetiService.GetResponse();
+            HttpResponseMessage response = _predmetiService.GetActionResponse("getPredmetiByNastavnik", Global.TrenutniKorisnik.KorisnikId.ToString());
             if (response.IsSuccessStatusCode)
             {
                 predmetiInput.DataSource = response.Content.ReadAsAsync<List<PredmetVM>>().Result;

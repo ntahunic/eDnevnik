@@ -45,7 +45,6 @@ namespace eDnevnik.UI
             {
                 List<UcenikVM> ucenici = new List<UcenikVM>();
                 ucenici = response.Content.ReadAsAsync<List<UcenikVM>>().Result;
-                ucenici.Insert(0, new UcenikVM());
 
                 ucenikInput.DataSource = ucenici;
                 ucenikInput.ValueMember = "UcenikId";
@@ -98,6 +97,11 @@ namespace eDnevnik.UI
                 e.Cancel = true;
                 errorProvider1.SetError(ocjenaInput, Messages.brojSati_len);
             }
+        }
+
+        private void casoviGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

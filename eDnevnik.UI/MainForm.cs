@@ -136,5 +136,11 @@ namespace eDnevnik.UI
             Form frm = new ReportViewFormUcenici();
             frm.Show();
         }
+
+        private void evidencijaČasaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form frm = new DodajCasForm();
+            frm.Show();
+        }
     }
 }

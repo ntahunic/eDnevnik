@@ -70,5 +70,10 @@ namespace eDnevnik.UI
             }
            
         }
+
+        private void uceniciGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

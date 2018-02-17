@@ -29,6 +29,14 @@
         private void InitializeComponent()
         {
             this.uceniciGridView = new System.Windows.Forms.DataGridView();
+            this.dodajIzostanakButton = new System.Windows.Forms.Button();
+            this.predmetReadOnly = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.datumReadOnly = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.casIdTest = new System.Windows.Forms.TextBox();
+            this.brojSatiReadOnly = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.PrisustvoId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BrojSati = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Datum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,14 +49,6 @@
             this.Prisutan = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Opravdano = new System.Windows.Forms.DataGridViewButtonColumn();
             this.IsOpravdano = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dodajIzostanakButton = new System.Windows.Forms.Button();
-            this.predmetReadOnly = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.datumReadOnly = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.casIdTest = new System.Windows.Forms.TextBox();
-            this.brojSatiReadOnly = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.uceniciGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,6 +75,77 @@
             this.uceniciGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.uceniciGridView.Size = new System.Drawing.Size(759, 338);
             this.uceniciGridView.TabIndex = 0;
+            this.uceniciGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.uceniciGridView_CellContentClick);
+            // 
+            // dodajIzostanakButton
+            // 
+            this.dodajIzostanakButton.Location = new System.Drawing.Point(641, 99);
+            this.dodajIzostanakButton.Name = "dodajIzostanakButton";
+            this.dodajIzostanakButton.Size = new System.Drawing.Size(106, 23);
+            this.dodajIzostanakButton.TabIndex = 1;
+            this.dodajIzostanakButton.Text = "Dodaj izostanak";
+            this.dodajIzostanakButton.UseVisualStyleBackColor = true;
+            this.dodajIzostanakButton.Click += new System.EventHandler(this.dodajIzostanakButton_Click);
+            // 
+            // predmetReadOnly
+            // 
+            this.predmetReadOnly.Location = new System.Drawing.Point(81, 9);
+            this.predmetReadOnly.Name = "predmetReadOnly";
+            this.predmetReadOnly.ReadOnly = true;
+            this.predmetReadOnly.Size = new System.Drawing.Size(205, 20);
+            this.predmetReadOnly.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Predmet";
+            // 
+            // datumReadOnly
+            // 
+            this.datumReadOnly.Location = new System.Drawing.Point(81, 35);
+            this.datumReadOnly.Name = "datumReadOnly";
+            this.datumReadOnly.ReadOnly = true;
+            this.datumReadOnly.Size = new System.Drawing.Size(205, 20);
+            this.datumReadOnly.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Datum";
+            // 
+            // casIdTest
+            // 
+            this.casIdTest.Location = new System.Drawing.Point(81, 88);
+            this.casIdTest.Name = "casIdTest";
+            this.casIdTest.ReadOnly = true;
+            this.casIdTest.Size = new System.Drawing.Size(205, 20);
+            this.casIdTest.TabIndex = 6;
+            this.casIdTest.Visible = false;
+            // 
+            // brojSatiReadOnly
+            // 
+            this.brojSatiReadOnly.Location = new System.Drawing.Point(81, 62);
+            this.brojSatiReadOnly.Name = "brojSatiReadOnly";
+            this.brojSatiReadOnly.ReadOnly = true;
+            this.brojSatiReadOnly.Size = new System.Drawing.Size(205, 20);
+            this.brojSatiReadOnly.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Broj sati";
             // 
             // PrisustvoId
             // 
@@ -167,76 +238,7 @@
             this.IsOpravdano.DataPropertyName = "IsOpravdano";
             this.IsOpravdano.HeaderText = "Opravdano";
             this.IsOpravdano.Name = "IsOpravdano";
-            // 
-            // dodajIzostanakButton
-            // 
-            this.dodajIzostanakButton.Location = new System.Drawing.Point(641, 99);
-            this.dodajIzostanakButton.Name = "dodajIzostanakButton";
-            this.dodajIzostanakButton.Size = new System.Drawing.Size(106, 23);
-            this.dodajIzostanakButton.TabIndex = 1;
-            this.dodajIzostanakButton.Text = "Dodaj izostanak";
-            this.dodajIzostanakButton.UseVisualStyleBackColor = true;
-            this.dodajIzostanakButton.Click += new System.EventHandler(this.dodajIzostanakButton_Click);
-            // 
-            // predmetReadOnly
-            // 
-            this.predmetReadOnly.Location = new System.Drawing.Point(81, 9);
-            this.predmetReadOnly.Name = "predmetReadOnly";
-            this.predmetReadOnly.ReadOnly = true;
-            this.predmetReadOnly.Size = new System.Drawing.Size(205, 20);
-            this.predmetReadOnly.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Predmet";
-            // 
-            // datumReadOnly
-            // 
-            this.datumReadOnly.Location = new System.Drawing.Point(81, 35);
-            this.datumReadOnly.Name = "datumReadOnly";
-            this.datumReadOnly.ReadOnly = true;
-            this.datumReadOnly.Size = new System.Drawing.Size(205, 20);
-            this.datumReadOnly.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Datum";
-            // 
-            // casIdTest
-            // 
-            this.casIdTest.Location = new System.Drawing.Point(81, 88);
-            this.casIdTest.Name = "casIdTest";
-            this.casIdTest.ReadOnly = true;
-            this.casIdTest.Size = new System.Drawing.Size(205, 20);
-            this.casIdTest.TabIndex = 6;
-            this.casIdTest.Visible = false;
-            // 
-            // brojSatiReadOnly
-            // 
-            this.brojSatiReadOnly.Location = new System.Drawing.Point(81, 62);
-            this.brojSatiReadOnly.Name = "brojSatiReadOnly";
-            this.brojSatiReadOnly.ReadOnly = true;
-            this.brojSatiReadOnly.Size = new System.Drawing.Size(205, 20);
-            this.brojSatiReadOnly.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Broj sati";
+            this.IsOpravdano.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // DodajIzostanakForm
             // 

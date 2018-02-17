@@ -100,7 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 337);
+            this.ClientSize = new System.Drawing.Size(312, 123);
             this.Controls.Add(this.casIdText);
             this.Controls.Add(this.ocjenaIdText);
             this.Controls.Add(this.sacuvajOcjenuButton);
@@ -112,7 +112,8 @@
             this.MinimizeBox = false;
             this.Name = "IzmijeniOcjenuForm";
             this.ShowIcon = false;
-            this.Text = "Izmijena ocjene";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Izmjena ocjene";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -80,6 +80,7 @@
             this.casoviGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.casoviGridView.Size = new System.Drawing.Size(498, 215);
             this.casoviGridView.TabIndex = 15;
+            this.casoviGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.casoviGridView_CellContentClick);
             // 
             // CasId
             // 
