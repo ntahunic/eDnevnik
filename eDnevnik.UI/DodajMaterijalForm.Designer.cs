@@ -38,6 +38,10 @@
             this.sadrzajInput = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dodajMaterijalButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.uploadFileButton = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.fileUploadInput = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,7 +94,7 @@
             // 
             this.sadrzajInput.Location = new System.Drawing.Point(70, 82);
             this.sadrzajInput.Name = "sadrzajInput";
-            this.sadrzajInput.Size = new System.Drawing.Size(556, 261);
+            this.sadrzajInput.Size = new System.Drawing.Size(556, 206);
             this.sadrzajInput.TabIndex = 10;
             this.sadrzajInput.Text = "";
             // 
@@ -113,11 +117,46 @@
             this.dodajMaterijalButton.UseVisualStyleBackColor = true;
             this.dodajMaterijalButton.Click += new System.EventHandler(this.dodajMaterijalButton_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 302);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Sadrzaj";
+            // 
+            // uploadFileButton
+            // 
+            this.uploadFileButton.Location = new System.Drawing.Point(70, 297);
+            this.uploadFileButton.Name = "uploadFileButton";
+            this.uploadFileButton.Size = new System.Drawing.Size(75, 23);
+            this.uploadFileButton.TabIndex = 14;
+            this.uploadFileButton.Text = "browse";
+            this.uploadFileButton.UseVisualStyleBackColor = true;
+            this.uploadFileButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // fileUploadInput
+            // 
+            this.fileUploadInput.Location = new System.Drawing.Point(151, 299);
+            this.fileUploadInput.Name = "fileUploadInput";
+            this.fileUploadInput.Size = new System.Drawing.Size(100, 20);
+            this.fileUploadInput.TabIndex = 15;
+            this.fileUploadInput.Visible = false;
+            this.fileUploadInput.Validating += new System.ComponentModel.CancelEventHandler(this.fileUploadInput_Validating);
+            // 
             // DodajMaterijalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(642, 386);
+            this.Controls.Add(this.fileUploadInput);
+            this.Controls.Add(this.uploadFileButton);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.dodajMaterijalButton);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.sadrzajInput);
@@ -149,5 +188,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox sadrzajInput;
         private System.Windows.Forms.Button dodajMaterijalButton;
+        private System.Windows.Forms.Button uploadFileButton;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox fileUploadInput;
     }
 }

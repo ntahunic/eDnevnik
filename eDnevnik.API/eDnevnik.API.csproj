@@ -186,9 +186,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RazredVM.cs" />
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\UceniciWrapper.cs" />
     <Compile Include="Models\Ucenik.cs">
       <DependentUpon>Model.tt</DependentUpon>

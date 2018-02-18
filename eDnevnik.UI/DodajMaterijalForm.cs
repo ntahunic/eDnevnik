@@ -47,6 +47,10 @@ namespace eDnevnik.UI
                 e.Cancel = true;
                 errorProvider1.SetError(materijalNazivInput, Messages.materijalNaziv_req);
             }
+            else
+            {
+                errorProvider1.SetError(materijalNazivInput, null);
+            }
         }
 
         private void dodajMaterijalButton_Click(object sender, EventArgs e)
@@ -59,8 +63,9 @@ namespace eDnevnik.UI
                     Datum = datumObjaveInput.Value.ToShortDateString(),
                     NastavnikId = Global.TrenutniKorisnik.KorisnikId,
                     PredmetId = Convert.ToInt32(materijalPredmetId.Text),
-                    Sadrzaj = sadrzajInput.Text
-                };
+                    Sadrzaj = sadrzajInput.Text,
+                    Fajl = System.Text.Encoding.UTF8.GetBytes(fileUploadInput.Text)
+            };
 
                 HttpResponseMessage response = _materijaliService.PostResponse(materijal);
 
@@ -73,6 +78,38 @@ namespace eDnevnik.UI
                 {
                     MessageBox.Show("Doslo je do greske prilikom dodavanja materijala");
                 }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileDialog1 = new OpenFileDialog();
+            fileDialog1.Filter = "All Files (*.*)|*.*";
+            fileDialog1.FilterIndex = 1;
+            fileDialog1.Multiselect = false;
+
+            if (fileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string sFileName = fileDialog1.FileName;
+
+                byte[] file = File.ReadAllBytes(sFileName);
+                // From byte array to string
+                string s = System.Text.Encoding.UTF8.GetString(file, 0, file.Length);
+
+                fileUploadInput.Text = s;
+            }
+        }
+
+        private void fileUploadInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(fileUploadInput.Text))
+            {
+                e.Cancel = true;
+                errorProvider1.SetError(materijalNazivInput, Messages.materijalNaziv_req);
+            }
+            else
+            {
+                errorProvider1.SetError(materijalNazivInput, null);
             }
         }
     }

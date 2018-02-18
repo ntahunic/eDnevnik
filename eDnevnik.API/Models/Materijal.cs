@@ -26,6 +26,7 @@ namespace eDnevnik.API.Models
         public string Datum { get; set; }
         public Nullable<int> NastavnikId { get; set; }
         public string Sadrzaj { get; set; }
+        public byte[] Fajl { get; set; }
     
         public virtual Nastavnik Nastavnik { get; set; }
         public virtual Predmet Predmet { get; set; }

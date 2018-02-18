@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -108,6 +109,11 @@ namespace eDnevnik.UI
                 e.Cancel = true;
                 errorProvider1.SetError(sadrzajObavijestiInput, "Molimo unesite sadrzaj");
             }
+        }
+
+        private void uploadFileButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
