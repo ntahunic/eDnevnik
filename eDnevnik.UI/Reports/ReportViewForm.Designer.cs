@@ -48,7 +48,7 @@
             this.reportViewer1.Location = new System.Drawing.Point(0, 68);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(700, 360);
+            this.reportViewer1.Size = new System.Drawing.Size(700, 644);
             this.reportViewer1.TabIndex = 0;
             // 
             // generisiIzvjestajButton
@@ -82,7 +82,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 428);
+            this.ClientSize = new System.Drawing.Size(700, 712);
             this.Controls.Add(this.generisiIzvjestajButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.predmetiInput);

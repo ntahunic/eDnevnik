@@ -312,5 +312,19 @@ namespace eDnevnik.UI
                 errorProvider1.SetError(ucenikInput, null);
             }
         }
+
+        private void izmijeniOcjenuButton_Click(object sender, EventArgs e)
+        {
+            int ocjenaId = Convert.ToInt32(ocjeneNaCasuGridView.CurrentRow.Cells["OcjenaId"].Value);
+
+            HttpResponseMessage response = _ocjeneService.GetResponse(ocjenaId.ToString());
+            if (response.IsSuccessStatusCode)
+            {
+                OcjenaVM ocjena = response.Content.ReadAsAsync<OcjenaVM>().Result;
+
+                Form frm = new IzmijeniOcjenuForm(ocjena);
+                frm.Show();
+            }
+        }
     }
 }

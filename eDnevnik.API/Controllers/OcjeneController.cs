@@ -95,7 +95,7 @@ namespace eDnevnik.API.Controllers
         {
             var ocjene = db.Ocjena.Where(x => x.CasId == casId).Select(y => new
             {
-                OcjenaVrijednost = y.OcjenaVrijednost,
+                Ocjena = y.OcjenaVrijednost,
                 Ucenik = y.Ucenik.Korisnik.Ime + " " + y.Ucenik.Korisnik.Prezime,
             }).ToList();
             if (ocjene == null)

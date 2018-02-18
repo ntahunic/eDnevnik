@@ -70,6 +70,15 @@ namespace eDnevnik.UI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File je obavezno polje..
+        /// </summary>
+        internal static string file_req {
+            get {
+                return ResourceManager.GetString("file_req", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ime je obavezno..
         /// </summary>
         internal static string fname_req {

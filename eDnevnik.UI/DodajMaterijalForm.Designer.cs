@@ -42,12 +42,13 @@
             this.uploadFileButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.fileUploadInput = new System.Windows.Forms.TextBox();
+            this.fileNameInput = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // materijalNazivInput
             // 
-            this.materijalNazivInput.Location = new System.Drawing.Point(70, 15);
+            this.materijalNazivInput.Location = new System.Drawing.Point(55, 15);
             this.materijalNazivInput.Name = "materijalNazivInput";
             this.materijalNazivInput.Size = new System.Drawing.Size(200, 20);
             this.materijalNazivInput.TabIndex = 0;
@@ -56,7 +57,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 15);
+            this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 13);
             this.label1.TabIndex = 1;
@@ -65,7 +66,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 44);
+            this.label2.Location = new System.Drawing.Point(12, 44);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 3;
@@ -73,7 +74,7 @@
             // 
             // materijalPredmetId
             // 
-            this.materijalPredmetId.Location = new System.Drawing.Point(70, 2);
+            this.materijalPredmetId.Location = new System.Drawing.Point(55, 2);
             this.materijalPredmetId.Name = "materijalPredmetId";
             this.materijalPredmetId.Size = new System.Drawing.Size(100, 20);
             this.materijalPredmetId.TabIndex = 4;
@@ -85,31 +86,31 @@
             // 
             // datumObjaveInput
             // 
-            this.datumObjaveInput.Location = new System.Drawing.Point(70, 44);
+            this.datumObjaveInput.Location = new System.Drawing.Point(55, 44);
             this.datumObjaveInput.Name = "datumObjaveInput";
             this.datumObjaveInput.Size = new System.Drawing.Size(200, 20);
             this.datumObjaveInput.TabIndex = 9;
             // 
             // sadrzajInput
             // 
-            this.sadrzajInput.Location = new System.Drawing.Point(70, 82);
+            this.sadrzajInput.Location = new System.Drawing.Point(55, 82);
             this.sadrzajInput.Name = "sadrzajInput";
-            this.sadrzajInput.Size = new System.Drawing.Size(556, 206);
+            this.sadrzajInput.Size = new System.Drawing.Size(376, 143);
             this.sadrzajInput.TabIndex = 10;
             this.sadrzajInput.Text = "";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 82);
+            this.label3.Location = new System.Drawing.Point(12, 82);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 11;
-            this.label3.Text = "Sadrzaj";
+            this.label3.Text = "Opis";
             // 
             // dodajMaterijalButton
             // 
-            this.dodajMaterijalButton.Location = new System.Drawing.Point(528, 349);
+            this.dodajMaterijalButton.Location = new System.Drawing.Point(333, 266);
             this.dodajMaterijalButton.Name = "dodajMaterijalButton";
             this.dodajMaterijalButton.Size = new System.Drawing.Size(98, 23);
             this.dodajMaterijalButton.TabIndex = 12;
@@ -120,19 +121,19 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 302);
+            this.label4.Location = new System.Drawing.Point(12, 235);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.Size = new System.Drawing.Size(23, 13);
             this.label4.TabIndex = 13;
-            this.label4.Text = "Sadrzaj";
+            this.label4.Text = "File";
             // 
             // uploadFileButton
             // 
-            this.uploadFileButton.Location = new System.Drawing.Point(70, 297);
+            this.uploadFileButton.Location = new System.Drawing.Point(289, 226);
             this.uploadFileButton.Name = "uploadFileButton";
-            this.uploadFileButton.Size = new System.Drawing.Size(75, 23);
+            this.uploadFileButton.Size = new System.Drawing.Size(32, 23);
             this.uploadFileButton.TabIndex = 14;
-            this.uploadFileButton.Text = "browse";
+            this.uploadFileButton.Text = "...";
             this.uploadFileButton.UseVisualStyleBackColor = true;
             this.uploadFileButton.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -142,18 +143,27 @@
             // 
             // fileUploadInput
             // 
-            this.fileUploadInput.Location = new System.Drawing.Point(151, 299);
+            this.fileUploadInput.Location = new System.Drawing.Point(55, 254);
             this.fileUploadInput.Name = "fileUploadInput";
-            this.fileUploadInput.Size = new System.Drawing.Size(100, 20);
+            this.fileUploadInput.Size = new System.Drawing.Size(38, 20);
             this.fileUploadInput.TabIndex = 15;
             this.fileUploadInput.Visible = false;
             this.fileUploadInput.Validating += new System.ComponentModel.CancelEventHandler(this.fileUploadInput_Validating);
+            // 
+            // fileNameInput
+            // 
+            this.fileNameInput.Location = new System.Drawing.Point(55, 228);
+            this.fileNameInput.Name = "fileNameInput";
+            this.fileNameInput.Size = new System.Drawing.Size(200, 20);
+            this.fileNameInput.TabIndex = 16;
+            this.fileNameInput.Validating += new System.ComponentModel.CancelEventHandler(this.fileNameInput_Validating);
             // 
             // DodajMaterijalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(642, 386);
+            this.ClientSize = new System.Drawing.Size(449, 304);
+            this.Controls.Add(this.fileNameInput);
             this.Controls.Add(this.fileUploadInput);
             this.Controls.Add(this.uploadFileButton);
             this.Controls.Add(this.label4);
@@ -192,5 +202,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox fileUploadInput;
+        private System.Windows.Forms.TextBox fileNameInput;
     }
 }

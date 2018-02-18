@@ -108,5 +108,21 @@ namespace eDnevnik.MOBILE
             }
             
         }
+
+        private async void FileDownload_Clicked(object sender, EventArgs e)
+        {
+            HttpResponseMessage response = _materijaliService.GetResponse(materijalIdGlobal.ToString());
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResult = response.Content.ReadAsStringAsync();
+                MaterijalVM materijal = JsonConvert.DeserializeObject<MaterijalVM>(jsonResult.Result);
+                
+                await FileHelper.SaveFile(materijal.File, materijal.FileIme + materijal.FileEkstenzija);
+
+                await DisplayAlert("Preuzimanje file", "File preuzet", "ok");
+            }
+        }
+
+       
     }
 }

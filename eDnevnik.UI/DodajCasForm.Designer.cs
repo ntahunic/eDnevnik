@@ -70,15 +70,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.predmetReadOnly = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.ocjeneNaCasuGridView = new System.Windows.Forms.DataGridView();
             this.ocjenaIdText = new System.Windows.Forms.TextBox();
             this.sacuvajOcjenuButton = new System.Windows.Forms.Button();
             this.ucenikLabel = new System.Windows.Forms.Label();
             this.ucenikInput = new System.Windows.Forms.ComboBox();
             this.ocjenaLabel = new System.Windows.Forms.Label();
             this.ocjenaInput = new System.Windows.Forms.TextBox();
-            this.ocjeneNaCasuGridView = new System.Windows.Forms.DataGridView();
+            this.OcjenaId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ucenik = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OcjenaVrijednost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ocjena = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.casoviGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -478,6 +479,21 @@
             this.tabPage3.Text = "Ocjene";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // ocjeneNaCasuGridView
+            // 
+            this.ocjeneNaCasuGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.ocjeneNaCasuGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ocjeneNaCasuGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.OcjenaId,
+            this.Ucenik,
+            this.Ocjena});
+            this.ocjeneNaCasuGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ocjeneNaCasuGridView.Location = new System.Drawing.Point(0, 146);
+            this.ocjeneNaCasuGridView.Name = "ocjeneNaCasuGridView";
+            this.ocjeneNaCasuGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ocjeneNaCasuGridView.Size = new System.Drawing.Size(710, 254);
+            this.ocjeneNaCasuGridView.TabIndex = 27;
+            // 
             // ocjenaIdText
             // 
             this.ocjenaIdText.Location = new System.Drawing.Point(75, 4);
@@ -531,19 +547,12 @@
             this.ocjenaInput.TabIndex = 21;
             this.ocjenaInput.Validating += new System.ComponentModel.CancelEventHandler(this.ocjenaInput_Validating);
             // 
-            // ocjeneNaCasuGridView
+            // OcjenaId
             // 
-            this.ocjeneNaCasuGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.ocjeneNaCasuGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ocjeneNaCasuGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Ucenik,
-            this.OcjenaVrijednost});
-            this.ocjeneNaCasuGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ocjeneNaCasuGridView.Location = new System.Drawing.Point(0, 146);
-            this.ocjeneNaCasuGridView.Name = "ocjeneNaCasuGridView";
-            this.ocjeneNaCasuGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ocjeneNaCasuGridView.Size = new System.Drawing.Size(710, 254);
-            this.ocjeneNaCasuGridView.TabIndex = 27;
+            this.OcjenaId.DataPropertyName = "OcjenaId";
+            this.OcjenaId.HeaderText = "OcjenaId";
+            this.OcjenaId.Name = "OcjenaId";
+            this.OcjenaId.Visible = false;
             // 
             // Ucenik
             // 
@@ -551,11 +560,11 @@
             this.Ucenik.HeaderText = "Ucenik";
             this.Ucenik.Name = "Ucenik";
             // 
-            // OcjenaVrijednost
+            // Ocjena
             // 
-            this.OcjenaVrijednost.DataPropertyName = "OcjenaVrijednost";
-            this.OcjenaVrijednost.HeaderText = "Ocjena";
-            this.OcjenaVrijednost.Name = "OcjenaVrijednost";
+            this.Ocjena.DataPropertyName = "Ocjena";
+            this.Ocjena.HeaderText = "Ocjena";
+            this.Ocjena.Name = "Ocjena";
             // 
             // DodajCasForm
             // 
@@ -635,8 +644,9 @@
         private System.Windows.Forms.Label ocjenaLabel;
         private System.Windows.Forms.TextBox ocjenaInput;
         private System.Windows.Forms.DataGridView ocjeneNaCasuGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OcjenaId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ucenik;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OcjenaVrijednost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ocjena;
     }
 }
 

@@ -10,8 +10,9 @@
                 <Label FontSize="Small"> - objavljeno </Label>
                 <Label x:Name="DatumText" Text="{Binding Datum}" FontSize="Small"></Label>
             </StackLayout>
-            <Label FontSize="Medium">Sadrzaj: </Label>
+            <Label FontSize="Medium">Opis: </Label>
             <Label x:Name="SadrzajText" Text="{Binding Sadrzaj}" FontSize="Small"></Label>
+            <Button x:Name="FileDownload" Text="Skini materijal" Clicked="FileDownload_Clicked"></Button>
             <Picker x:Name="ocjenaPicker" Title="Ocjena:" SelectedIndexChanged="ocjenaPicker_SelectedIndexChanged"></Picker>
 
             <Label>Slicni materijali</Label>

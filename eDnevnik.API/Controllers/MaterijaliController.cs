@@ -42,7 +42,10 @@ namespace eDnevnik.API.Controllers
                 Predmet = x.Predmet.Naziv,
                 PredmetId = x.PredmetId,
                 Datum = x.Datum,
-                Sadrzaj = x.Sadrzaj
+                Sadrzaj = x.Sadrzaj,
+                File = x.Fajl,
+                FileIme = x.FajlIme,
+                FileEkstenzija = x.FajlEkstenzija
             }).Single();
 
             if (materijal == null)

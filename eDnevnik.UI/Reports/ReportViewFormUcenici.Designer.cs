@@ -79,14 +79,14 @@
             this.reportViewer3.Location = new System.Drawing.Point(0, 66);
             this.reportViewer3.Name = "reportViewer3";
             this.reportViewer3.ServerReport.BearerToken = null;
-            this.reportViewer3.Size = new System.Drawing.Size(606, 315);
+            this.reportViewer3.Size = new System.Drawing.Size(606, 570);
             this.reportViewer3.TabIndex = 48;
             // 
             // ReportViewFormUcenici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 381);
+            this.ClientSize = new System.Drawing.Size(606, 636);
             this.Controls.Add(this.reportViewer3);
             this.Controls.Add(this.generisiIzvjestajButton);
             this.Controls.Add(this.label3);

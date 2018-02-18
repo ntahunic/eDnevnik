@@ -64,7 +64,9 @@ namespace eDnevnik.UI
                     NastavnikId = Global.TrenutniKorisnik.KorisnikId,
                     PredmetId = Convert.ToInt32(materijalPredmetId.Text),
                     Sadrzaj = sadrzajInput.Text,
-                    Fajl = System.Text.Encoding.UTF8.GetBytes(fileUploadInput.Text)
+                    Fajl = System.Text.Encoding.UTF8.GetBytes(fileUploadInput.Text),
+                    FajlIme = fileNameInput.Text.Split('.')[0],
+                    FajlEkstenzija = "." + fileNameInput.Text.Split('.')[1]
             };
 
                 HttpResponseMessage response = _materijaliService.PostResponse(materijal);
@@ -91,6 +93,7 @@ namespace eDnevnik.UI
             if (fileDialog1.ShowDialog() == DialogResult.OK)
             {
                 string sFileName = fileDialog1.FileName;
+                fileNameInput.Text = sFileName.Split('\\').Last();                
 
                 byte[] file = File.ReadAllBytes(sFileName);
                 // From byte array to string
@@ -102,14 +105,19 @@ namespace eDnevnik.UI
 
         private void fileUploadInput_Validating(object sender, CancelEventArgs e)
         {
-            if (String.IsNullOrEmpty(fileUploadInput.Text))
+           
+        }
+
+        private void fileNameInput_Validating(object sender, CancelEventArgs e)
+        {
+            if (String.IsNullOrEmpty(fileNameInput.Text))
             {
                 e.Cancel = true;
-                errorProvider1.SetError(materijalNazivInput, Messages.materijalNaziv_req);
+                errorProvider1.SetError(fileNameInput, Messages.file_req);
             }
             else
             {
-                errorProvider1.SetError(materijalNazivInput, null);
+                errorProvider1.SetError(fileNameInput, null);
             }
         }
     }

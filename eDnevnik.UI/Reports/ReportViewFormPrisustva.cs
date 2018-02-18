@@ -29,7 +29,6 @@ namespace eDnevnik.UI.Reports
             if (response.IsSuccessStatusCode)
             {
                 List<PredmetVM> p = response.Content.ReadAsAsync<List<PredmetVM>>().Result;
-                p.Insert(0, new PredmetVM { });
                 predmetiInput.DataSource = p;
                 predmetiInput.ValueMember = "PredmetId";
                 predmetiInput.DisplayMember = "Naziv";

@@ -15,6 +15,8 @@ namespace eDnevnik.PCL.Model
         public string Datum { get; set; }
         public string Sadrzaj { get; set; }
         public NastavnikVM Nastavnik { get; set; }
-
+        public byte[] File { get; set; }
+        public string FileIme { get; set; }
+        public string FileEkstenzija { get; set; }
     }
 }

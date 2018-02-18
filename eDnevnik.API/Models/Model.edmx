@@ -52,6 +52,8 @@
           <Property Name="Sadrzaj" Type="nvarchar(max)" />
           <Property Name="NastavnikId" Type="int" />
           <Property Name="Fajl" Type="varbinary(max)" />
+          <Property Name="FajlIme" Type="nvarchar" MaxLength="100" />
+          <Property Name="FajlEkstenzija" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Nastavnik">
           <Key>
@@ -595,6 +597,8 @@
           <NavigationProperty Name="OcjenaMaterijal" Relationship="Self.FK_OcjenaMaterijal_Materijal" FromRole="Materijal" ToRole="OcjenaMaterijal" />
           <Property Name="Sadrzaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Fajl" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FajlIme" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FajlEkstenzija" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Nastavnik">
           <Key>
@@ -1095,6 +1099,8 @@
           <EntitySetMapping Name="Materijal">
             <EntityTypeMapping TypeName="eDnevnikModel.Materijal">
               <MappingFragment StoreEntitySet="Materijal">
+                <ScalarProperty Name="FajlEkstenzija" ColumnName="FajlEkstenzija" />
+                <ScalarProperty Name="FajlIme" ColumnName="FajlIme" />
                 <ScalarProperty Name="Fajl" ColumnName="Fajl" />
                 <ScalarProperty Name="Sadrzaj" ColumnName="Sadrzaj" />
                 <ScalarProperty Name="MaterijalId" ColumnName="MaterijalId" />

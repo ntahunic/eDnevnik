@@ -41,10 +41,10 @@
             // 
             this.reportViewer2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.reportViewer2.LocalReport.ReportEmbeddedResource = "eDnevnik.UI.Reports.IzostanciPoUceniku.rdlc";
-            this.reportViewer2.Location = new System.Drawing.Point(0, 68);
+            this.reportViewer2.Location = new System.Drawing.Point(0, 67);
             this.reportViewer2.Name = "reportViewer2";
             this.reportViewer2.ServerReport.BearerToken = null;
-            this.reportViewer2.Size = new System.Drawing.Size(732, 381);
+            this.reportViewer2.Size = new System.Drawing.Size(856, 584);
             this.reportViewer2.TabIndex = 0;
             // 
             // generisiIzvjestajButton
@@ -82,7 +82,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 449);
+            this.ClientSize = new System.Drawing.Size(856, 651);
             this.Controls.Add(this.generisiIzvjestajButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.predmetiInput);

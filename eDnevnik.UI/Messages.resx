@@ -120,6 +120,9 @@
   <data name="brojSati_len" xml:space="preserve">
     <value>Broj sati moze biti izmedju 1 i 5.</value>
   </data>
+  <data name="file_req" xml:space="preserve">
+    <value>File je obavezno polje.</value>
+  </data>
   <data name="fname_req" xml:space="preserve">
     <value>Ime je obavezno.</value>
   </data>

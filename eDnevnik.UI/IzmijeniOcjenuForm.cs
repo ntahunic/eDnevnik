@@ -23,7 +23,7 @@ namespace eDnevnik.UI
         {
             InitializeComponent();
 
-            HttpResponseMessage response = _prisustvoService.GetActionResponse("prisutniUcenici", ocjena.CasId.ToString());
+            HttpResponseMessage response = _prisustvoService.GetResponse(ocjena.CasId.ToString());
             if (response.IsSuccessStatusCode)
             {
                 ucenikInput.DataSource = response.Content.ReadAsAsync<List<UcenikVM>>().Result;
