@@ -45,7 +45,8 @@ namespace eDnevnik.API.Controllers
                 Sadrzaj = x.Sadrzaj,
                 File = x.Fajl,
                 FileIme = x.FajlIme,
-                FileEkstenzija = x.FajlEkstenzija
+                FileEkstenzija = x.FajlEkstenzija,
+                BrojPreuzimanja = x.BrojPreuzimanja
             }).Single();
 
             if (materijal == null)
@@ -73,12 +74,17 @@ namespace eDnevnik.API.Controllers
 
         // GET: api/Materijali/GetMaterialByPredmet/1
         [Route("api/Materijali/GetSlicniMaterijali/{materijalId}")]
-        public List<MaterijalVM> GetSlicniMaterijali(int materijalId)
+        public PreporuceniMaterijaliVM GetSlicniMaterijali(int materijalId)
         {
             Recommender r = new Recommender();
             List<MaterijalVM> slicniMaterijali = r.GetSimilarMaterials(materijalId);
+            List<MaterijalVM> najpopularnijiMaterijali = r.GetMostPopularMaterials(slicniMaterijali, db.Materijal.Find(materijalId).PredmetId);
 
-            return slicniMaterijali;
+            return new PreporuceniMaterijaliVM()
+            {
+                SlicniMaterijali = slicniMaterijali,
+                PopularniMaterijali = najpopularnijiMaterijali
+            };
         }
 
         // PUT: api/Materijali/5

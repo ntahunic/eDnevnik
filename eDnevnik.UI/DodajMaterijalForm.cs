@@ -64,10 +64,10 @@ namespace eDnevnik.UI
                     NastavnikId = Global.TrenutniKorisnik.KorisnikId,
                     PredmetId = Convert.ToInt32(materijalPredmetId.Text),
                     Sadrzaj = sadrzajInput.Text,
-                    Fajl = System.Text.Encoding.UTF8.GetBytes(fileUploadInput.Text),
+                    Fajl = System.IO.File.ReadAllBytes(fileUploadInput.Text),
                     FajlIme = fileNameInput.Text.Split('.')[0],
                     FajlEkstenzija = "." + fileNameInput.Text.Split('.')[1]
-            };
+                };
 
                 HttpResponseMessage response = _materijaliService.PostResponse(materijal);
 
@@ -99,7 +99,7 @@ namespace eDnevnik.UI
                 // From byte array to string
                 string s = System.Text.Encoding.UTF8.GetString(file, 0, file.Length);
 
-                fileUploadInput.Text = s;
+                fileUploadInput.Text = fileDialog1.FileName;
             }
         }
 

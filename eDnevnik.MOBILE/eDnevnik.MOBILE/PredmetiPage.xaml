@@ -11,16 +11,22 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-
-
-                                <StackLayout>
-                                    <Label Text="{Binding Naziv}" FontAttributes="Bold" FontSize="20"></Label>
-                                    <Label Text="{Binding Nastavnik}" ></Label>                                    
-                                </StackLayout>
+                                <Frame Padding="0,0,0,3">
+                                    <Frame.Content>
+                                        <Frame Padding="15,15,15,15"   OutlineColor="Gray" BackgroundColor="White">
+                                            <Frame.Content>
+                                                <StackLayout Padding="20,0,0,0"  Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                    <Label Text="{Binding Naziv}" FontAttributes="Bold" FontSize="20"
+                                                   FontFamily="OpenSans-Light"
+                                                   TextColor="#69add1"/>
+                                                    <Label Text="{Binding Nastavnik}" FontAttributes="Bold" FontSize="9"
+                                                   FontFamily="OpenSans-Light"
+                                                   TextColor="#69add1"/>
+                                                </StackLayout>
+                                            </Frame.Content>
+                                        </Frame>
+                                    </Frame.Content>
+                                </Frame>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

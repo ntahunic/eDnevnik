@@ -29,6 +29,7 @@ namespace eDnevnik.API.Models
         public byte[] Fajl { get; set; }
         public string FajlIme { get; set; }
         public string FajlEkstenzija { get; set; }
+        public Nullable<int> BrojPreuzimanja { get; set; }
     
         public virtual Nastavnik Nastavnik { get; set; }
         public virtual Predmet Predmet { get; set; }

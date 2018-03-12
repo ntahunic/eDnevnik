@@ -26,6 +26,12 @@ namespace eDnevnik.MOBILE
                 FontSize = 30,
                 HorizontalTextAlignment = TextAlignment.Center
             };
+            Image zaglavljeImage = new Image()
+            {
+                Source = "http://ss-brac-supetar.skole.hr/upload/ss-brac-supetar/images/static3/1161/Image/za_nastavnike.jpg",
+                Aspect = Aspect.AspectFill,
+                Margin = new Thickness(0, 0, 0, 75)
+            };
 
             Entry korisnickoImeInput = new Entry() { Placeholder= "Korisnicko ime..." };
             Entry lozinkaInput = new Entry() { Placeholder= "******", IsPassword=true };
@@ -36,7 +42,7 @@ namespace eDnevnik.MOBILE
                 prijavaButton_Clicked(korisnickoImeInput, lozinkaInput);
             };
             
-            stek.Children.Add(zaglavljeLabel);
+            stek.Children.Add(zaglavljeImage);
             stek.Children.Add(korisnickoImeInput);
             stek.Children.Add(lozinkaInput);
             stek.Children.Add(prijavaButton);

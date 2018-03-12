@@ -3,11 +3,13 @@ using eDnevnik.PCL.Util;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using Windows.Storage;
+using Windows.Storage.Pickers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -63,9 +65,12 @@ namespace eDnevnik.MOBILE
                 if (response.IsSuccessStatusCode)
                 {
                     var jsonResult2 = response.Content.ReadAsStringAsync();
-                    List<MaterijalVM> slicniMaterijali = JsonConvert.DeserializeObject<List<MaterijalVM>>(jsonResult2.Result);
+                    PreporuceniMaterijaliVM preporuceniMaterijali = JsonConvert.DeserializeObject<PreporuceniMaterijaliVM>(jsonResult2.Result);
 
-                    materijaliList.ItemsSource = slicniMaterijali;
+                    materijaliList.ItemsSource = preporuceniMaterijali.SlicniMaterijali;
+                    materijaliList.HeightRequest = preporuceniMaterijali.SlicniMaterijali.Count * 60;
+                    popularniMaterijaliList.ItemsSource = preporuceniMaterijali.PopularniMaterijali;
+                    popularniMaterijaliList.HeightRequest = preporuceniMaterijali.PopularniMaterijali.Count * 60;
                 }
             }
         }
@@ -116,13 +121,49 @@ namespace eDnevnik.MOBILE
             {
                 var jsonResult = response.Content.ReadAsStringAsync();
                 MaterijalVM materijal = JsonConvert.DeserializeObject<MaterijalVM>(jsonResult.Result);
-                
-                await FileHelper.SaveFile(materijal.File, materijal.FileIme + materijal.FileEkstenzija);
 
-                await DisplayAlert("Preuzimanje file", "File preuzet", "ok");
+                FileSavePicker savePicker = new FileSavePicker();
+                savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
+                savePicker.FileTypeChoices.Add("Word Document", new List<string>() { ".docx" });
+                savePicker.FileTypeChoices.Add("Word 97 - 2003 Document", new List<string>() { ".doc" });
+                savePicker.FileTypeChoices.Add("Text document", new List<string>() { ".txt" });
+                savePicker.FileTypeChoices.Add("Rich Text Document", new List<string>() { ".rtf" });
+                savePicker.FileTypeChoices.Add("PDF", new List<string>() { ".pdf" });
+                savePicker.FileTypeChoices.Add("JPG", new List<string>() { ".jpg" });
+                savePicker.DefaultFileExtension = materijal.FileEkstenzija;
+                savePicker.SuggestedFileName = materijal.FileIme;
+                StorageFile file = await savePicker.PickSaveFileAsync();
+                if (null != file)
+                {
+                    Windows.Storage.CachedFileManager.DeferUpdates(file);
+                    // write to file
+                    await Windows.Storage.FileIO.WriteBytesAsync(file, materijal.File);
+                    
+                    Windows.Storage.Provider.FileUpdateStatus status =
+                        await Windows.Storage.CachedFileManager.CompleteUpdatesAsync(file);
+
+                    if (status == Windows.Storage.Provider.FileUpdateStatus.Complete)
+                    {
+                        await DisplayAlert("Preuzimanje file", "File preuzet", "ok");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Preuzimanje file", "Doslo je do greske prilikom preuzimanja file-a", "ok");
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Preuzimanje file", "Ponisteno", "ok");
+                }
             }
         }
 
-       
+        private void popularniMaterijaliList_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            if (e.Item != null)
+            {
+                this.Navigation.PushAsync(new MaterijalDetalji((e.Item as MaterijalVM).MaterijalId));
+            }
+        }
     }
 }

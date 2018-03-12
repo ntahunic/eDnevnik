@@ -21,16 +21,22 @@
                         <DataTemplate>
                             <ViewCell>
                                 <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
+                                    <Frame Padding="0,0,0,3">
+                                        <Frame.Content>
+                                            <Frame Padding="15,15,15,15"   OutlineColor="Gray" BackgroundColor="White">
+                                                <Frame.Content>
+                                                    <StackLayout>
+                                                        <Label Text="{Binding OcjenaVrijednost}" FontAttributes="Bold" FontSize="20" FontFamily="OpenSans-Light"
+                                                   TextColor="#69add1"/>
+                                                        <Label Text="{Binding Datum}" FontAttributes="Bold" FontFamily="OpenSans-Light"
+                                                   TextColor="#69add1" />
+                                                    </StackLayout>
+                                                </Frame.Content>
+                                            </Frame>
+                                        </Frame.Content>
+                                    </Frame>
 
-
-                                    <StackLayout>                                        
-                                        <Label Text="{Binding Datum}" FontAttributes="Bold"></Label>
-                                        <Label Text="{Binding OcjenaVrijednost}" FontAttributes="Bold" ></Label>
-                                    </StackLayout>
+                                    
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

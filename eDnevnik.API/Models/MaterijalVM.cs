@@ -17,5 +17,6 @@ namespace eDnevnik.API.Models
         public string FileIme { get; set; }
         public string FileEkstenzija { get; set; }
         public byte[] File { get; set; }
+        public int? BrojPreuzimanja { get; set; }
     }
 }

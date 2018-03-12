@@ -54,6 +54,7 @@
           <Property Name="Fajl" Type="varbinary(max)" />
           <Property Name="FajlIme" Type="nvarchar" MaxLength="100" />
           <Property Name="FajlEkstenzija" Type="nvarchar" MaxLength="10" />
+          <Property Name="BrojPreuzimanja" Type="int" />
         </EntityType>
         <EntityType Name="Nastavnik">
           <Key>
@@ -599,6 +600,7 @@
           <Property Name="Fajl" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="FajlIme" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="FajlEkstenzija" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BrojPreuzimanja" Type="Int32" />
         </EntityType>
         <EntityType Name="Nastavnik">
           <Key>
@@ -1099,6 +1101,7 @@
           <EntitySetMapping Name="Materijal">
             <EntityTypeMapping TypeName="eDnevnikModel.Materijal">
               <MappingFragment StoreEntitySet="Materijal">
+                <ScalarProperty Name="BrojPreuzimanja" ColumnName="BrojPreuzimanja" />
                 <ScalarProperty Name="FajlEkstenzija" ColumnName="FajlEkstenzija" />
                 <ScalarProperty Name="FajlIme" ColumnName="FajlIme" />
                 <ScalarProperty Name="Fajl" ColumnName="Fajl" />

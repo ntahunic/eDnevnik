@@ -18,16 +18,36 @@
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
 
+                                <Frame Padding="0,0,0,3">
+                                    <Frame.Content>
+                                        <Frame Padding="15,15,15,15"   OutlineColor="Gray" BackgroundColor="White">
+                                            <Frame.Content>
+                                                <StackLayout Padding="20,0,0,0"  Orientation="Vertical" VerticalOptions="CenterAndExpand">
+                                                    <Label Text="{Binding Naslov}" FontAttributes="Bold"
+                                                   FontFamily="OpenSans-Light"
+                                                   FontSize="12"
+                                                   TextColor="#69add1"/>
+                                                    <Label Text="{Binding Sadrzaj}"
+                                                   FontFamily="OpenSans-Light"
+                                                   FontSize="9"
+                                                   TextColor="#69add1"/>
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="{Binding Datum}" FontFamily="OpenSans-Light"
+                                                   FontSize="12"
+                                                   TextColor="#69add1" ></Label>
+                                                        <Label Text="{Binding Predmet, StringFormat='{0} napisao/la'}" FontFamily="OpenSans-Light"
+                                                   FontSize="12"
+                                                   TextColor="#69add1"></Label>
+                                                        <Label Text="{Binding Nastavnik}" FontFamily="OpenSans-Light"
+                                                   FontSize="12"
+                                                   TextColor="#69add1"></Label>
+                                                    </StackLayout>
+                                                </StackLayout>
 
-                                <StackLayout>
-                                    <Label Text="{Binding Naslov}" FontAttributes="Bold"></Label>
-                                    <Label Text="{Binding Sadrzaj}" ></Label>
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Datum} " ></Label>
-                                        <Label Text="{Binding Predmet, StringFormat='{0} napisao/la'}"></Label>
-                                        <Label Text="{Binding Nastavnik}" ></Label>
-                                    </StackLayout>                                    
-                                </StackLayout>
+                                            </Frame.Content>
+                                        </Frame>
+                                    </Frame.Content>
+                                </Frame>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

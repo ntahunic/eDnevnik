@@ -4,17 +4,19 @@
              x:Class="eDnevnik.MOBILE.ObavijestDetalji">
 
     <ContentPage.Content>
-        <StackLayout Margin="15">
-            <Label x:Name="NaslovText" Text="{Binding Naslov}" FontAttributes="Bold" FontSize="Large"></Label>
-            <StackLayout Orientation="Horizontal">
-                <Label x:Name="DatumText" Text="{Binding Datum} " FontSize="Micro"></Label>
-                <Label x:Name="PredmetText" Text="{Binding Predmet, StringFormat='{0} napisao/la'}" FontSize="Micro"></Label>
-                <Label x:Name="NastavnikText" Text="{Binding Nastavnik}" FontSize="Micro" ></Label>
+        <ScrollView Margin="15">
+            <StackLayout Margin="15">
+                <Label x:Name="NaslovText" Text="{Binding Naslov}" FontAttributes="Bold" FontSize="Large"></Label>
+                <StackLayout Orientation="Horizontal">
+                    <Label x:Name="DatumText" Text="{Binding Datum} " FontSize="Micro"></Label>
+                    <Label x:Name="PredmetText" Text="{Binding Predmet, StringFormat='{0} napisao/la'}" FontSize="Micro"></Label>
+                    <Label x:Name="NastavnikText" Text="{Binding Nastavnik}" FontSize="Micro" ></Label>
+                </StackLayout>
+
+                <Label x:Name="SadrzajText" Text="{Binding Sadrzaj}" FontSize="Medium"></Label>
+
             </StackLayout>
-
-            <Label x:Name="SadrzajText" Text="{Binding Sadrzaj}" FontSize="Medium"></Label>
-
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
     
 </ContentPage>

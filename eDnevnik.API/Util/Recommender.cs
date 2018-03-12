@@ -14,7 +14,7 @@ namespace eDnevnik.API.Util
         public List<MaterijalVM> GetSimilarMaterials(int currentMaterialId)
         {
 
-            GetAllProducts(currentMaterialId);
+            GetAllMaterijals(currentMaterialId);
 
             List<OcjenaMaterijal> currentProductRatings = db.OcjenaMaterijal.Where(x => x.MaterijalId == currentMaterialId).OrderBy(x => x.UcenikId).ToList();
 
@@ -54,15 +54,19 @@ namespace eDnevnik.API.Util
             return similarProducts;
         }
 
-        private void GetAllProducts(int materialId)
+        private void GetAllMaterijals(int materialId)
         {
-            List<MaterijalVM> activeMaterials = db.Materijal.Where(x => x.MaterijalId != materialId).Select(x => new MaterijalVM
-            {
-                MaterijalId = x.MaterijalId,
-                Naziv = x.Naziv,
-                Predmet = x.Predmet.Naziv,
-                PredmetId = x.PredmetId
-            }).ToList();
+            int currentMaterialPredmetId = db.Materijal.Find(materialId).PredmetId;
+
+            List<MaterijalVM> activeMaterials = db.Materijal
+                .Where(x => x.MaterijalId != materialId && x.PredmetId == currentMaterialPredmetId)
+                .Select(x => new MaterijalVM
+                {
+                    MaterijalId = x.MaterijalId,
+                    Naziv = x.Naziv,
+                    Predmet = x.Predmet.Naziv,
+                    PredmetId = x.PredmetId
+                }).ToList();
 
             List<OcjenaMaterijal> ratings;
             foreach (var item in activeMaterials)
@@ -76,6 +80,26 @@ namespace eDnevnik.API.Util
             }
         }
 
+        public List<MaterijalVM> GetMostPopularMaterials(List<MaterijalVM> materials, int predmetId)
+        {
+            IEnumerable<int> materialIds = materials.Select(x => x.MaterijalId);
+
+            var mostPopularMaterijals = db.Materijal
+                .Where(m => (!materialIds.Contains(m.MaterijalId) || materialIds.Count() == 0) && predmetId == m.PredmetId && m.BrojPreuzimanja > 0)
+                .Select(m => new MaterijalVM
+                {
+                    MaterijalId = m.MaterijalId,
+                    Naziv = m.Naziv,
+                    Predmet = m.Predmet.Naziv,
+                    PredmetId = m.PredmetId,
+                    BrojPreuzimanja = m.BrojPreuzimanja
+                })
+                .OrderByDescending(m => m.BrojPreuzimanja)
+                .Take(3)
+                .ToList();
+
+            return mostPopularMaterijals;
+        }
         private double CalculateSimilarity(List<OcjenaMaterijal> rating1, List<OcjenaMaterijal> rating2)
         {
             if (rating1.Count != rating2.Count)

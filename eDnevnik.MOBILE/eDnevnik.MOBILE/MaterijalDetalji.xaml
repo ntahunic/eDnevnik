@@ -4,38 +4,67 @@
              x:Class="eDnevnik.MOBILE.MaterijalDetalji">
 
     <ContentPage.Content>
-        <StackLayout Margin="15">
-            <Label x:Name="NazivText" Text="{Binding Naslov}" FontAttributes="Bold" FontSize="Medium"></Label>
-            <StackLayout Orientation="Horizontal">
-                <Label FontSize="Small"> - objavljeno </Label>
-                <Label x:Name="DatumText" Text="{Binding Datum}" FontSize="Small"></Label>
+        <ScrollView Margin="15">
+            <StackLayout Margin="15">
+                <Label x:Name="NazivText" Text="{Binding Naslov}" FontAttributes="Bold" FontSize="Medium"></Label>
+                <StackLayout Orientation="Horizontal">
+                    <Label FontSize="Small">- objavljeno</Label>
+                    <Label x:Name="DatumText" Text="{Binding Datum}" FontSize="Small"></Label>
+                </StackLayout>
+                <Label FontSize="Medium">Opis:</Label>
+                <Label x:Name="SadrzajText" Text="{Binding Sadrzaj}" FontSize="Small"></Label>
+                <Button x:Name="FileDownload" Text="Skini materijal" Clicked="FileDownload_Clicked"></Button>
+                <Picker x:Name="ocjenaPicker" Title="Ocjena:" SelectedIndexChanged="ocjenaPicker_SelectedIndexChanged"></Picker>
+
+                <Label>Slicni materijali</Label>
+                <ListView HasUnevenRows="True" x:Name="materijaliList" ItemTapped="materijaliList_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Padding="0,0,0,3">
+                                    <Frame.Content>
+                                        <Frame Padding="15,15,15,15"   OutlineColor="Gray" BackgroundColor="White">
+                                            <Frame.Content>
+                                                <StackLayout Padding="20,0,0,0"  Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                    <Label Text="{Binding Naziv}"
+                                                   FontFamily="OpenSans-Light"
+                                                   FontSize="9"
+                                                   TextColor="#69add1"/>
+                                                </StackLayout>
+                                            </Frame.Content>
+                                        </Frame>
+                                    </Frame.Content>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                
+                <Label>Ostali popularni materijali</Label>
+                <ListView x:Name="popularniMaterijaliList" ItemTapped="popularniMaterijaliList_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Padding="0,0,0,3">
+                                    <Frame.Content>
+                                        <Frame Padding="15,15,15,15"   OutlineColor="Gray" BackgroundColor="White">
+                                            <Frame.Content>
+                                                <StackLayout Padding="20,0,0,0"  Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                    <Label Text="{Binding Naziv}"
+                                                   FontFamily="OpenSans-Light"
+                                                   FontSize="9"
+                                                   TextColor="#69add1"/>
+                                                </StackLayout>
+                                            </Frame.Content>
+                                        </Frame>
+                                    </Frame.Content>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
-            <Label FontSize="Medium">Opis: </Label>
-            <Label x:Name="SadrzajText" Text="{Binding Sadrzaj}" FontSize="Small"></Label>
-            <Button x:Name="FileDownload" Text="Skini materijal" Clicked="FileDownload_Clicked"></Button>
-            <Picker x:Name="ocjenaPicker" Title="Ocjena:" SelectedIndexChanged="ocjenaPicker_SelectedIndexChanged"></Picker>
-
-            <Label>Slicni materijali</Label>
-            <ListView x:Name="materijaliList" ItemTapped="materijaliList_ItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-
-
-                                <StackLayout>
-                                    <Label Text="{Binding Naziv}" FontAttributes="Bold" FontSize="20"></Label>
-                                </StackLayout>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
